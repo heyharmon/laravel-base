@@ -1,14 +1,14 @@
 
-# Laravel - Domain Driven Design Starter
+# Research Api
 
-A fresh Laravel 8 app structured for Domain Driven Design including branches with Fortify and Sanctum configured for authentication.
+A BloomCU research api.
 
 ## Install Locally
 
 **Step 1:** Clone this repository
 
 ```
-git clone https://github.com/heyharmon/laravel-ddd.git
+git clone https://github.com/bloomcu/research-api.git
 ```
 
 <br>
@@ -16,7 +16,7 @@ git clone https://github.com/heyharmon/laravel-ddd.git
 **Step 2:** Change directory into application
 
 ```
-cd laravel-ddd
+cd research-api
 ```
 
 <br>
@@ -35,7 +35,7 @@ composer install
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=laravel_ddd
+DB_DATABASE=research-api
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -71,9 +71,9 @@ Then visit: http://127.0.0.1:8000
 
 > Using Valet, run:
 ```
-valet link laravel-ddd
+valet link research-api
 ```
-Then visit: http://laravel-ddd.test
+Then visit: http://research-api.test
 
 ## Get started
 
