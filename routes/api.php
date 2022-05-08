@@ -3,17 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+use DDD\Http\Sites\SiteController;
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/sites/all',       [SiteController::class, 'index']);
+Route::post('/sites',          [SiteController::class, 'store']);
+Route::get('/sites',           [SiteController::class, 'show']);
+Route::delete('/sites/{site}', [SiteController::class, 'destroy']);
