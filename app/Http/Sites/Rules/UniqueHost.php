@@ -31,12 +31,12 @@ class UniqueHost implements Rule
      */
     public function passes($attribute, $value)
     {
-        $page_exists = DB::table('sites')
+        $host_exists = DB::table('sites')
             ->where('host', '=', $this->host)
             ->exists();
 
         // Return false if site exists, failing validation
-        return $page_exists === false;
+        return $host_exists === false;
     }
 
     /**
