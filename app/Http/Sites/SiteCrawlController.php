@@ -26,7 +26,7 @@ class SiteCrawlController extends Controller
             ]
         );
 
-        CrawlSiteJob::dispatch($page);
+        CrawlSiteJob::dispatch($site, $page);
 
         return response()->json([
             'message' => 'Crawl in progress',

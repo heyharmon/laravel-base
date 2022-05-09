@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Http;
 use DDD\App\Services\UrlService;
 
 // Domains
+use DDD\Domain\Sites\Site;
 use DDD\Domain\Pages\Page;
 
 class CrawlSiteJob implements ShouldQueue
@@ -33,6 +34,7 @@ class CrawlSiteJob implements ShouldQueue
     /**
      * Public variables.
      */
+    public $site;
     public $page;
 
     /**
@@ -40,8 +42,9 @@ class CrawlSiteJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($page)
+    public function __construct(Site $site, Page $page)
     {
+        $this->site = $site;
         $this->page = $page;
     }
 
@@ -79,19 +82,14 @@ class CrawlSiteJob implements ShouldQueue
 
         // Iterate over each link
         foreach ($response['links'] as $link) {
-            // TODO: Do this in the crawler function
-            $linkHost = UrlService::getHost($link['url']);
-
-            // TODO: Right an action that processes the page via a pipeline:
+            // TODO: Right an action that processes the page via a pipeline?
             if (
-                // TODO: Construct this page host
-                // TODO: Better yet, inject the site model which has host on it
-                $linkHost === UrlService::getHost($this->page->url) && // Host matches site
+                // TODO: Get the host and sheme in the crawler function
+                UrlService::getHost($link['url']) === $this->site->host && // Host matches site
+                UrlService::getScheme($link['url']) === $this->site->scheme && // Scheme matches site
                 !Page::where('url', $link['url'])->exists() // Doesn't already exist
             ) {
-                $page = Page::create([
-                    // TODO: If site model is injected, you can create this page from relationship
-                    'site_id'    => $this->page->site_id,
+                $page = $this->site->pages()->create([
                     'type'       => $link['type'],
                     'url'        => $link['url'],
                     'is_crawled' => false
@@ -99,7 +97,7 @@ class CrawlSiteJob implements ShouldQueue
 
                 // Crawl it
                 if ($link['type'] === 'link') {
-                    dispatch(new self($page));
+                    dispatch(new self($this->site, $page));
                 }
             }
         }
