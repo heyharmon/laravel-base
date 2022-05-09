@@ -19,8 +19,8 @@ class CreatePagesTable extends Migration
             $table->boolean('is_crawled')->unsigned()->default(0);
             $table->integer('status')->nullable();
             $table->string('title')->nullable();
-            $table->string('url');
-            $table->string('wordcount')->nullable();
+            $table->string('url')->nullable();
+            $table->integer('wordcount')->nullable();
             $table->timestamps();
 
             $table->foreign('site_id')->references('id')->on('sites')->onDelete('cascade');
