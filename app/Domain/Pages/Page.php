@@ -1,11 +1,11 @@
 <?php
 
-namespace DDD\Domain\Sites;
+namespace DDD\Domain\Pages;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Site extends Model
+class Page extends Model
 {
     use HasFactory;
 
@@ -17,8 +17,8 @@ class Site extends Model
     //     'meta' => 'json'
     // ];
 
-    public function pages()
+    public function site()
     {
-        return $this->hasMany('DDD\Domain\Pages\Page');
+        return $this->belongsTo('DDD\Domain\Sites\Site');
     }
 }
