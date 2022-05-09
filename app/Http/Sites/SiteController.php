@@ -9,11 +9,7 @@ use DDD\App\Controllers\Controller;
 use DDD\Domain\Sites\Site;
 
 // Requests
-use DDD\Http\Sites\Requests\SiteRequest;
 use DDD\Http\Sites\Requests\SiteStoreRequest;
-
-// Services
-use DDD\App\Services\UrlService;
 
 class SiteController extends Controller
 {
@@ -26,26 +22,20 @@ class SiteController extends Controller
 
     public function store(SiteStoreRequest $request)
     {
-        $site = Site::create([
-            'host' => UrlService::getHost($request['url'])
-        ]);
+        $site = Site::create(
+            $request->validated()
+        );
 
         return response()->json($site);
     }
 
-    public function show(SiteRequest $request)
+    public function show(Site $site)
     {
-        $site = Site::where('host', '=', UrlService::getHost($request['url']))
-            ->firstOrFail();
-
         return response()->json($site);
     }
 
-    public function destroy(SiteRequest $request)
+    public function destroy(Site $site)
     {
-        $site = Site::where('host', '=', UrlService::getHost($request['url']))
-            ->firstOrFail();
-
         $site->delete();
 
         return response()->json($site);

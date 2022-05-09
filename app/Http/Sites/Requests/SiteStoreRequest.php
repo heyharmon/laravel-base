@@ -6,9 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-// Rules
-use DDD\Http\Sites\Rules\UniqueHost;
-
 class SiteStoreRequest extends FormRequest
 {
     /**
@@ -29,24 +26,7 @@ class SiteStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'url' => [
-                'required',
-                'url',
-                new UniqueHost($this->url)
-            ]
-        ];
-    }
-
-    /**
-     * Custom message for validation.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'url.required' => 'Url is required',
-            'url.url' => 'Must be a valid url. E.g., https://google.com',
+            'host' => 'required|unique:sites,host'
         ];
     }
 }

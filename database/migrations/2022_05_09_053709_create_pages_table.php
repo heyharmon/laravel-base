@@ -15,7 +15,7 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('site_id');
+            $table->foreignId('site_id');
             $table->boolean('is_crawled')->unsigned()->default(0);
             $table->integer('status')->nullable();
             $table->string('title')->nullable();
