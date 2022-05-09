@@ -5,6 +5,9 @@ namespace DDD\Http\Sites;
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
+// Services
+use DDD\App\Services\UrlService;
+
 // Domains
 use DDD\Domain\Sites\Site;
 
@@ -22,9 +25,11 @@ class SiteController extends Controller
 
     public function store(SiteStoreRequest $request)
     {
-        $site = Site::create(
-            $request->validated()
-        );
+        $site = Site::create([
+            'start_url' => $request->url,
+            'host' => UrlService::getHost($request->url),
+            'scheme' => UrlService::getScheme($request->url)
+        ]);
 
         return response()->json($site);
     }
