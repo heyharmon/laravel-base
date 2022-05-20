@@ -7,6 +7,9 @@ use DDD\Http\Sites\SiteController;
 use DDD\Http\Sites\SiteCrawlController;
 use DDD\Http\Pages\PageController;
 
+use DDD\Http\Files\FileController;
+use DDD\Http\Files\FileSignController;
+
 // Sites
 Route::get('/sites',           [SiteController::class, 'index']);
 Route::post('/sites',          [SiteController::class, 'store']);
@@ -23,3 +26,8 @@ Route::prefix('/sites/{site}')->group(function () {
     Route::get('/pages',  [PageController::class, 'index']);
     Route::post('/pages', [PageController::class, 'store']);
 });
+
+// Files
+Route::get('/files',      [FileController::class, 'index']);
+Route::post('/files',     [FileController::class, 'store']);
+Route::get('/files/sign', [FileSignController::class, 'sign']);
