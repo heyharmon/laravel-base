@@ -3,6 +3,7 @@
 namespace DDD\Http\Files;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use DDD\App\Controllers\Controller;
 
 // Vendors
@@ -34,7 +35,7 @@ class FileSignController extends Controller
             // Policy condition options
             [
                 ['bucket' => config('filesystems.disks.s3.bucket')],
-                ['starts-with', '$key', 'metrifi-intake-assets']
+                ['starts-with', '$key', 'metrifi']
             ]
         );
 
