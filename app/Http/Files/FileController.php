@@ -12,7 +12,7 @@ class FileController extends Controller
 {
     public function index()
     {
-        $files = File::all();
+        $files = File::latest()->get();
 
         return response()->json($files);
     }

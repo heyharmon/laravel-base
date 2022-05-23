@@ -17,8 +17,9 @@ class CreateFilesTable extends Migration
             $table->id();
             $table->string('type');
             $table->string('name');
-            $table->string('src');
             $table->unsignedBigInteger('size');
+            $table->string('public_id');
+            $table->string('src');
             $table->timestamps();
         });
     }

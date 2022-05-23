@@ -30,4 +30,4 @@ Route::prefix('/sites/{site}')->group(function () {
 // Files
 Route::get('/files',      [FileController::class, 'index']);
 Route::post('/files',     [FileController::class, 'store']);
-Route::post('/file/sign', [FileSignController::class, 'sign']);
+// Route::post('/file/sign', [FileSignController::class, 'sign']);
