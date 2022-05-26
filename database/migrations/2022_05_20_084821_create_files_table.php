@@ -15,6 +15,7 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('organization_id');
             $table->string('group')->nullable();
             $table->string('type');
             $table->string('name');
@@ -22,6 +23,12 @@ class CreateFilesTable extends Migration
             $table->string('public_id');
             $table->string('src');
             $table->timestamps();
+
+            // Indexes
+            $table->index(['organization_id']);
+
+            // Foreign constraints
+            $table->foreign('organization_id')->references('id')->on('organizations');
         });
     }
 

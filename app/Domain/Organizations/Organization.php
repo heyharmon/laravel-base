@@ -51,6 +51,16 @@ class Organization extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('Cms\Domain\Users\User');
+        return $this->belongsToMany('DDD\Domain\Users\User');
+    }
+
+    /**
+     * Get the properties associated with this organization.
+     *
+     * @return hasMany
+     */
+    public function files()
+    {
+        return $this->hasMany('DDD\Domain\Files\File');
     }
 }

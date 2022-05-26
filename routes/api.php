@@ -37,6 +37,7 @@ Route::prefix('/sites/{site}')->group(function () {
 });
 
 // Files
-Route::get('/files',      [FileController::class, 'index']);
-Route::post('/files',     [FileController::class, 'store']);
-// Route::post('/file/sign', [FileSignController::class, 'sign']);
+Route::prefix('{organization}')->group(function () {
+    Route::get('/files',  [FileController::class, 'index']);
+    Route::post('/files', [FileController::class, 'store']);
+});
