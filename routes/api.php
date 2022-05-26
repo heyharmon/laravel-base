@@ -3,12 +3,21 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use DDD\Http\Organizations\OrganizationController;
+
 use DDD\Http\Sites\SiteController;
 use DDD\Http\Sites\SiteCrawlController;
 use DDD\Http\Pages\PageController;
 
 use DDD\Http\Files\FileController;
 use DDD\Http\Files\FileSignController;
+
+// Organizations
+Route::get('organizations',                   [OrganizationController::class, 'index']);
+Route::post('organizations',                  [OrganizationController::class, 'store']);
+Route::get('organizations/{organization}',    [OrganizationController::class, 'show']);
+Route::put('organizations/{organization}',    [OrganizationController::class, 'update']);
+Route::delete('organizations/{organization}', [OrganizationController::class, 'destroy']);
 
 // Sites
 Route::get('/sites',           [SiteController::class, 'index']);
