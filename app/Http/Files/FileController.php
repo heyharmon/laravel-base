@@ -28,9 +28,20 @@ class FileController extends Controller
 
     public function store(Organization $organization, Request $request)
     {
-        // $file = File::create($request->all());
         $file = $organization->files()->create($request->all());
 
+        return response()->json($file);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     */
+    public function destroy(Organization $organization, File $file)
+    {
+        $file->delete();
+
+        // TODO: Use an API Resource to return this
         return response()->json($file);
     }
 }

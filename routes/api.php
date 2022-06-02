@@ -4,13 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use DDD\Http\Organizations\OrganizationController;
-
 use DDD\Http\Sites\SiteController;
 use DDD\Http\Sites\SiteCrawlController;
 use DDD\Http\Pages\PageController;
-
 use DDD\Http\Files\FileController;
-use DDD\Http\Files\FileSignController;
 
 // Organizations
 Route::get('organizations',                   [OrganizationController::class, 'index']);
@@ -38,6 +35,7 @@ Route::prefix('/sites/{site}')->group(function () {
 
 // Files
 Route::prefix('{organization}')->group(function () {
-    Route::get('/files',  [FileController::class, 'index']);
-    Route::post('/files', [FileController::class, 'store']);
+    Route::get('/files',          [FileController::class, 'index']);
+    Route::post('/files',         [FileController::class, 'store']);
+    Route::delete('files/{file}', [FileController::class, 'destroy']);
 });
