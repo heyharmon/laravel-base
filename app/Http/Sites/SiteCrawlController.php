@@ -13,10 +13,11 @@ use DDD\Domain\Sites\Jobs\CrawlSiteJob;
 
 // Domains
 use DDD\Domain\Sites\Site;
+use DDD\Domain\Organizations\Organization;
 
 class SiteCrawlController extends Controller
 {
-    public function crawl(Site $site)
+    public function crawl(Organization $organization, Site $site)
     {
         $page = $site->pages()->firstOrCreate(
             ['url' => $site->start_url],

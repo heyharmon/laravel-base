@@ -17,6 +17,11 @@ class Site extends Model
     //     'meta' => 'json'
     // ];
 
+    /**
+     * Get the pages associated with this site.
+     *
+     * @return hasMany
+     */
     public function pages()
     {
         return $this->hasMany('DDD\Domain\Pages\Page');

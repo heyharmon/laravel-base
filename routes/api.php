@@ -17,10 +17,12 @@ Route::put('organizations/{organization}',    [OrganizationController::class, 'u
 Route::delete('organizations/{organization}', [OrganizationController::class, 'destroy']);
 
 // Sites
-Route::get('/sites',           [SiteController::class, 'index']);
-Route::post('/sites',          [SiteController::class, 'store']);
-Route::get('/sites/{site}',    [SiteController::class, 'show']);
-Route::delete('/sites/{site}', [SiteController::class, 'destroy']);
+Route::prefix('{organization}')->group(function () {
+    Route::get('/sites',           [SiteController::class, 'index']);
+    Route::post('/sites',          [SiteController::class, 'store']);
+    Route::get('/sites/{site}',    [SiteController::class, 'show']);
+    Route::delete('/sites/{site}', [SiteController::class, 'destroy']);
+});
 
 // Crawl site
 Route::prefix('/sites/{site}')->group(function () {

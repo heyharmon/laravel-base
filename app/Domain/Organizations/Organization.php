@@ -45,7 +45,6 @@ class Organization extends Model
 
     /**
      * Get the users associated with the organization.
-     * Organization belongs to many users via 'organization_user' table.
      *
      * @return BelongsToMany
      */
@@ -55,12 +54,22 @@ class Organization extends Model
     }
 
     /**
-     * Get the properties associated with this organization.
+     * Get the files associated with this organization.
      *
      * @return hasMany
      */
     public function files()
     {
         return $this->hasMany('DDD\Domain\Files\File');
+    }
+
+    /**
+     * Get the sites associated with this organization.
+     *
+     * @return hasMany
+     */
+    public function sites()
+    {
+        return $this->hasMany('DDD\Domain\Sites\Site');
     }
 }

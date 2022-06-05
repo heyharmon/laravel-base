@@ -15,10 +15,17 @@ class CreateSitesTable extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('organization_id');
             $table->string('start_url');
             $table->string('host')->unique();
             $table->string('scheme');
             $table->timestamps();
+
+            // Indexes
+            $table->index(['organization_id']);
+
+            // Foreign constraints
+            $table->foreign('organization_id')->references('id')->on('organizations');
         });
     }
 
