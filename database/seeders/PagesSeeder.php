@@ -15,7 +15,6 @@ class PagesSeeder extends Seeder
      */
     public function run()
     {
-        // $now = now();
 
         $pages = [
             [
@@ -24,7 +23,6 @@ class PagesSeeder extends Seeder
                 'title' => 'Blank Page Blueprint',
                 'url' => 'https://google.com',
                 'wordcount' => 3000,
-                // 'created_at' => $now->addSecond()->toDateTimeString(),
             ],
             [
                 'site_id' => 1,
@@ -32,7 +30,6 @@ class PagesSeeder extends Seeder
                 'title' => 'Homepage',
                 'url' => 'https://google.com',
                 'wordcount' => 3000,
-                // 'created_at' => $now->addSecond()->toDateTimeString(),
             ],
             [
                 'site_id' => 1,
@@ -40,7 +37,6 @@ class PagesSeeder extends Seeder
                 'title' => 'Checking',
                 'url' => 'https://google.com',
                 'wordcount' => 3000,
-                // 'created_at' => $now->addSecond()->toDateTimeString(),
             ],
         ];
 
