@@ -2,8 +2,8 @@
 
 namespace DDD\Http\Sites;
 
-use DDD\DDD\Controllers\Controller;
-use DDD\DDD\Services\UrlService;
+use DDD\App\Controllers\Controller;
+use DDD\App\Services\UrlService;
 // Services
 use DDD\Domain\Organizations\Organization;
 // Domains

@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\DDD\Console;
+namespace DDD\App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;

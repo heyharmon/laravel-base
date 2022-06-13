@@ -2,7 +2,7 @@
 
 namespace DDD\Domain\Sites\Jobs;
 
-use DDD\DDD\Services\UrlService;
+use DDD\App\Services\UrlService;
 use DDD\Domain\Pages\Page;
 use DDD\Domain\Sites\Site;
 use Illuminate\Bus\Queueable;

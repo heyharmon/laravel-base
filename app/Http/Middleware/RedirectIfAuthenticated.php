@@ -3,7 +3,7 @@
 namespace DDD\Http\Middleware;
 
 use Closure;
-use DDD\DDD\Providers\RouteServiceProvider;
+use DDD\App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\DDD\Services;
+namespace DDD\App\Services;
 
 class UrlService
 {

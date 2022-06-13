@@ -2,7 +2,7 @@
 
 namespace DDD\Http\Files;
 
-use DDD\DDD\Controllers\Controller;
+use DDD\App\Controllers\Controller;
 use DDD\Domain\Files\File;
 // Vendors
 use DDD\Domain\Organizations\Organization;

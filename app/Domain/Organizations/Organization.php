@@ -2,7 +2,7 @@
 
 namespace DDD\Domain\Organizations;
 
-use DDD\DDD\Traits\HasSlug;
+use DDD\App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
