@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\App\Controllers;
+namespace DDD\DDD\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

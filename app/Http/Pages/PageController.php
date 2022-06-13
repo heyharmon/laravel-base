@@ -2,7 +2,7 @@
 
 namespace DDD\Http\Pages;
 
-use DDD\App\Controllers\Controller;
+use DDD\DDD\Controllers\Controller;
 use DDD\Domain\Pages\Page;
 // Domains
 use DDD\Domain\Sites\Site;

@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\App\Providers;
+namespace DDD\DDD\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

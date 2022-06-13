@@ -2,7 +2,7 @@
 
 namespace DDD\Http\Organizations;
 
-use DDD\App\Controllers\Controller;
+use DDD\DDD\Controllers\Controller;
 use DDD\Domain\Organizations\Organization;
 // Domains
 use Illuminate\Http\Request;

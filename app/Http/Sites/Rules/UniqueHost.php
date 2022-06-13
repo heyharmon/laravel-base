@@ -2,7 +2,7 @@
 
 namespace DDD\Http\Sites\Rules;
 
-use DDD\App\Services\UrlService;
+use DDD\DDD\Services\UrlService;
 use Illuminate\Contracts\Validation\Rule;
 // Services
 use Illuminate\Support\Facades\DB;
