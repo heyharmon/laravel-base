@@ -2,15 +2,13 @@
 
 namespace DDD\Http\Pages;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Domains
 use DDD\Domain\Pages\Page;
+// Domains
 use DDD\Domain\Sites\Site;
-
-// Requests
 use DDD\Http\Pages\Requests\PageStoreRequest;
+// Requests
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {

@@ -2,16 +2,14 @@
 
 namespace DDD\Http\Files;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Vendors
-use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\AllowedFilter;
-
-// Domains
 use DDD\Domain\Files\File;
+// Vendors
 use DDD\Domain\Organizations\Organization;
+use Illuminate\Http\Request;
+// Domains
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class FileController extends Controller
 {
@@ -35,7 +33,6 @@ class FileController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
      */
     public function destroy(Organization $organization, File $file)
     {

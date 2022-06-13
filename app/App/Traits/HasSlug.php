@@ -2,15 +2,15 @@
 
 namespace DDD\App\Traits;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
-trait HasSlug {
-
+trait HasSlug
+{
     protected static function bootHasSlug(): void
     {
         static::creating(function (Model $model) {
-            if (!$model->slug) {
+            if (! $model->slug) {
                 $slug = Str::slug($model->title);
                 $model->slug = $model->generateUniqueSlug($slug);
             }
@@ -26,7 +26,7 @@ trait HasSlug {
         $counter = 2;
 
         while ($this->slugExists($slug)) {
-            $slug = $originalSlug . '-' . $counter++;
+            $slug = $originalSlug.'-'.$counter++;
         }
 
         return $slug;

@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-
 use DDD\Domain\Pages\Page;
+use Illuminate\Database\Seeder;
 
 class PagesSeeder extends Seeder
 {
@@ -15,7 +14,6 @@ class PagesSeeder extends Seeder
      */
     public function run()
     {
-
         $pages = [
             [
                 'site_id' => 1,

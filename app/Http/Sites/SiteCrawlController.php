@@ -2,18 +2,15 @@
 
 namespace DDD\Http\Sites;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Services
 use DDD\App\Services\UrlService;
-
+// Services
+use DDD\Domain\Organizations\Organization;
 // Jobs
 use DDD\Domain\Sites\Jobs\CrawlSiteJob;
-
 // Domains
 use DDD\Domain\Sites\Site;
-use DDD\Domain\Organizations\Organization;
+use Illuminate\Http\Request;
 
 class SiteCrawlController extends Controller
 {
@@ -31,7 +28,7 @@ class SiteCrawlController extends Controller
 
         return response()->json([
             'message' => 'Crawl in progress',
-            'page' => $page
+            'page' => $page,
         ]);
     }
 }

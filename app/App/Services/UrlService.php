@@ -2,8 +2,8 @@
 
 namespace DDD\App\Services;
 
-class UrlService {
-
+class UrlService
+{
     /*
      * Get all url parts
      */
@@ -85,5 +85,4 @@ class UrlService {
         // No path in $url
         return '';
     }
-
 }

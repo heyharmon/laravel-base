@@ -2,17 +2,15 @@
 
 namespace DDD\Http\Organizations;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Domains
 use DDD\Domain\Organizations\Organization;
+// Domains
+use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      */
     public function index()
     {
@@ -24,12 +22,11 @@ class OrganizationController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
      */
     public function store(Request $request)
     {
         $organization = Organization::create([
-            'title' => $request['title']
+            'title' => $request['title'],
         ]);
 
         // TODO: Use an API Resource to return this
@@ -38,7 +35,6 @@ class OrganizationController extends Controller
 
     /**
      * Display the specified resource.
-     *
      */
     public function show(Organization $organization)
     {
@@ -48,12 +44,11 @@ class OrganizationController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
      */
     public function update(Organization $organization, Request $request)
     {
         $organization->update([
-            'title' => $request['title']
+            'title' => $request['title'],
         ]);
 
         // TODO: Use an API Resource to return this
@@ -62,7 +57,6 @@ class OrganizationController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
      */
     public function destroy(Organization $organization)
     {

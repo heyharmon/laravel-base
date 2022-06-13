@@ -2,12 +2,11 @@
 
 namespace DDD\Http\Sites\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
-
-// Rules
 use DDD\Http\Sites\Rules\UniqueHost;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
+// Rules
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class SiteStoreRequest extends FormRequest
 {
@@ -32,8 +31,8 @@ class SiteStoreRequest extends FormRequest
             'url' => [
                 'required',
                 'url',
-                new UniqueHost($this->url)
-            ]
+                new UniqueHost($this->url),
+            ],
         ];
     }
 }

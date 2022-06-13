@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-
 use DDD\Domain\Sites\Site;
+use Illuminate\Database\Seeder;
 
 class SitesSeeder extends Seeder
 {

@@ -2,11 +2,10 @@
 
 namespace DDD\Domain\Organizations;
 
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 use DDD\App\Traits\HasSlug;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Organization extends Model
 {
@@ -17,7 +16,6 @@ class Organization extends Model
 
     /**
      * Route key used to fetch resource
-     *
      */
 
     // TODO: Rather than specifying the route key name here.

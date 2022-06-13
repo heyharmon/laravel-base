@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-
 use DDD\Domain\Organizations\Organization;
+use Illuminate\Database\Seeder;
 
 class OrganizationsSeeder extends Seeder
 {
@@ -16,7 +15,7 @@ class OrganizationsSeeder extends Seeder
     public function run()
     {
         Organization::create([
-            'title' => 'BloomCU'
+            'title' => 'BloomCU',
         ]);
     }
 }

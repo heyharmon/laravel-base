@@ -2,11 +2,10 @@
 
 namespace DDD\Http\Sites\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Facades\DB;
-
-// Services
 use DDD\App\Services\UrlService;
+use Illuminate\Contracts\Validation\Rule;
+// Services
+use Illuminate\Support\Facades\DB;
 
 class UniqueHost implements Rule
 {
@@ -46,6 +45,6 @@ class UniqueHost implements Rule
      */
     public function message()
     {
-        return 'Site with host ' . $this->host . ' already exists';
+        return 'Site with host '.$this->host.' already exists';
     }
 }

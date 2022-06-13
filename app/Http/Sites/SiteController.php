@@ -2,18 +2,15 @@
 
 namespace DDD\Http\Sites;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Services
 use DDD\App\Services\UrlService;
-
+// Services
+use DDD\Domain\Organizations\Organization;
 // Domains
 use DDD\Domain\Sites\Site;
-use DDD\Domain\Organizations\Organization;
-
-// Requests
 use DDD\Http\Sites\Requests\SiteStoreRequest;
+// Requests
+use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
@@ -29,7 +26,7 @@ class SiteController extends Controller
         $site = $organization->sites()->create([
             'start_url' => $request->url,
             'host' => UrlService::getHost($request->url),
-            'scheme' => UrlService::getScheme($request->url)
+            'scheme' => UrlService::getScheme($request->url),
         ]);
 
         return response()->json($site);
