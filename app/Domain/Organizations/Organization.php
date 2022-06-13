@@ -48,7 +48,7 @@ class Organization extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('DDD\Domain\Users\User');
+        return $this->belongsToMany(\DDD\Domain\Users\User::class);
     }
 
     /**
@@ -58,7 +58,7 @@ class Organization extends Model
      */
     public function files()
     {
-        return $this->hasMany('DDD\Domain\Files\File');
+        return $this->hasMany(\DDD\Domain\Files\File::class);
     }
 
     /**
@@ -68,6 +68,6 @@ class Organization extends Model
      */
     public function sites()
     {
-        return $this->hasMany('DDD\Domain\Sites\Site');
+        return $this->hasMany(\DDD\Domain\Sites\Site::class);
     }
 }

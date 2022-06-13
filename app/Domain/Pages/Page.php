@@ -19,6 +19,6 @@ class Page extends Model
 
     public function site()
     {
-        return $this->belongsTo('DDD\Domain\Sites\Site');
+        return $this->belongsTo(\DDD\Domain\Sites\Site::class);
     }
 }
