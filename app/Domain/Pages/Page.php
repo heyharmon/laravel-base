@@ -2,6 +2,7 @@
 
 namespace DDD\Domain\Pages;
 
+use DDD\Domain\Sites\Site;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +20,6 @@ class Page extends Model
 
     public function site()
     {
-        return $this->belongsTo(\DDD\Domain\Sites\Site::class);
+        return $this->belongsTo(Site::class);
     }
 }

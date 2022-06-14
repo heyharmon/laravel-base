@@ -2,6 +2,7 @@
 
 namespace DDD\Domain\Sites;
 
+use DDD\Domain\Pages\Page;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,6 +25,6 @@ class Site extends Model
      */
     public function pages()
     {
-        return $this->hasMany(\DDD\Domain\Pages\Page::class);
+        return $this->hasMany(Page::class);
     }
 }
