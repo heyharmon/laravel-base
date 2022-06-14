@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             OrganizationsSeeder::class,
             SitesSeeder::class,
             PagesSeeder::class,
+            TagsSeeder::class,
         ]);
     }
 }
