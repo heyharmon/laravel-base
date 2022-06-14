@@ -4,9 +4,11 @@ namespace DDD\Http\Files;
 
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Files\File;
+
 // Vendors
 use DDD\Domain\Organizations\Organization;
 use Illuminate\Http\Request;
+
 // Domains
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -36,6 +38,8 @@ class FileController extends Controller
      */
     public function destroy(Organization $organization, File $file)
     {
+        cloudinary()->destroy($file->public_id);
+
         $file->delete();
 
         // TODO: Use an API Resource to return this
