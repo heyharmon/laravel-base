@@ -30,6 +30,13 @@ trait IsTaggable
         $this->removeTags($this->getWorkableTags($tags));
     }
 
+    public function retag($tags)
+    {
+        $this->removeAllTags();
+
+        $this->tag($tags);
+    }
+
     private function addTags(Collection $tags) {
         $sync = $this->tags()->syncWithoutDetaching($tags->pluck('id')->toArray());
 

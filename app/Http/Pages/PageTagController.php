@@ -24,4 +24,11 @@ class PageTagController extends Controller
 
         return response()->json($page->tags);
     }
+
+    public function retag(Site $site, Page $page, Request $request)
+    {
+        $page->retag(['tag-two', 'tag-three']);
+
+        return response()->json($page->tags);
+    }
 }
