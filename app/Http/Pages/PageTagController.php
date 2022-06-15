@@ -13,7 +13,7 @@ class PageTagController extends Controller
 {
     public function tag(Site $site, Page $page)
     {
-        $page->tag(['tag-one', 'tag-two', 'Tag Three']);
+        $page->tag(['tag-one', 'tag-two']);
 
         return response()->json($page->tags);
     }

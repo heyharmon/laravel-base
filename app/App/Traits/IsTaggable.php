@@ -4,6 +4,7 @@ namespace DDD\App\Traits;
 
 use DDD\Domain\Tags\Tag;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 
@@ -23,6 +24,11 @@ trait IsTaggable
 
     private function addTags(Collection $tags) {
         $sync = $this->tags()->syncWithoutDetaching($tags->pluck('id')->toArray());
+
+        // Increment count for each tag used
+        foreach(Arr::get($sync, 'attached') as $attachedId) {
+            $tags->where('id', $attachedId)->first()->increment('count');
+        }
     }
 
     private function getWorkableTags($tags)
