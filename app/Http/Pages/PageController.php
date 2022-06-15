@@ -2,19 +2,25 @@
 
 namespace DDD\Http\Pages;
 
-use DDD\App\Controllers\Controller;
-use DDD\Domain\Pages\Page;
-// Domains
-use DDD\Domain\Sites\Site;
-use DDD\Http\Pages\Requests\PageStoreRequest;
-// Requests
 use Illuminate\Http\Request;
+use DDD\App\Controllers\Controller;
+
+// Domains
+use DDD\Domain\Pages\Page;
+use DDD\Domain\Sites\Site;
+
+// Requests
+use DDD\Http\Pages\Requests\PageStoreRequest;
 
 class PageController extends Controller
 {
     public function index(Site $site)
     {
-        return response()->json($site->pages);
+        $pages = $site->pages()->withAnyTag(['tag-two'])->get();
+        // $pages = $site->pages()->withAllTags(['tag-two', 'tag-three'])->get();
+
+        return response()->json($pages);
+        // return response()->json($site->pages);
     }
 
     public function store(Site $site, PageStoreRequest $request)

@@ -18,13 +18,6 @@ class PagesSeeder extends Seeder
             [
                 'site_id' => 1,
                 'status' => '200',
-                'title' => 'Blank Page Blueprint',
-                'url' => 'https://google.com',
-                'wordcount' => 3000,
-            ],
-            [
-                'site_id' => 1,
-                'status' => '200',
                 'title' => 'Homepage',
                 'url' => 'https://google.com',
                 'wordcount' => 3000,
@@ -33,6 +26,13 @@ class PagesSeeder extends Seeder
                 'site_id' => 1,
                 'status' => '200',
                 'title' => 'Checking',
+                'url' => 'https://google.com',
+                'wordcount' => 3000,
+            ],
+            [
+                'site_id' => 1,
+                'status' => '200',
+                'title' => 'About',
                 'url' => 'https://google.com',
                 'wordcount' => 3000,
             ],
