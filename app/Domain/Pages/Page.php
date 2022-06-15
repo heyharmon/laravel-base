@@ -3,12 +3,14 @@
 namespace DDD\Domain\Pages;
 
 use DDD\Domain\Sites\Site;
+use DDD\App\Traits\IsTaggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        IsTaggable;
 
     protected $guarded = [
         'id',
