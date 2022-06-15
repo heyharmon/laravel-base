@@ -37,6 +37,7 @@ Route::prefix('/sites/{site}')->group(function () {
 
     // Tagging
     route::post('/pages/{page}/tag', [PageTagController::class, 'tag']);
+    route::post('/pages/{page}/untag', [PageTagController::class, 'untag']);
 });
 
 // Files

@@ -17,18 +17,41 @@ trait IsTaggable
 
     public function tag($tags)
     {
-        $this->addTags(
-            $this->getWorkableTags($tags)
-        );
+        $this->addTags($this->getWorkableTags($tags));
+    }
+
+    public function untag($tags = null)
+    {
+        if ($tags === null) {
+            $this->removeAllTags();
+            return;
+        }
+
+        $this->removeTags($this->getWorkableTags($tags));
     }
 
     private function addTags(Collection $tags) {
         $sync = $this->tags()->syncWithoutDetaching($tags->pluck('id')->toArray());
 
-        // Increment count for each tag used
-        foreach(Arr::get($sync, 'attached') as $attachedId) {
+        // Increment counts
+        foreach (Arr::get($sync, 'attached') as $attachedId) {
             $tags->where('id', $attachedId)->first()->increment('count');
         }
+    }
+
+    private function removeTags(Collection $tags)
+    {
+        $this->tags()->detach($tags);
+
+        // Decrement counts
+        foreach ($tags->where('count', '>', 0) as $tag) {
+            $tag->decrement('count');
+        }
+    }
+
+    private function removeAllTags()
+    {
+        $this->removeTags($this->tags);
     }
 
     private function getWorkableTags($tags)

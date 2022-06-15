@@ -11,9 +11,16 @@ use DDD\Domain\Sites\Site;
 
 class PageTagController extends Controller
 {
-    public function tag(Site $site, Page $page)
+    public function tag(Site $site, Page $page, Request $request)
     {
         $page->tag(['tag-one', 'tag-two']);
+
+        return response()->json($page->tags);
+    }
+
+    public function untag(Site $site, Page $page, Request $request)
+    {
+        $page->untag();
 
         return response()->json($page->tags);
     }
