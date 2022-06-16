@@ -17,22 +17,6 @@ class Organization extends Model
 
     protected $guarded = ['id', 'slug'];
 
-    /**
-     * Route key used to fetch resource
-     */
-
-    // TODO: Rather than specifying the route key name here.
-    // Specify the keyname to be used in the route.
-    // This way you are not forced to use the specified keyname everywhere.
-    // It also cleans up the model.
-    // Do this for all models.
-    // https://laravel.com/docs/8.x/routing#implicit-model-binding-scoping
-
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
     // TODO: Associate with a user
     // /**
     //  * Get the user who owns this organization.

@@ -17,11 +17,15 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->integer('count')->default(0);
             $table->timestamps();
 
             // Indexes
             $table->index(['slug']);
+
+            // Foreign constraints
+            $table->foreign('parent_id')->references('id')->on('tags');
         });
     }
 

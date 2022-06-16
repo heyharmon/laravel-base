@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use DDD\Http\Organizations\OrganizationController;
+use DDD\Http\Tags\TagController;
 use DDD\Http\Sites\SiteController;
 use DDD\Http\Sites\SiteCrawlController;
 use DDD\Http\Pages\PageController;
@@ -13,9 +14,16 @@ use DDD\Http\Files\FileController;
 // Organizations
 Route::get('organizations', [OrganizationController::class, 'index']);
 Route::post('organizations', [OrganizationController::class, 'store']);
-Route::get('organizations/{organization}', [OrganizationController::class, 'show']);
-Route::put('organizations/{organization}', [OrganizationController::class, 'update']);
-Route::delete('organizations/{organization}', [OrganizationController::class, 'destroy']);
+Route::get('organizations/{organization:slug}', [OrganizationController::class, 'show']);
+Route::put('organizations/{organization:slug}', [OrganizationController::class, 'update']);
+Route::delete('organizations/{organization:slug}', [OrganizationController::class, 'destroy']);
+
+// Tags
+Route::get('tags', [TagController::class, 'index']);
+Route::post('tags', [TagController::class, 'store']);
+Route::get('tags/{tag:slug}', [TagController::class, 'show']);
+Route::put('tags/{tag:slug}', [TagController::class, 'update']);
+Route::delete('tags/{tag:slug}', [TagController::class, 'destroy']);
 
 // Sites
 Route::prefix('{organization}')->group(function () {

@@ -15,10 +15,24 @@ class TagsSeeder extends Seeder
      */
     public function run()
     {
-        $tags = ['Tag One', 'Tag Two', 'Tag Three'];
+        $tags = [
+            [
+                'title' => 'Tag One',
+            ],
+            [
+                'title' => 'Child Tag One',
+                'parent_id' => 1,
+            ],
+            [
+                'title' => 'Tag Two',
+            ],
+            [
+                'title' => 'Tag Three',
+            ],
+        ];
 
         foreach ($tags as $tag) {
-            Tag::create(['title' => $tag]);
+            Tag::create($tag);
         }
     }
 }
