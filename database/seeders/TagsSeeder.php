@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
-use DDD\Domain\Tags\Tag;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+
+// Domains
+use DDD\Domain\Tags\TagGroup;
+use DDD\Domain\Tags\Tag;
 
 class TagsSeeder extends Seeder
 {
@@ -15,19 +18,33 @@ class TagsSeeder extends Seeder
      */
     public function run()
     {
+        $tagGroups = [
+            [
+                'title' => 'Tag Group',
+            ]
+        ];
+
+        foreach ($tagGroups as $group) {
+            TagGroup::create($group);
+        }
+
         $tags = [
             [
                 'title' => 'Tag One',
+                'tag_group_id' => 1,
             ],
             [
                 'title' => 'Child Tag One',
+                'tag_group_id' => 1,
                 'parent_id' => 1,
             ],
             [
                 'title' => 'Tag Two',
+                'tag_group_id' => 1,
             ],
             [
                 'title' => 'Tag Three',
+                'tag_group_id' => 1,
             ],
         ];
 

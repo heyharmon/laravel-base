@@ -6,46 +6,36 @@ use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
 // Domains
+use DDD\Domain\Tags\TagGroup;
 use DDD\Domain\Tags\Tag;
+
+// Resources
+use DDD\Http\Tags\Resources\TagResource;
 
 class TagController extends Controller
 {
-    public function index()
-    {
-        // $tags = Tags::all();
-        $tags = Tag::get();
-
-        // TODO: Use an API Resource to return this
-        return response()->json($tags);
-    }
-
     public function store(Request $request)
     {
-        $tag = Tag::create($request->all());
+        $group = TagGroup::where('slug', $request->group_slug)->firstOrFail();
 
-        // TODO: Use an API Resource to return this
-        return response()->json($tag);
-    }
+        $tag = $group->tags()->create([
+            'title' => $request->title
+        ]);
 
-    public function show(Tag $tag)
-    {
-        // TODO: Use an API Resource to return this
-        return response()->json($tag);
+        return new TagResource($tag);
     }
 
     public function update(Tag $tag, Request $request)
     {
         $tag->update($request->all());
 
-        // TODO: Use an API Resource to return this
-        return response()->json($tag);
+        return new TagResource($tag);
     }
 
     public function destroy(Tag $tag)
     {
         $tag->delete();
 
-        // TODO: Use an API Resource to return this
-        return response()->json($tag);
+        return new TagResource($tag);
     }
 }

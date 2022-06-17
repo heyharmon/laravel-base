@@ -13,21 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('tag_groups', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->integer('count')->default(0);
-            $table->foreignId('tag_group_id');
-            // $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreignId('parent_id')->nullable();
             $table->timestamps();
-
-            // Indexes
-            $table->index(['slug']);
-
-            // Foreign constraints
-            $table->foreign('parent_id')->references('id')->on('tags');
         });
     }
 
@@ -38,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('tag_groups');
     }
 };
