@@ -18,7 +18,7 @@ class PagesSeeder extends Seeder
             [
                 'site_id' => 1,
                 'status' => '200',
-                'title' => 'Homepage',
+                'title' => 'About',
                 'url' => 'https://google.com',
                 'wordcount' => 3000,
             ],
@@ -32,7 +32,7 @@ class PagesSeeder extends Seeder
             [
                 'site_id' => 1,
                 'status' => '200',
-                'title' => 'About',
+                'title' => 'Homepage',
                 'url' => 'https://google.com',
                 'wordcount' => 3000,
             ],

@@ -16,7 +16,8 @@ class PageController extends Controller
 {
     public function index(Site $site)
     {
-        $pages = $site->pages()->withAnyTag(['tag-two'])->get();
+        $pages = $site->pages()->latest()->get();
+        // $pages = $site->pages()->withAnyTag(['tag-two'])->get();
         // $pages = $site->pages()->withAllTags(['tag-two', 'tag-three'])->get();
 
         return response()->json($pages);
