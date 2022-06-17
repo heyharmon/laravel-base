@@ -21,6 +21,7 @@ class TagGroupResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
+            'tags_count' => $this->tags()->count(),
             'tags' => TagResource::collection($this->whenLoaded('tags')),
         ];
     }
