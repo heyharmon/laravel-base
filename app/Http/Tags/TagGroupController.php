@@ -15,7 +15,7 @@ class TagGroupController extends Controller
 {
     public function index()
     {
-        $groups = TagGroup::get();
+        $groups = TagGroup::latest()->get();
 
         return TagGroupResource::collection($groups);
     }
