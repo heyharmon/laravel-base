@@ -2,18 +2,22 @@
 
 namespace DDD\Domain\Sites\Jobs;
 
-use DDD\App\Services\UrlService;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+
+// Domains
 use DDD\Domain\Pages\Page;
 use DDD\Domain\Sites\Site;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
+
 // Facades
-use Illuminate\Foundation\Bus\Dispatchable;
-// Services
-use Illuminate\Queue\InteractsWithQueue;
-// Domains
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Http;
+
+// Services
+use DDD\App\Services\UrlService;
 
 class CrawlSiteJob implements ShouldQueue
 {

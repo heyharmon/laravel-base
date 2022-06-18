@@ -2,15 +2,19 @@
 
 namespace DDD\Http\Sites;
 
+use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-use DDD\App\Services\UrlService;
-// Services
+
+// Domains
 use DDD\Domain\Organizations\Organization;
+use DDD\Domain\Sites\Site;
+
+// Services
+use DDD\App\Services\UrlService;
+
 // Jobs
 use DDD\Domain\Sites\Jobs\CrawlSiteJob;
-// Domains
-use DDD\Domain\Sites\Site;
-use Illuminate\Http\Request;
+
 
 class SiteCrawlController extends Controller
 {
