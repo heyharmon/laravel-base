@@ -20,21 +20,54 @@ class TagsSeeder extends Seeder
     {
         $tags = [
             [
-                'title' => 'Parent One',
+                'title' => 'Content Categories',
             ],
             [
-                'title' => 'Child One',
+                'title' => 'Accounts',
                 'parent_id' => 1,
             ],
             [
-                'title' => 'Grandchild One',
+                'title' => 'Checking',
                 'parent_id' => 2,
             ],
             [
-                'title' => 'Parent Two',
+                'title' => 'Savings',
+                'parent_id' => 2,
             ],
             [
-                'title' => 'Parent Three',
+                'title' => 'Share',
+                'parent_id' => 4,
+            ],
+            [
+                'title' => 'Money Market',
+                'parent_id' => 4,
+            ],
+            [
+                'title' => 'Certificates',
+                'parent_id' => 4,
+            ],
+            [
+                'title' => 'Loans',
+                'parent_id' => 1,
+            ],
+            [
+                'title' => 'Cards',
+                'parent_id' => 1,
+            ],
+            [
+                'title' => 'Content Types',
+            ],
+            [
+                'title' => 'Product',
+                'parent_id' => 10,
+            ],
+            [
+                'title' => 'Service',
+                'parent_id' => 10,
+            ],
+            [
+                'title' => 'Info',
+                'parent_id' => 10,
             ],
         ];
 
