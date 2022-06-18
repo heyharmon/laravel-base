@@ -43,9 +43,9 @@ trait IsTaggable
     private function addTags(Collection $tags) {
         $sync = $this->tags()->syncWithoutDetaching($tags->pluck('id')->toArray());
 
-        // Increment counts
+        // Increment tagged counts
         foreach (Arr::get($sync, 'attached') as $attachedId) {
-            $tags->where('id', $attachedId)->first()->increment('count');
+            $tags->where('id', $attachedId)->first()->increment('tagged_count');
         }
     }
 
@@ -53,9 +53,9 @@ trait IsTaggable
     {
         $this->tags()->detach($tags);
 
-        // Decrement counts
-        foreach ($tags->where('count', '>', 0) as $tag) {
-            $tag->decrement('count');
+        // Decrement tagged counts
+        foreach ($tags->where('tagged_count', '>', 0) as $tag) {
+            $tag->decrement('tagged_count');
         }
     }
 

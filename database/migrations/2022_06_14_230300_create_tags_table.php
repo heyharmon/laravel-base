@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->integer('count')->default(0);
+            $table->integer('tagged_count')->default(0);
             $table->foreignId('parent_id')->nullable();
             $table->timestamps();
 
