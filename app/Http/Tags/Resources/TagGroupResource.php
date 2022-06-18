@@ -22,7 +22,9 @@ class TagGroupResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'tags_count' => $this->tags()->count(),
-            'tags' => TagResource::collection($this->whenLoaded('tags')),
+            'tags' => $this->tagTree(),
+            // 'tags' => $this->tagTree(),
+            // 'tags' => TagResource::collection($this->whenLoaded('tags')),
         ];
     }
 }
