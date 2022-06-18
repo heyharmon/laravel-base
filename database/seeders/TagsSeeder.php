@@ -18,33 +18,23 @@ class TagsSeeder extends Seeder
      */
     public function run()
     {
-        $tagGroups = [
-            [
-                'title' => 'Tag Group',
-            ]
-        ];
-
-        foreach ($tagGroups as $group) {
-            TagGroup::create($group);
-        }
-
         $tags = [
             [
-                'title' => 'Tag One',
-                'tag_group_id' => 1,
+                'title' => 'Parent One',
             ],
             [
-                'title' => 'Child Tag One',
-                'tag_group_id' => 1,
+                'title' => 'Child One',
                 'parent_id' => 1,
             ],
             [
-                'title' => 'Tag Two',
-                'tag_group_id' => 1,
+                'title' => 'Grandchild One',
+                'parent_id' => 2,
             ],
             [
-                'title' => 'Tag Three',
-                'tag_group_id' => 1,
+                'title' => 'Parent Two',
+            ],
+            [
+                'title' => 'Parent Three',
             ],
         ];
 

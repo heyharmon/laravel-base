@@ -18,7 +18,9 @@ class TagResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
-            'parent_id' => $this->parent_id
+            'count' => $this->count,
+            'children_count' => $this->children()->count(),
+            'children' => TagResource::collection($this->whenLoaded('children'))
         ];
     }
 }

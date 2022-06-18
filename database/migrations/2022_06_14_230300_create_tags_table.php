@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->integer('count')->default(0);
-            $table->foreignId('tag_group_id');
-            // $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreignId('parent_id')->nullable();
             $table->timestamps();
 

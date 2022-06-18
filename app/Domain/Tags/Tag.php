@@ -20,4 +20,25 @@ class Tag extends Model
     protected $guarded = [
         'id',
     ];
+
+    /**
+     * Get the children tags associated with this tag.
+     *
+     * @return hasMany
+     */
+    public function children()
+    {
+        return $this->hasMany(Tag::class, 'parent_id');
+    }
+
+    /**
+     * Get only parent (top level) tags.
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeParents($query)
+    {
+        return $query->whereNull('parent_id');
+    }
 }
