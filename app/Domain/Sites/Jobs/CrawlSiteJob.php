@@ -3,11 +3,11 @@
 namespace DDD\Domain\Sites\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Throwable;
 
 // Domains
 use DDD\Domain\Pages\Page;
@@ -103,5 +103,16 @@ class CrawlSiteJob implements ShouldQueue
                 }
             }
         }
+    }
+
+    /**
+     * Handle a job failure.
+     *
+     * @param  \Throwable  $exception
+     * @return void
+     */
+    public function failed(Throwable $exception)
+    {
+        // Use https://www.larabug.com/ here
     }
 }
