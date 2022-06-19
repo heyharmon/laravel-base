@@ -91,11 +91,6 @@ class CrawlPageJob implements ShouldQueue
                 && UrlService::getScheme($url['url']) === $this->site->scheme // Scheme matches site
                 // && !Page::where('url', $url['url'])->exists() // Doesn't already exist
             ) {
-                // $page = $this->site->pages()->create([
-                //     'type'       => $url['type'],
-                //     'url'        => $url['url'],
-                //     'is_crawled' => false,
-                // ]);
 
                 $page = $this->site->pages()->firstOrCreate(
                     ['url' => $url['url']],
