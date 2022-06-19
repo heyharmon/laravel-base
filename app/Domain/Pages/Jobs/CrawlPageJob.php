@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Domain\Sites\Jobs;
+namespace DDD\Domain\Pages\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -10,8 +10,8 @@ use Illuminate\Queue\SerializesModels;
 use Throwable;
 
 // Domains
-use DDD\Domain\Pages\Page;
 use DDD\Domain\Sites\Site;
+use DDD\Domain\Pages\Page;
 
 // Facades
 use Illuminate\Support\Facades\Http;
@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Http;
 // Services
 use DDD\App\Services\UrlService;
 
-class CrawlSiteJob implements ShouldQueue
+class CrawlPageJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $timeout = 0;
+    public $timeout = 10;
 
     /**
      * The number of times the job may be attempted.
@@ -36,7 +36,6 @@ class CrawlSiteJob implements ShouldQueue
      * Public variables.
      */
     public $site;
-
     public $page;
 
     /**
@@ -83,22 +82,32 @@ class CrawlSiteJob implements ShouldQueue
         ]);
 
         // Iterate over each link
-        foreach ($response['links'] as $link) {
+        // TODO: Update "links" in response to "urls"
+        foreach ($response['links'] as $url) {
             // TODO: Right an action that processes the page via a pipeline?
             if (
                 // TODO: Get the host and sheme in the crawler function
-                UrlService::getHost($link['url']) === $this->site->host && // Host matches site
-                UrlService::getScheme($link['url']) === $this->site->scheme && // Scheme matches site
-                ! Page::where('url', $link['url'])->exists() // Doesn't already exist
+                UrlService::getHost($url['url']) === $this->site->host // Host matches site
+                && UrlService::getScheme($url['url']) === $this->site->scheme // Scheme matches site
+                // && !Page::where('url', $url['url'])->exists() // Doesn't already exist
             ) {
-                $page = $this->site->pages()->create([
-                    'type'       => $link['type'],
-                    'url'        => $link['url'],
-                    'is_crawled' => false,
-                ]);
+                // $page = $this->site->pages()->create([
+                //     'type'       => $url['type'],
+                //     'url'        => $url['url'],
+                //     'is_crawled' => false,
+                // ]);
+
+                $page = $this->site->pages()->firstOrCreate(
+                    ['url' => $url['url']],
+                    [
+                        'type'       => $url['type'],
+                        'url'        => $url['url'],
+                        'is_crawled' => false,
+                    ]
+                );
 
                 // Crawl it
-                if ($link['type'] === 'link') {
+                if ($url['type'] === 'link') {
                     dispatch(new self($this->site, $page));
                 }
             }

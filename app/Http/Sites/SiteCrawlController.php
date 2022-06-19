@@ -13,7 +13,7 @@ use DDD\Domain\Sites\Site;
 use DDD\App\Services\UrlService;
 
 // Jobs
-use DDD\Domain\Sites\Jobs\CrawlSiteJob;
+use DDD\Domain\Pages\Jobs\CrawlPageJob;
 
 
 class SiteCrawlController extends Controller
@@ -23,12 +23,12 @@ class SiteCrawlController extends Controller
         $page = $site->pages()->firstOrCreate(
             ['url' => $site->start_url],
             [
+                'url'        => $site->start_url,
                 'is_crawled' => false,
-                'url' => $site->start_url,
             ]
         );
 
-        CrawlSiteJob::dispatch($site, $page);
+        CrawlPageJob::dispatch($site, $page);
 
         return response()->json([
             'message' => 'Crawl in progress',
