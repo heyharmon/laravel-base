@@ -24,7 +24,7 @@ return new class extends Migration {
             $table->index(['organization_id']);
 
             // Foreign constraints
-            $table->foreign('organization_id')->references('id')->on('organizations');
+            $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
         });
     }
 

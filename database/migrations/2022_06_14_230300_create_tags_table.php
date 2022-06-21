@@ -25,7 +25,7 @@ return new class extends Migration
             $table->index(['slug']);
 
             // Foreign constraints
-            $table->foreign('parent_id')->references('id')->on('tags');
+            $table->foreign('parent_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
 

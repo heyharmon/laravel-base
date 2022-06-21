@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->integer('wordcount')->nullable();
             $table->timestamps();
 
-            $table->foreign('site_id')->references('id')->on('sites')->onDelete('cascade');
+            $table->foreign('site_id')->references('id')->on('sites')->onDelete('cascade')->onDelete('cascade');
         });
     }
 
