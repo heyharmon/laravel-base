@@ -3,6 +3,7 @@
 namespace DDD\Http\Sites;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
 use DDD\App\Controllers\Controller;
 
 // Domains
@@ -28,7 +29,11 @@ class SiteCrawlController extends Controller
             ]
         );
 
-        CrawlPageJob::dispatch($site, $page);
+        // CrawlPageJob::dispatch($site, $page);
+
+        Bus::batch(
+            new CrawlPageJob($site, $page)
+        )->dispatch();
 
         return response()->json([
             'message' => 'Crawl in progress',

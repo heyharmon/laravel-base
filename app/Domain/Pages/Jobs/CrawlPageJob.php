@@ -2,7 +2,9 @@
 
 namespace DDD\Domain\Pages\Jobs;
 
+use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -21,7 +23,11 @@ use DDD\App\Services\UrlService;
 
 class CrawlPageJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Batchable,
+        Dispatchable,
+        InteractsWithQueue,
+        Queueable,
+        SerializesModels;
 
     public $timeout = 10;
 
@@ -56,6 +62,10 @@ class CrawlPageJob implements ShouldQueue
      */
     public function handle()
     {
+        if ($this->batch()->cancelled()) {
+            return;
+        }
+
         // Get page
         // $response = Http::get('http://localhost:5001/bloomcu-scraping-functions/us-central1/cheerio/page', [
         $response = Http::get('https://us-central1-bloomcu-scraping-functions.cloudfunctions.net/cheerio/page', [
@@ -81,6 +91,9 @@ class CrawlPageJob implements ShouldQueue
             // 'body'       => $response['body']
         ]);
 
+        // Empty array for next set of jobs
+        $jobs = [];
+
         // Iterate over each link
         // TODO: Update "links" in response to "urls"
         foreach ($response['links'] as $url) {
@@ -103,10 +116,13 @@ class CrawlPageJob implements ShouldQueue
 
                 // Crawl it
                 if ($url['type'] === 'link') {
-                    dispatch(new self($this->site, $page));
+                    $jobs[] = new CrawlPageJob($this->site, $page);
+                    // dispatch(new self($this->site, $page));
                 }
             }
         }
+
+        Bus::batch($jobs)->dispatch();
     }
 
     /**
