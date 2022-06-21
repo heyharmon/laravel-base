@@ -2,11 +2,12 @@
 
 namespace DDD\Http\Sites\Requests;
 
-use DDD\Http\Sites\Rules\UniqueHost;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-// Rules
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+
+// Rules
+use DDD\Http\Sites\Rules\UniqueHost;
 
 class SiteStoreRequest extends FormRequest
 {

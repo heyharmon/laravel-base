@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use DDD\Http\Auth\AuthController;
 use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Tags\TagController;
 use DDD\Http\Sites\SiteController;
@@ -10,6 +11,15 @@ use DDD\Http\Sites\SiteCrawlController;
 use DDD\Http\Pages\PageController;
 use DDD\Http\Pages\PageTagController;
 use DDD\Http\Files\FileController;
+
+// Auth
+Route::post('auth/register', [AuthController::class, 'register']);
+Route::post('auth/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('auth/logout', [AuthController::class, 'logout']);
+    Route::get('auth/me', [AuthController::class, 'me']);
+});
 
 // Organizations
 Route::get('organizations', [OrganizationController::class, 'index']);

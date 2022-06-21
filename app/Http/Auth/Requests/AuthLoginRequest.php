@@ -1,22 +1,22 @@
 <?php
 
-namespace DDD\Http\Pages\Requests;
+namespace DDD\Http\Auth\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PageStoreRequest extends FormRequest
+class AuthLoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return true;
-    }
+    // public function authorize()
+    // {
+    //     return false;
+    // }
 
     /**
      * Get the validation rules that apply to the request.
@@ -26,10 +26,8 @@ class PageStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'nullable|integer',
-            'title' => 'nullable|string',
-            'url' => 'nullable|string',
-            'wordcount' => 'nullable|integer',
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6',
         ];
     }
 
