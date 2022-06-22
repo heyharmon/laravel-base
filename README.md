@@ -1,14 +1,14 @@
 
-# Research Api
+# Build Api
 
-A BloomCU research api.
+A BloomCU build api.
 
 ## Install Locally
 
 **Step 1:** Clone this repository
 
 ```
-git clone https://github.com/bloomcu/research-api.git
+git clone https://github.com/bloomcu/build-api.git
 ```
 
 <br>
@@ -16,7 +16,7 @@ git clone https://github.com/bloomcu/research-api.git
 **Step 2:** Change directory into application
 
 ```
-cd research-api
+cd build-api
 ```
 
 <br>
@@ -35,7 +35,7 @@ composer install
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=research-api
+DB_DATABASE=build-api
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -73,7 +73,7 @@ Then visit: http://127.0.0.1:8000
 ```
 valet link research-api
 ```
-Then visit: http://research-api.test
+Then visit: http://build-api.test
 
 ## Get started
 
@@ -94,14 +94,6 @@ Use the plainTextToken returned in request header:
 Header Key: Authorization
 Header Value: Bearer YOUR_PLAINTEXT_TOKEN
 ```
-
-### SPA Authentication
-The SPA Authentication method does not use tokens, instead Sanctum uses cookie based session authentication. This approach to authentication provides the benefits of CSRF protection, session authentication, as well as protects against leakage of the authentication credentials via XSS. In order to authenticate, your SPA and API must share the same top-level domain. [Read More](https://laravel.com/docs/8.x/sanctum#spa-authentication)
-
-| Verb | Path | Method |
-|--|--|--|
-| GET | /sanctum/csrf-cookie | Get csrf cookie |
-| GET | /login | Recieve auth token by providing email and password |
 
 ### API Endpoints
 
