@@ -11,12 +11,22 @@ use DDD\Http\Sites\SiteCrawlController;
 use DDD\Http\Pages\PageController;
 use DDD\Http\Pages\PageTagController;
 use DDD\Http\Files\FileController;
+use DDD\Http\Test\TestController;
+
+// Route::get('/test', function() {
+//     return DDD\Domain\Users\User::count();
+// });
+
+Route::middleware('auth:sanctum')->group(function() {
+    Route::get('test',  [TestController::class, 'test']);
+    Route::get('{organization:slug}/users', [TestController::class, 'users']);
+});
 
 // Auth
 Route::post('auth/register', [AuthController::class, 'register']);
 Route::post('auth/login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(function() {
     Route::post('auth/logout', [AuthController::class, 'logout']);
     Route::get('auth/me', [AuthController::class, 'me']);
 });
@@ -29,7 +39,7 @@ Route::put('organizations/{organization:slug}', [OrganizationController::class, 
 Route::delete('organizations/{organization:slug}', [OrganizationController::class, 'destroy']);
 
 // Tags
-Route::prefix('tags')->group(function () {
+Route::prefix('tags')->group(function() {
     Route::get('/', [TagController::class, 'index']);
     Route::post('/', [TagController::class, 'store']);
     Route::get('/{tag:slug}', [TagController::class, 'show']);
@@ -38,20 +48,20 @@ Route::prefix('tags')->group(function () {
 });
 
 // Sites
-Route::prefix('{organization:slug}')->group(function () {
+Route::prefix('{organization:slug}')->group(function() {
     Route::get('/sites', [SiteController::class, 'index']);
     Route::post('/sites', [SiteController::class, 'store']);
     Route::get('/sites/{site}', [SiteController::class, 'show']);
     Route::delete('/sites/{site}', [SiteController::class, 'destroy']);
 
     // Crawl site
-    Route::prefix('/sites/{site}')->group(function () {
+    Route::prefix('/sites/{site}')->group(function() {
         Route::post('/crawl', [SiteCrawlController::class, 'crawl']);
     });
 });
 
 // Pages
-Route::prefix('/sites/{site}')->group(function () {
+Route::prefix('/sites/{site}')->group(function() {
     Route::get('/pages', [PageController::class, 'index']);
     Route::post('/pages', [PageController::class, 'store']);
 
@@ -62,7 +72,7 @@ Route::prefix('/sites/{site}')->group(function () {
 });
 
 // Files
-Route::prefix('{organization}')->group(function () {
+Route::prefix('{organization}')->group(function() {
     Route::get('/files', [FileController::class, 'index']);
     Route::post('/files', [FileController::class, 'store']);
     Route::delete('files/{file}', [FileController::class, 'destroy']);

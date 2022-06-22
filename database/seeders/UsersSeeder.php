@@ -20,7 +20,17 @@ class UsersSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        foreach (range(1, 20) as $i) {
+        User::create([
+            'name' => 'Test Admin',
+            'email' => 'test@email.com',
+            'role' => 'admin',
+            'organization_id' => 1,
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ]);
+
+        foreach (range(1, 19) as $i) {
             User::create([
                 'name' => $faker->name,
                 'email' => $faker->unique()->safeEmail,

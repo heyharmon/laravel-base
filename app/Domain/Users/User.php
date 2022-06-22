@@ -6,7 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
+// Traits
 use Laravel\Sanctum\HasApiTokens;
+
+// Scopes
+// use DDD\App\Scopes\OrganizationScope;
 
 class User extends Authenticatable
 {
@@ -41,4 +46,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Scope a query to only include users in an organization.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeOrganization($query, $organization_id)
+    {
+        $query->where('organization_id', $organization_id);
+    }
+
+    // protected static function booted()
+    // {
+    //     static::addGlobalScope(new OrganizationScope);
+    // }
 }
