@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Http\Organizations\Policies;
+namespace DDD\App\Policies;
 
 use DDD\Domain\Users\User;
 use DDD\organization;
