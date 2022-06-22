@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use DDD\Domain\Organizations\Organization;
 use Illuminate\Database\Seeder;
+
+// Domains
+use DDD\Domain\Organizations\Organization;
 
 class OrganizationsSeeder extends Seeder
 {
@@ -17,5 +19,13 @@ class OrganizationsSeeder extends Seeder
         Organization::create([
             'title' => 'BloomCU',
         ]);
+
+        $faker = \Faker\Factory::create();
+
+        foreach (range(1, 2) as $i) {
+            Organization::create([
+                'title' => $faker->company,
+            ]);
+        }
     }
 }
