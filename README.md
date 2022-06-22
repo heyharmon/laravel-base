@@ -71,7 +71,7 @@ Then visit: http://127.0.0.1:8000
 
 > Using Valet, run:
 ```
-valet link research-api
+valet link build-api
 ```
 Then visit: http://build-api.test
 
