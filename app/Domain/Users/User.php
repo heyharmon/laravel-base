@@ -9,13 +9,17 @@ use Illuminate\Notifications\Notifiable;
 
 // Traits
 use Laravel\Sanctum\HasApiTokens;
+use DDD\App\Traits\BelongsToOrganization;
 
 // Scopes
 // use DDD\App\Scopes\OrganizationScope;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens;
+    use HasFactory,
+        Notifiable,
+        HasApiTokens,
+        BelongsToOrganization;
 
     /**
      * The attributes that are mass assignable.
@@ -47,16 +51,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Scope a query to only include users in an organization.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return void
-     */
-    public function scopeOrganization($query, $organization_id)
-    {
-        $query->where('organization_id', $organization_id);
-    }
+
 
     // protected static function booted()
     // {

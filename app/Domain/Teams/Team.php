@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 // Traits
 use DDD\App\Traits\HasSlug;
+use DDD\App\Traits\BelongsToOrganization;
 
 class Team extends Model
 {
     use HasFactory,
-        HasSlug;
+        HasSlug,
+        BelongsToOrganization;
 
     protected $guarded = ['id', 'slug'];
 
