@@ -22,7 +22,7 @@ class TestController extends Controller
     {
         // return auth()->user();
         // return User::count();
-        return User::Organization($organization->id)->count();
-        // return $organization->users;
+        // return User::Organization($organization->id)->count();
+        return $organization->teams;
     }
 }

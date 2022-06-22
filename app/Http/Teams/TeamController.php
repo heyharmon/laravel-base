@@ -1,69 +1,70 @@
 <?php
 
-namespace DDD\Http\Organizations;
+namespace DDD\Http\Teams;
 
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
 // Domains
 use DDD\Domain\Organizations\Organization;
+use DDD\Domain\Teams\Team;
 
-class OrganizationController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Organization $organization)
     {
-        $organizations = Organization::all();
+        $teams = $organization->teams;
 
         // TODO: Use an API Resource to return this
-        return response()->json($organizations);
+        return response()->json($teams);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Organization $organization, Request $request)
     {
-        $organization = Organization::create([
+        $team = $organization->teams()->create([
             'title' => $request['title'],
         ]);
 
         // TODO: Use an API Resource to return this
-        return response()->json($organization);
+        return response()->json($team);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Organization $organization)
+    public function show(Organization $organization, Team $team)
     {
         // TODO: Use an API Resource to return this
-        return response()->json($organization);
+        return response()->json($team);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Organization $organization, Request $request)
+    public function update(Organization $organization, Team $team, Request $request)
     {
-        $organization->update([
+        $team->update([
             'title' => $request['title'],
         ]);
 
         // TODO: Use an API Resource to return this
-        return response()->json($organization);
+        return response()->json($team);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Organization $organization)
+    public function destroy(Organization $organization, Team $team)
     {
-        $organization->delete();
+        $team->delete();
 
         // TODO: Use an API Resource to return this
-        return response()->json($organization);
+        return response()->json($team);
     }
 }

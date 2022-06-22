@@ -2,13 +2,11 @@
 
 namespace DDD\Domain\Organizations;
 
-use DDD\Domain\Users\User;
-use DDD\Domain\Files\File;
-use DDD\Domain\Sites\Site;
-use DDD\App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+
+// Traits
+use DDD\App\Traits\HasSlug;
 
 class Organization extends Model
 {
@@ -31,11 +29,21 @@ class Organization extends Model
     /**
      * Get the users associated with the organization.
      *
-     * @return BelongsToMany
+     * @return hasMany
      */
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany('DDD\Domain\Users\User');
+    }
+
+    /**
+     * Get the teams that belong to this team.
+     *
+     * @return hasMany
+     */
+    public function teams()
+    {
+        return $this->hasMany('DDD\Domain\Teams\Team');
     }
 
     /**
@@ -45,7 +53,7 @@ class Organization extends Model
      */
     public function files()
     {
-        return $this->hasMany(File::class);
+        return $this->hasMany('DDD\Domain\Files\File');
     }
 
     /**
@@ -55,6 +63,6 @@ class Organization extends Model
      */
     public function sites()
     {
-        return $this->hasMany(Site::class);
+        return $this->hasMany('DDD\Domain\Sites\Site');
     }
 }
