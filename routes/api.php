@@ -26,12 +26,12 @@ Route::post('auth/register', [AuthController::class, 'register']);
 Route::post('auth/login', [AuthController::class, 'login']);
 
 // Auth - Protected
-// Route::middleware('auth:sanctum')->group(function() {
+Route::middleware('auth:sanctum')->group(function() {
     Route::post('auth/logout', [AuthController::class, 'logout']);
     Route::get('auth/me', [AuthController::class, 'me']);
-// });
+});
 
-// Route::middleware('auth:sanctum')->group(function() {
+Route::middleware('auth:sanctum')->group(function() {
     // Organizations
     Route::get('organizations', [OrganizationController::class, 'index']);
     Route::post('organizations', [OrganizationController::class, 'store']);
@@ -87,4 +87,4 @@ Route::post('auth/login', [AuthController::class, 'login']);
         Route::put('/{tag:slug}', [TagController::class, 'update']);
         Route::delete('/{tag:slug}', [TagController::class, 'destroy']);
     });
-// });
+});
