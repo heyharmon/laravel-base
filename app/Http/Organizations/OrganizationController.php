@@ -15,7 +15,7 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        $organizations = Organization::all();
+        $organizations = Organization::latest()->get();
 
         // TODO: Use an API Resource to return this
         return response()->json($organizations);
