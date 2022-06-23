@@ -73,7 +73,7 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     // Files
-    Route::prefix('{organization}')->group(function() {
+    Route::prefix('{organization:slug}')->group(function() {
         Route::get('/files', [FileController::class, 'index']);
         Route::post('/files', [FileController::class, 'store']);
         Route::delete('files/{file}', [FileController::class, 'destroy']);
