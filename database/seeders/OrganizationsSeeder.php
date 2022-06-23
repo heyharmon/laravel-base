@@ -16,16 +16,15 @@ class OrganizationsSeeder extends Seeder
      */
     public function run()
     {
-        Organization::create([
-            'title' => 'BloomCU',
-        ]);
+        $organizations = [
+            ['title' => 'BloomCU'],
+            ['title' => 'TFCU'],
+            ['title' => 'CUSoCal'],
+            ['title' => 'Lone Star'],
+        ];
 
-        $faker = \Faker\Factory::create();
-
-        foreach (range(1, 2) as $i) {
-            Organization::create([
-                'title' => $faker->company,
-            ]);
+        foreach ($organizations as $organization) {
+            Organization::create($organization);
         }
     }
 }
