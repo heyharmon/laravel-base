@@ -2,12 +2,14 @@
 
 namespace DDD\App\Traits;
 
-use DDD\Domain\Tags\Tag;
-use DDD\App\Scopes\TaggableScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
+
+use DDD\Domain\Tags\Tag;
+
+use DDD\App\Scopes\TaggableScopes;
 
 trait IsTaggable
 {

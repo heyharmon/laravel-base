@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('taggables', function (Blueprint $table) {
+        Schema::create('metas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('tag_id');
-            $table->integer('taggable_id')->unsigned();
-            $table->string('taggable_type');
+            $table->string('key');
+            $table->text('value')->nullable();
+            $table->integer('metable_id')->unsigned();
+            $table->string('metable_type');
             $table->timestamps();
 
             // Indexes
-            $table->index(['taggable_id', 'taggable_type']);
+            $table->index(['metable_id', 'metable_type']);
         });
     }
 
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taggables');
+        Schema::dropIfExists('metas');
     }
 };
