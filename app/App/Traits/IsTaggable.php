@@ -13,6 +13,15 @@ trait IsTaggable
 {
     use TaggableScopes;
 
+    protected static function bootIsTaggable(): void
+    {
+        static::created(function (Model $model) {
+            if (request()->tags) {
+                $model->tag(request()->tags);
+            }
+        });
+    }
+
     public function tags()
     {
         return $this->morphToMany(Tag::class, 'taggable');
