@@ -25,7 +25,7 @@ trait HasMeta
     * Get All Metadata using Polymorphic Relationship
     * @return mixed
     */
-    public function meta()
+    public function metas()
     {
         return $this->morphMany(Meta::class, 'metable');
     }
@@ -38,7 +38,7 @@ trait HasMeta
     */
     public function hasMetadata($key)
     {
-        return (boolean) $this->meta()->whereKey($key)->count();
+        return (boolean) $this->metas()->whereKey($key)->count();
     }
 
     /**
@@ -48,7 +48,7 @@ trait HasMeta
      */
      public function getMetadata($key)
      {
-         $meta = $this->meta()->where('key', $key)->first();
+         $meta = $this->metas()->where('key', $key)->first();
 
          // return $meta;
          return json_decode($meta);
@@ -62,11 +62,11 @@ trait HasMeta
     */
     public function saveMetadata($key, $value)
     {
-        $meta = $this->meta()->where('key', $key)->first() ?: new Meta(['key' => $key]);
+        $meta = $this->metas()->where('key', $key)->first() ?: new Meta(['key' => $key]);
 
         // $meta->value = $value;
         $meta->value = json_encode($value);
 
-        return $this->meta()->save($meta);
+        return $this->metas()->save($meta);
     }
 }

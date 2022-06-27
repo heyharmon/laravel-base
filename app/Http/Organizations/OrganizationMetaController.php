@@ -17,7 +17,7 @@ class OrganizationMetaController extends Controller
     public function index(Organization $organization)
     {
         // TODO: Use an API Resource to return this
-        return response()->json($organization);
+        return response()->json($organization->metas);
     }
 
     /**
