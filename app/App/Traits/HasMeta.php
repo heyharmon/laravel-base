@@ -41,15 +41,18 @@ trait HasMeta
         return (boolean) $this->meta()->whereKey($key)->count();
     }
 
-   /**
-    * Retrieve a meta of a meta.
-    * @param $key
-    * @return mixed
-    */
-    public function getMetadata($key)
-    {
-        return $this->meta()->whereKey($key)->first()->value;
-    }
+    /**
+     * Retrieve a metadata item.
+     * @param $key
+     * @return Model
+     */
+     public function getMetadata($key)
+     {
+         $meta = $this->meta()->where('key', $key)->first();
+
+         // return $meta;
+         return json_decode($meta);
+     }
 
    /**
     * Save or update meta of a Model.
@@ -59,9 +62,10 @@ trait HasMeta
     */
     public function saveMetadata($key, $value)
     {
-        $meta = $this->meta()->whereKey($key)->first() ?: new Meta(['key' => $key]);
+        $meta = $this->meta()->where('key', $key)->first() ?: new Meta(['key' => $key]);
 
-        $meta->value = $value;
+        // $meta->value = $value;
+        $meta->value = json_encode($value);
 
         return $this->meta()->save($meta);
     }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use DDD\Http\Auth\AuthController;
 use DDD\Http\Organizations\OrganizationController;
+use DDD\Http\Organizations\OrganizationMetaController;
 use DDD\Http\Teams\TeamController;
 use DDD\Http\Tags\TagController;
 use DDD\Http\Sites\SiteController;
@@ -38,6 +39,13 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('organizations/{organization:slug}', [OrganizationController::class, 'show']);
     Route::put('organizations/{organization:slug}', [OrganizationController::class, 'update']);
     Route::delete('organizations/{organization:slug}', [OrganizationController::class, 'destroy']);
+
+    // Organization Meta
+    Route::prefix('/organizations/{organization:slug}')->group(function() {
+        Route::get('/meta', [OrganizationMetaController::class, 'index']);
+        Route::post('/meta', [OrganizationMetaController::class, 'store']);
+        Route::get('/meta/{meta:key}', [OrganizationMetaController::class, 'show']);
+    });
 
     // Teams
     Route::prefix('{organization:slug}')->group(function() {
