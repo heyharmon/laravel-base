@@ -62,10 +62,14 @@ trait HasMeta
     */
     public function saveMetadata($key, $value)
     {
-        $meta = $this->metas()->where('key', $key)->first() ?: new Meta(['key' => $key]);
+        // $meta = $this->metas()->where('key', $key)->first() ?: new Meta(['key' => $key]);
+        $meta = new Meta([
+            'key' => $key,
+            'value' => $value,
+        ]);
 
         // $meta->value = $value;
-        $meta->value = json_encode($value);
+        // $meta->value = json_encode($value);
 
         return $this->metas()->save($meta);
     }

@@ -17,11 +17,11 @@ class OrganizationMetaController extends Controller
     public function index(Organization $organization)
     {
         // TODO: Use an API Resource to return this
-        return response()->json($organization->metas);
+        return response()->json($organization->metas()->latest()->get());
     }
 
     /**
-     * Store a metadata item for organization.
+     * Store a metadata item for organization
      */
     public function store(Organization $organization, Request $request)
     {
