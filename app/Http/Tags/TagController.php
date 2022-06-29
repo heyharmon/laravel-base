@@ -5,7 +5,7 @@ namespace DDD\Http\Tags;
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
-// Domains
+// Models
 use DDD\Domain\Tags\TagGroup;
 use DDD\Domain\Tags\Tag;
 

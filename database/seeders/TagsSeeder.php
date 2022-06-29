@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-// Domains
+// Models
 use DDD\Domain\Tags\TagGroup;
 use DDD\Domain\Tags\Tag;
 

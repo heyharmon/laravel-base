@@ -5,7 +5,7 @@ namespace DDD\Http\Test;
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
-// Domains
+// Models
 use DDD\Domain\Users\User;
 use DDD\Domain\Organizations\Organization;
 

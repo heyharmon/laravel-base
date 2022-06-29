@@ -4,7 +4,7 @@ namespace Tests\Unit\Domain\Organizations;
 
 use Tests\TestCase;
 
-// Domains
+// Models
 use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Users\User;
 use DDD\Domain\Teams\Team;

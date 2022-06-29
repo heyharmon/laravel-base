@@ -1,11 +1,12 @@
 <?php
 
-namespace DDD\Http\Sites\Rules;
+namespace DDD\Domain\Sites\Rules;
 
-use DDD\App\Services\UrlService;
 use Illuminate\Contracts\Validation\Rule;
-// Services
 use Illuminate\Support\Facades\DB;
+
+// Services
+use DDD\App\Services\UrlService;
 
 class UniqueHost implements Rule
 {

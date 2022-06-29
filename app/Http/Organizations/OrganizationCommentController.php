@@ -11,7 +11,7 @@ use DDD\Domain\Comments\Requests\CommentStoreRequest;
 // Resources
 use DDD\Domain\Comments\Resources\CommentResource;
 
-// Domains
+// Models
 use DDD\Domain\Organizations\Organization;
 
 class OrganizationCommentController extends Controller

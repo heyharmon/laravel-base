@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Bus;
 use DDD\App\Controllers\Controller;
 
-// Domains
+// Models
 use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Sites\Site;
 
@@ -24,16 +24,16 @@ class SiteCrawlController extends Controller
         $page = $site->pages()->firstOrCreate(
             ['url' => $site->start_url],
             [
-                'url'        => $site->start_url,
-                'is_crawled' => false,
+                'url' => $site->start_url,
+                'is_crawled' => 0,
             ]
         );
 
-        // CrawlPageJob::dispatch($site, $page);
+        CrawlPageJob::dispatch($site, $page);
 
-        Bus::batch(
-            new CrawlPageJob($site, $page)
-        )->dispatch();
+        // Bus::batch(
+        //     new CrawlPageJob($site, $page)
+        // )->dispatch();
 
         return response()->json([
             'message' => 'Crawl in progress',

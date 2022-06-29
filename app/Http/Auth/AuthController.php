@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use DDD\App\Controllers\Controller;
 
-// Domains
+// Models
 use DDD\Domain\Users\User;
 
 // Requests

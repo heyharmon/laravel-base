@@ -5,7 +5,7 @@ namespace DDD\Http\Organizations;
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
-// Domains
+// Models
 use DDD\Domain\Organizations\Organization;
 
 class OrganizationController extends Controller

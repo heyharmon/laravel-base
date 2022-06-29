@@ -9,7 +9,7 @@ use DDD\Domain\Files\File;
 use DDD\Domain\Organizations\Organization;
 use Illuminate\Http\Request;
 
-// Domains
+// Models
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 

@@ -2,17 +2,19 @@
 
 namespace DDD\Domain\Sites;
 
-use DDD\Domain\Pages\Page;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 // Traits
-use DDD\App\Traits\BelongsToOrganization;
+// use DDD\App\Traits\BelongsToOrganization;
+
+// Models
+use DDD\Domain\Pages\Page;
 
 class Site extends Model
 {
-    use HasFactory,
-    BelongsToOrganization;
+    use HasFactory;
+        // BelongsToOrganization;
 
     protected $guarded = [
         'id',

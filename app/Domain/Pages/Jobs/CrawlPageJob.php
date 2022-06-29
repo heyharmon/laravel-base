@@ -11,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Throwable;
 
-// Domains
+// Models
 use DDD\Domain\Sites\Site;
 use DDD\Domain\Pages\Page;
 
@@ -62,9 +62,9 @@ class CrawlPageJob implements ShouldQueue
      */
     public function handle()
     {
-        if ($this->batch()->cancelled()) {
-            return;
-        }
+        // if ($this->batch()->cancelled()) {
+        //     return;
+        // }
 
         // Get page
         // $response = Http::get('http://localhost:5001/bloomcu-scraping-functions/us-central1/cheerio/page', [
@@ -75,7 +75,7 @@ class CrawlPageJob implements ShouldQueue
         // Fail job
         if ($response['status'] !== 200) {
             $this->page->update([
-                'is_crawled' => true,
+                'is_crawled' => 1,
                 'status'     => $response['status'],
             ]);
 
@@ -84,7 +84,7 @@ class CrawlPageJob implements ShouldQueue
 
         // Update page
         $this->page->update([
-            'is_crawled' => true,
+            'is_crawled' => 1,
             'status'     => $response['status'],
             'title'      => $response['title'],
             'wordcount'  => $response['wordcount'],
@@ -92,7 +92,7 @@ class CrawlPageJob implements ShouldQueue
         ]);
 
         // Empty array for next set of jobs
-        $jobs = [];
+        // $jobs = [];
 
         // Iterate over each link
         // TODO: Update "links" in response to "urls"
@@ -116,13 +116,14 @@ class CrawlPageJob implements ShouldQueue
 
                 // Crawl it
                 if ($url['type'] === 'link') {
-                    $jobs[] = new CrawlPageJob($this->site, $page);
+                    // $jobs[] = new CrawlPageJob($this->site, $page);
                     // dispatch(new self($this->site, $page));
+                    CrawlPageJob::dispatch($this->site, $page);
                 }
             }
         }
 
-        Bus::batch($jobs)->dispatch();
+        // Bus::batch($jobs)->dispatch();
     }
 
     /**

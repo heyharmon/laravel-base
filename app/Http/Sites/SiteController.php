@@ -2,15 +2,18 @@
 
 namespace DDD\Http\Sites;
 
-use DDD\App\Controllers\Controller;
-use DDD\App\Services\UrlService;
-// Services
-use DDD\Domain\Organizations\Organization;
-// Domains
-use DDD\Domain\Sites\Site;
-use DDD\Http\Sites\Requests\SiteStoreRequest;
-// Requests
 use Illuminate\Http\Request;
+use DDD\App\Controllers\Controller;
+
+// Services
+use DDD\App\Services\UrlService;
+
+// Requests
+use DDD\Domain\Sites\Requests\SiteStoreRequest;
+
+// Models
+use DDD\Domain\Organizations\Organization;
+use DDD\Domain\Sites\Site;
 
 class SiteController extends Controller
 {

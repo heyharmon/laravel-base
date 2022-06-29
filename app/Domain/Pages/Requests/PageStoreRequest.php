@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Http\Pages\Requests;
+namespace DDD\Domain\Pages\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;

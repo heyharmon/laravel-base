@@ -1,13 +1,13 @@
 <?php
 
-namespace DDD\Http\Sites\Requests;
+namespace DDD\Domain\Sites\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 // Rules
-use DDD\Http\Sites\Rules\UniqueHost;
+use DDD\Domain\Sites\Rules\UniqueHost;
 
 class SiteStoreRequest extends FormRequest
 {

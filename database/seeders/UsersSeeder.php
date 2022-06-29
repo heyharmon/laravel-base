@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
-// Domains
+// Models
 use DDD\Domain\Users\User;
 
 class UsersSeeder extends Seeder

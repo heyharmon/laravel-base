@@ -5,7 +5,7 @@ namespace Tests;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-// Domains
+// Models
 // use Cms\Domain\Organizations\Organization;
 
 abstract class TestCase extends BaseTestCase
