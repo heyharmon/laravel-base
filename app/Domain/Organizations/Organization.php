@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 // Traits
+use DDD\App\Traits\HasComments;
 use DDD\App\Traits\HasSlug;
 use DDD\App\Traits\HasMeta;
 
 class Organization extends Model
 {
     use HasFactory,
+        HasComments,
         HasSlug,
         HasMeta;
 

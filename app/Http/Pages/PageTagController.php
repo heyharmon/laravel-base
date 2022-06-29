@@ -13,7 +13,7 @@ class PageTagController extends Controller
 {
     public function tag(Site $site, Page $page, Request $request)
     {
-        $page->tag(['parent-one', 'parent-two']);
+        $page->tag(['accounts', 'checking']);
 
         return response()->json($page->tags);
     }
@@ -27,7 +27,7 @@ class PageTagController extends Controller
 
     public function retag(Site $site, Page $page, Request $request)
     {
-        $page->retag(['parent-two', 'parent-three']);
+        $page->retag(['checking', 'share']);
 
         return response()->json($page->tags);
     }
