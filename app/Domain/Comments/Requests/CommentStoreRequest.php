@@ -1,15 +1,12 @@
 <?php
 
-namespace DDD\Http\Sites\Requests;
+namespace DDD\Domain\Comments\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-// Rules
-use DDD\Http\Sites\Rules\UniqueHost;
-
-class SiteStoreRequest extends FormRequest
+class CommentStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,11 +26,7 @@ class SiteStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'url' => [
-                'required',
-                'url',
-                new UniqueHost($this->url),
-            ],
+            'body' => ['required', 'max:5000'],
         ];
     }
 

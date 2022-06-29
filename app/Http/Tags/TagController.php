@@ -10,7 +10,7 @@ use DDD\Domain\Tags\TagGroup;
 use DDD\Domain\Tags\Tag;
 
 // Resources
-use DDD\Http\Tags\Resources\TagResource;
+use DDD\Domain\Tags\Resources\TagResource;
 
 class TagController extends Controller
 {

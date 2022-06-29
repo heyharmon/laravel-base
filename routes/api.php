@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use DDD\Http\Auth\AuthController;
 use DDD\Http\Organizations\OrganizationController;
+use DDD\Http\Organizations\OrganizationCommentController;
 use DDD\Http\Organizations\OrganizationMetaController;
 use DDD\Http\Teams\TeamController;
 use DDD\Http\Tags\TagController;
@@ -39,6 +40,13 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('organizations/{organization:slug}', [OrganizationController::class, 'show']);
     Route::put('organizations/{organization:slug}', [OrganizationController::class, 'update']);
     Route::delete('organizations/{organization:slug}', [OrganizationController::class, 'destroy']);
+
+    // Organization Comments
+    Route::prefix('/organizations/{organization:slug}')->group(function() {
+        Route::get('/comments', [OrganizationCommentController::class, 'index']);
+        Route::post('/comments', [OrganizationCommentController::class, 'store']);
+        // Route::get('/comments/{comment}', [OrganizationCommentController::class, 'show']);
+    });
 
     // Organization Meta
     Route::prefix('/organizations/{organization:slug}')->group(function() {

@@ -17,7 +17,7 @@ use DDD\Http\Auth\Requests\AuthRegisterRequest;
 use DDD\Http\Auth\Requests\AuthLoginRequest;
 
 // Resources
-use DDD\Http\Users\Resources\UserResource;
+use DDD\Domain\Users\Resources\UserResource;
 
 class AuthController extends Controller
 {

@@ -51,7 +51,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    public function comments()
+    {
+        return $this->hasMany('DDD\Domain\Comments\Comment');
+    }
 
     // protected static function booted()
     // {

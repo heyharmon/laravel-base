@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Http\Users\Resources;
+namespace DDD\Domain\Users\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
