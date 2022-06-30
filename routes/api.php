@@ -45,7 +45,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::prefix('/organizations/{organization:slug}')->group(function() {
         Route::get('/comments', [OrganizationCommentController::class, 'index']);
         Route::post('/comments', [OrganizationCommentController::class, 'store']);
-        // Route::get('/comments/{comment}', [OrganizationCommentController::class, 'show']);
+        Route::delete('comments/{comment}', [OrganizationCommentController::class, 'destroy']);
     });
 
     // Organization Meta

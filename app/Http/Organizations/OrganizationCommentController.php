@@ -13,6 +13,7 @@ use DDD\Domain\Comments\Resources\CommentResource;
 
 // Models
 use DDD\Domain\Organizations\Organization;
+use DDD\Domain\Comments\Comment;
 
 class OrganizationCommentController extends Controller
 {
@@ -28,6 +29,13 @@ class OrganizationCommentController extends Controller
         $comment = $organization->comments()->make($request->validated());
 
         $request->user()->comments()->save($comment);
+
+        return new CommentResource($comment);
+    }
+
+    public function destroy(Organization $organization, Comment $comment)
+    {
+        $comment->delete();
 
         return new CommentResource($comment);
     }
