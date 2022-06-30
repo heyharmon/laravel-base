@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->text('body');
             $table->foreignId('parent_id')->nullable();
+            $table->string('group')->nullable();
             $table->morphs('commentable');
             $table->timestamps();
 

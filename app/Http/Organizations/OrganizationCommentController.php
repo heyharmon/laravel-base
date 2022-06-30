@@ -25,9 +25,7 @@ class OrganizationCommentController extends Controller
 
     public function store(Organization $organization, CommentStoreRequest $request)
     {
-        $comment = $organization->comments()->make([
-            'body' => $request->body
-        ]);
+        $comment = $organization->comments()->make($request->validated());
 
         $request->user()->comments()->save($comment);
 

@@ -20,6 +20,7 @@ class CommentResource extends JsonResource
         return [
             'id' => $this->id,
             'body' => $this->body,
+            'group' => $this->group,
             'user' => new UserResource($this->user),
             'children' => CommentResource::collection($this->whenLoaded('children'))
         ];
