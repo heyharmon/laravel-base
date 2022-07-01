@@ -41,18 +41,18 @@ class UsersSeeder extends Seeder
             User::create($admin);
         }
 
-        $faker = \Faker\Factory::create();
-
-        foreach (range(1, 20) as $i) {
-            User::create([
-                'name' => $faker->name,
-                'email' => $faker->unique()->safeEmail,
-                'role' => 'editor',
-                'organization_id' => rand(1, 3),
-                'email_verified_at' => now(),
-                'password' => Hash::make('password'),
-                'remember_token' => Str::random(10),
-            ]);
-        }
+        // $faker = \Faker\Factory::create();
+        //
+        // foreach (range(1, 20) as $i) {
+        //     User::create([
+        //         'name' => $faker->name,
+        //         'email' => $faker->unique()->safeEmail,
+        //         'role' => 'editor',
+        //         'organization_id' => rand(1, 3),
+        //         'email_verified_at' => now(),
+        //         'password' => Hash::make('password'),
+        //         'remember_token' => Str::random(10),
+        //     ]);
+        // }
     }
 }

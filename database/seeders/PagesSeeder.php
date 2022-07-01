@@ -16,32 +16,32 @@ class PagesSeeder extends Seeder
      */
     public function run()
     {
-        $pages = [
-            [
-                'site_id' => 1,
-                'status' => '200',
-                'title' => 'About',
-                'url' => 'https://google.com',
-                'wordcount' => 3000,
-            ],
-            [
-                'site_id' => 1,
-                'status' => '200',
-                'title' => 'Checking',
-                'url' => 'https://google.com',
-                'wordcount' => 3000,
-            ],
-            [
-                'site_id' => 1,
-                'status' => '200',
-                'title' => 'Homepage',
-                'url' => 'https://google.com',
-                'wordcount' => 3000,
-            ],
-        ];
-
-        foreach ($pages as $page) {
-            Page::create($page);
-        }
+        // $pages = [
+        //     [
+        //         'site_id' => 1,
+        //         'status' => '200',
+        //         'title' => 'About',
+        //         'url' => 'https://google.com',
+        //         'wordcount' => 3000,
+        //     ],
+        //     [
+        //         'site_id' => 1,
+        //         'status' => '200',
+        //         'title' => 'Checking',
+        //         'url' => 'https://google.com',
+        //         'wordcount' => 3000,
+        //     ],
+        //     [
+        //         'site_id' => 1,
+        //         'status' => '200',
+        //         'title' => 'Homepage',
+        //         'url' => 'https://google.com',
+        //         'wordcount' => 3000,
+        //     ],
+        // ];
+        //
+        // foreach ($pages as $page) {
+        //     Page::create($page);
+        // }
     }
 }
