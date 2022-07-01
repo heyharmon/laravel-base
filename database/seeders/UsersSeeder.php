@@ -20,14 +20,6 @@ class UsersSeeder extends Seeder
     {
         $admins = [
             [
-                'name' => 'Test Admin',
-                'email' => 'test@email.com',
-                'role' => 'admin',
-                'organization_id' => 1,
-                'email_verified_at' => now(),
-                'password' => Hash::make('password'),
-            ],
-            [
                 'name' => 'Ryan Harmon',
                 'email' => 'ryan@bloomcu.com',
                 'role' => 'admin',

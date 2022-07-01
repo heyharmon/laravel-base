@@ -18,8 +18,6 @@ class OrganizationsSeeder extends Seeder
     {
         $organizations = [
             ['title' => 'BloomCU'],
-            ['title' => 'TFCU'],
-            ['title' => 'CUSoCal'],
             ['title' => 'Lone Star'],
         ];
 
