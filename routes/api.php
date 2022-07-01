@@ -27,6 +27,14 @@ Route::middleware('auth:sanctum')->group(function() {
 Route::post('auth/register', [AuthController::class, 'register']);
 Route::post('auth/login', [AuthController::class, 'login']);
 
+// TODO: Remove
+Route::prefix('{organization:slug}')->group(function() {
+    Route::get('/files', [FileController::class, 'index']);
+});
+Route::prefix('/organizations/{organization:slug}')->group(function() {
+    Route::get('/comments', [OrganizationCommentController::class, 'index']);
+});
+
 // Auth - Protected
 Route::middleware('auth:sanctum')->group(function() {
     Route::post('auth/logout', [AuthController::class, 'logout']);
@@ -43,7 +51,7 @@ Route::middleware('auth:sanctum')->group(function() {
 
     // Organization Comments
     Route::prefix('/organizations/{organization:slug}')->group(function() {
-        Route::get('/comments', [OrganizationCommentController::class, 'index']);
+        // Route::get('/comments', [OrganizationCommentController::class, 'index']);
         Route::post('/comments', [OrganizationCommentController::class, 'store']);
         Route::delete('comments/{comment}', [OrganizationCommentController::class, 'destroy']);
     });
@@ -90,7 +98,7 @@ Route::middleware('auth:sanctum')->group(function() {
 
     // Files
     Route::prefix('{organization:slug}')->group(function() {
-        Route::get('/files', [FileController::class, 'index']);
+        // Route::get('/files', [FileController::class, 'index']);
         Route::post('/files', [FileController::class, 'store']);
         Route::delete('files/{file}', [FileController::class, 'destroy']);
     });
