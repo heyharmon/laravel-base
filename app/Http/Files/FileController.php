@@ -6,12 +6,12 @@ use DDD\App\Controllers\Controller;
 use DDD\Domain\Files\File;
 
 // Vendors
-use DDD\Domain\Organizations\Organization;
-use Illuminate\Http\Request;
-
-// Models
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+
+// Models
+use DDD\Domain\Organizations\Organization;
+use Illuminate\Http\Request;
 
 class FileController extends Controller
 {

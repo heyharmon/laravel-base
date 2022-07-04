@@ -16,6 +16,7 @@
         "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.0",
+        "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-query-builder": "^5.0",
         "staudenmeir/laravel-adjacency-list": "^1.0"
     },
