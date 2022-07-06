@@ -5,14 +5,19 @@ namespace DDD\Domain\Organizations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// Vendors
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
 // Traits
 use DDD\App\Traits\HasComments;
 use DDD\App\Traits\HasSlug;
 use DDD\App\Traits\HasMeta;
 
-class Organization extends Model
+class Organization extends Model implements HasMedia
 {
     use HasFactory,
+        InteractsWithMedia,
         HasComments,
         HasSlug,
         HasMeta;

@@ -77,6 +77,11 @@ trait IsTaggable
 
     private function getWorkableTags($tags)
     {
+        // String
+        if (is_string($tags)) {
+            return $this->getTagModel($tags);
+        }
+
         // Array of tags
         if (is_array($tags)) {
             return $this->getTagModels($tags);
@@ -89,6 +94,11 @@ trait IsTaggable
 
         // Collection of tags
         return $this->filterTagsCollection($tags);
+    }
+
+    private function getTagModel(string $tag)
+    {
+        return Tag::where('slug', Str::slug($tag))->get();
     }
 
     private function getTagModels(array $tags)
