@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Domain\Pages\Jobs;
+namespace DDD\Domain\Sites\Jobs;
 
 use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Http;
 // Services
 use DDD\App\Services\UrlService;
 
-class CrawlPageJob implements ShouldQueue
+class CrawlSitePageJob implements ShouldQueue
 {
     use Batchable,
         Dispatchable,
@@ -116,9 +116,9 @@ class CrawlPageJob implements ShouldQueue
 
                 // Crawl it
                 if ($url['type'] === 'link') {
-                    // $jobs[] = new CrawlPageJob($this->site, $page);
+                    // $jobs[] = new CrawlSitePageJob($this->site, $page);
                     // dispatch(new self($this->site, $page));
-                    CrawlPageJob::dispatch($this->site, $page);
+                    CrawlSitePageJob::dispatch($this->site, $page);
                 }
             }
         }

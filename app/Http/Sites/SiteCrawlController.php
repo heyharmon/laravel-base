@@ -14,7 +14,7 @@ use DDD\Domain\Sites\Site;
 use DDD\App\Services\UrlService;
 
 // Jobs
-use DDD\Domain\Pages\Jobs\CrawlPageJob;
+use DDD\Domain\Sites\Jobs\CrawlSitePageJob;
 
 
 class SiteCrawlController extends Controller
@@ -29,10 +29,10 @@ class SiteCrawlController extends Controller
             ]
         );
 
-        CrawlPageJob::dispatch($site, $page);
+        CrawlSitePageJob::dispatch($site, $page);
 
         // Bus::batch(
-        //     new CrawlPageJob($site, $page)
+        //     new CrawlSitePageJob($site, $page)
         // )->dispatch();
 
         return response()->json([
