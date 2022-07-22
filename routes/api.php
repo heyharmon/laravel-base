@@ -11,7 +11,7 @@ use DDD\Http\Organizations\OrganizationMetaController;
 use DDD\Http\Teams\TeamController;
 use DDD\Http\Tags\TagController;
 use DDD\Http\Sites\SiteController;
-use DDD\Http\Sites\SiteCrawlController;
+use DDD\Http\Sites\Crawls\CrawlController;
 use DDD\Http\Pages\PageController;
 use DDD\Http\Pages\PageTagController;
 use DDD\Http\Files\FileController; // TODO: Delete
@@ -101,7 +101,10 @@ Route::middleware('auth:sanctum')->group(function() {
 
         // Crawl site
         Route::prefix('/sites/{site}')->group(function() {
-            Route::post('/crawl', [SiteCrawlController::class, 'crawl']);
+            Route::get('/crawls', [CrawlController::class, 'index']);
+            Route::post('/crawls', [CrawlController::class, 'store']);
+            Route::get('/crawls/{crawl}', [CrawlController::class, 'show']);
+            Route::get('/crawls/{crawl}/status', [CrawlController::class, 'status']);
         });
     });
 

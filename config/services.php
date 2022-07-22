@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'apify' => [
+        'token' => env('APIFY_TOKEN'),
+        'cheerioActor' => env('APIFY_CHEERIO_ACTOR'),
+        'puppeteerActor' => env('APIFY_PUPPETEER_ACTOR'),
+    ]
+
 ];

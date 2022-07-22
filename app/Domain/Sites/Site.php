@@ -20,10 +20,6 @@ class Site extends Model
         'id',
     ];
 
-    // protected $casts = [
-    //     'meta' => 'json'
-    // ];
-
     /**
      * Get the pages associated with this site.
      *
@@ -32,5 +28,15 @@ class Site extends Model
     public function pages()
     {
         return $this->hasMany(Page::class);
+    }
+
+    /**
+     * Get the crawls associated with this site.
+     *
+     * @return hasMany
+     */
+    public function crawls()
+    {
+        return $this->hasMany('DDD\Domain\Sites\Crawls\Crawl');
     }
 }
