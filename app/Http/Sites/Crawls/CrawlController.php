@@ -49,4 +49,15 @@ class CrawlController extends Controller
             'data' => $results ?? [],
         ]);
     }
+
+    public function destroy(Organization $organization, Site $site, Crawl $crawl, Crawler $crawler)
+    {
+        $crawler->abortCrawl($crawl->crawl_id);
+
+        $crawl->delete();
+
+        return response()->json([
+            'message' => 'Crawl aborted.',
+        ]);
+    }
 }

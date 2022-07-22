@@ -104,7 +104,7 @@ Route::middleware('auth:sanctum')->group(function() {
             Route::get('/crawls', [CrawlController::class, 'index']);
             Route::post('/crawls', [CrawlController::class, 'store']);
             Route::get('/crawls/{crawl}', [CrawlController::class, 'show']);
-            Route::get('/crawls/{crawl}/status', [CrawlController::class, 'status']);
+            Route::delete('/crawls/{crawl}', [CrawlController::class, 'destroy']);
         });
     });
 

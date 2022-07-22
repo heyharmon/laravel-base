@@ -29,6 +29,7 @@ class CrawlerApify implements CrawlerInterface
             $response = $request->json();
 
             return [
+                'crawl_id' => $response['data']['id'],
                 'status_id' => $response['data']['defaultRequestQueueId'],
                 'results_id' => $response['data']['defaultDatasetId'],
             ];
@@ -37,10 +38,10 @@ class CrawlerApify implements CrawlerInterface
         }
     }
 
-    public function getStatus(string $id)
+    public function getStatus(string $queueId)
     {
         try {
-            $request = Http::get('https://api.apify.com/v2/request-queues/' . $id . '?token=' . $this->token);
+            $request = Http::get('https://api.apify.com/v2/request-queues/' . $queueId . '?token=' . $this->token);
             $response = $request->json();
             return $response['data'];
         } catch (RequestException $exception) {
@@ -48,13 +49,23 @@ class CrawlerApify implements CrawlerInterface
         }
     }
 
-    public function getResults(string $id)
+    public function getResults(string $datasetId)
     {
         try {
-            $request = Http::get('https://api.apify.com/v2/datasets/' . $id . '/items?token=' . $this->token);
+            $request = Http::get('https://api.apify.com/v2/datasets/' . $datasetId . '/items?token=' . $this->token);
             return $request->json();
         } catch (RequestException $exception) {
             abort(500, 'Crawler service could not get crawl results.');
+        }
+    }
+
+    public function abortCrawl(string $crawlId)
+    {
+        try {
+            $request = Http::post('https://api.apify.com/v2/actor-runs/' . $crawlId . '/abort?token=' . $this->token);
+            return $request->json();
+        } catch (RequestException $exception) {
+            abort(500, 'Crawler service could not abort crawl.');
         }
     }
 }

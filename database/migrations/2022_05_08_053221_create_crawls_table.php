@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->foreignId('site_id');
             $table->string('status_id');
             $table->string('results_id');
+            $table->string('crawl_id');
             $table->timestamps();
 
             // Foreign constraints
