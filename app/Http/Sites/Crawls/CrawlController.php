@@ -38,9 +38,10 @@ class CrawlController extends Controller
 
     public function show(Organization $organization, Site $site, Crawl $crawl, Crawler $crawler)
     {
-        $status = $crawler->getStatus($crawl->status_id);
+        $status = $crawler->getStatus($crawl->queue_id);
 
         if ($status['pendingRequestCount'] === 0) {
+            $crawl->status = 'Done';
             $results = $crawler->getResults($crawl->results_id);
         }
 
@@ -54,7 +55,7 @@ class CrawlController extends Controller
     {
         $crawler->abortCrawl($crawl->crawl_id);
 
-        $crawl->delete();
+        $crawl->status = 'Aborted';
 
         return response()->json([
             'message' => 'Crawl aborted.',

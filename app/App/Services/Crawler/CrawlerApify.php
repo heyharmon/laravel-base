@@ -30,7 +30,7 @@ class CrawlerApify implements CrawlerInterface
 
             return [
                 'crawl_id' => $response['data']['id'],
-                'status_id' => $response['data']['defaultRequestQueueId'],
+                'queue_id' => $response['data']['defaultRequestQueueId'],
                 'results_id' => $response['data']['defaultDatasetId'],
             ];
         } catch (RequestException $exception) {
@@ -38,14 +38,14 @@ class CrawlerApify implements CrawlerInterface
         }
     }
 
-    public function getStatus(string $queueId)
+    public function getQueue(string $queueId)
     {
         try {
             $request = Http::get('https://api.apify.com/v2/request-queues/' . $queueId . '?token=' . $this->token);
             $response = $request->json();
             return $response['data'];
         } catch (RequestException $exception) {
-            abort(500, 'Crawler service could not get crawl status.');
+            abort(500, 'Crawler service could not get crawl queue.');
         }
     }
 

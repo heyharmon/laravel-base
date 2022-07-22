@@ -15,9 +15,10 @@ return new class extends Migration {
         Schema::create('crawls', function (Blueprint $table) {
             $table->id();
             $table->foreignId('site_id');
-            $table->string('status_id');
-            $table->string('results_id');
+            $table->string('status')->default('Crawling');
             $table->string('crawl_id');
+            $table->string('queue_id');
+            $table->string('results_id');
             $table->timestamps();
 
             // Foreign constraints
