@@ -29,6 +29,7 @@ class SiteStoreRequest extends FormRequest
     public function rules()
     {
         return [
+            'title' => 'nullable|string',
             'url' => [
                 'required',
                 'url',

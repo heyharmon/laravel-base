@@ -14,7 +14,6 @@ use DDD\Domain\Sites\Crawls\Crawl;
 // Services
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
 
-
 class CrawlController extends Controller
 {
     public function index(Organization $organization, Site $site)
@@ -26,7 +25,7 @@ class CrawlController extends Controller
 
     public function store(Organization $organization, Site $site, Crawler $crawler)
     {
-        $response = $crawler->crawlSite($site->start_url);
+        $response = $crawler->crawlSite($site->url);
 
         $crawl = $site->crawls()->create($response);
 
@@ -41,7 +40,7 @@ class CrawlController extends Controller
         $status = $crawler->getStatus($crawl->queue_id);
 
         if ($status['pendingRequestCount'] === 0) {
-            $crawl->status = 'Done';
+            $crawl->update(['status' => 'Done']);
             $results = $crawler->getResults($crawl->results_id);
         }
 

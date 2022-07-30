@@ -15,7 +15,8 @@ return new class extends Migration {
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
             $table->foreignId('organization_id');
-            $table->string('start_url');
+            $table->string('title')->nullable();
+            $table->string('url');
             $table->string('host')->unique();
             $table->string('scheme');
             $table->timestamps();

@@ -38,7 +38,7 @@ class CrawlerApify implements CrawlerInterface
         }
     }
 
-    public function getQueue(string $queueId)
+    public function getStatus(string $queueId)
     {
         try {
             $request = Http::get('https://api.apify.com/v2/request-queues/' . $queueId . '?token=' . $this->token);

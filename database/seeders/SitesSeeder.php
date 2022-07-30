@@ -18,8 +18,9 @@ class SitesSeeder extends Seeder
     {
         Site::create([
             'organization_id' => 1,
-            'start_url' => 'https://www.getsuperflow.co',
-            'host' => 'www.getsuperflow.co',
+            'title' => 'Primary Website',
+            'url' => 'https://model.bloomcudev.com',
+            'host' => 'model.bloomcudev.com',
             'scheme' => 'https',
         ]);
     }
