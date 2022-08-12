@@ -33,8 +33,8 @@ class SiteController extends Controller
         $site = $organization->sites()->create([
             'title' => $request->title,
             'url' => $request->url,
-            'host' => UrlService::getHost($request->url), // Make into cast
-            'scheme' => UrlService::getScheme($request->url), // Make into cast
+            'host' => UrlService::getHost($request->url), // TODO: Do we need this? If so, make into trait and cast so all url parts are updated
+            'scheme' => UrlService::getScheme($request->url), // TODO: Do we need this?
             'launch_info' => $request->launch_info,
         ]);
 
