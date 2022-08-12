@@ -8,6 +8,9 @@ use DDD\App\Controllers\Controller;
 // Models
 use DDD\Domain\Organizations\Organization;
 
+// Resources
+use DDD\Domain\Organizations\Resources\OrganizationResource;
+
 class OrganizationController extends Controller
 {
     /**
@@ -17,8 +20,7 @@ class OrganizationController extends Controller
     {
         $organizations = Organization::latest()->get();
 
-        // TODO: Use an API Resource to return this
-        return response()->json($organizations);
+        return OrganizationResource::collection($organizations);
     }
 
     /**
@@ -26,12 +28,9 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        $organization = Organization::create([
-            'title' => $request['title'],
-        ]);
+        $organization = Organization::create($request->all());
 
-        // TODO: Use an API Resource to return this
-        return response()->json($organization);
+        return new OrganizationResource($organization);
     }
 
     /**
@@ -39,8 +38,7 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {
-        // TODO: Use an API Resource to return this
-        return response()->json($organization);
+        return new OrganizationResource($organization->load(['meta']));
     }
 
     /**
@@ -48,12 +46,9 @@ class OrganizationController extends Controller
      */
     public function update(Organization $organization, Request $request)
     {
-        $organization->update([
-            'title' => $request['title'],
-        ]);
+        $organization->update($request->all());
 
-        // TODO: Use an API Resource to return this
-        return response()->json($organization);
+        return new OrganizationResource($organization);
     }
 
     /**
@@ -63,7 +58,6 @@ class OrganizationController extends Controller
     {
         $organization->delete();
 
-        // TODO: Use an API Resource to return this
-        return response()->json($organization);
+        return new OrganizationResource($organization);
     }
 }

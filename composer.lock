@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13f2dddef9496533d51f664bf1652441",
+    "content-hash": "6843782ae88ec65c6082799658c5a540",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2809,6 +2809,67 @@
                 }
             ],
             "time": "2021-12-04T23:24:31+00:00"
+        },
+        {
+            "name": "plank/laravel-metable",
+            "version": "5.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/plank/laravel-metable.git",
+                "reference": "f6bc5f0f8c494b9ec8493a5573bae9231bb99492"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/plank/laravel-metable/zipball/f6bc5f0f8c494b9ec8493a5573bae9231bb99492",
+                "reference": "f6bc5f0f8c494b9ec8493a5573bae9231bb99492",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/database": "^6.20.42|^8.22.1|^9.0",
+                "illuminate/support": "^6.20.42|^8.22.1|^9.0",
+                "php": ">=7.3.0",
+                "phpoption/phpoption": "1.8.1"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^7.2",
+                "guzzlehttp/promises": "^1.4",
+                "laravel/legacy-factories": "^1.0.4",
+                "mockery/mockery": "^1.4.2",
+                "orchestra/testbench": "^5.20|^6.23|^7.0",
+                "php-coveralls/php-coveralls": "^2.4.2",
+                "phpunit/phpunit": "^9.5.11",
+                "symfony/symfony": "^5.4.1|^6.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Plank\\Metable\\MetableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Plank\\Metable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean Fraser",
+                    "email": "sean@plankdesign.com"
+                }
+            ],
+            "description": "A package for attaching arbitrary data to Eloquent models",
+            "support": {
+                "issues": "https://github.com/plank/laravel-metable/issues",
+                "source": "https://github.com/plank/laravel-metable/tree/5.2.0"
+            },
+            "time": "2022-02-09T03:32:14+00:00"
         },
         {
             "name": "psr/container",
