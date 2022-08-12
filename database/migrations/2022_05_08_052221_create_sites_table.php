@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('url');
             $table->string('host')->unique();
             $table->string('scheme');
+            $table->json('launch_info')->nullable();
             $table->timestamps();
 
             // Indexes

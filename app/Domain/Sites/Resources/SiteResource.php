@@ -25,6 +25,7 @@ class SiteResource extends JsonResource
             'host' => $this->host,
             'scheme' => $this->scheme,
             'last_crawl' => new CrawlResource($this->lastCrawl),
+            'launch_info' => $this->launch_info,
         ];
     }
 }

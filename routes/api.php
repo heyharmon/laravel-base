@@ -89,6 +89,7 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('/sites', [SiteController::class, 'index']);
         Route::post('/sites', [SiteController::class, 'store']);
         Route::get('/sites/{site}', [SiteController::class, 'show']);
+        Route::put('sites/{site}', [SiteController::class, 'update']);
         Route::delete('/sites/{site}', [SiteController::class, 'destroy']);
 
         // Crawl site

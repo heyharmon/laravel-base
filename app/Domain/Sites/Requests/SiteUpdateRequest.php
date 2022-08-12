@@ -9,7 +9,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 // Rules
 use DDD\Domain\Sites\Rules\UniqueHost;
 
-class SiteStoreRequest extends FormRequest
+class SiteUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +30,7 @@ class SiteStoreRequest extends FormRequest
     {
         return [
             'title' => 'nullable|string',
-            'url' => ['required', 'url', new UniqueHost($this->url)],
+            'url' => ['nullable', 'url', new UniqueHost($this->url)],
             'launch_info' => 'nullable|array'
         ];
     }

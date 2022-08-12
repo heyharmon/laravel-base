@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
+// Casts
+use DDD\Domain\Sites\Casts\LaunchInfo;
+
 // Traits
 // use DDD\App\Traits\BelongsToOrganization;
 
@@ -19,6 +22,10 @@ class Site extends Model
 
     protected $guarded = [
         'id',
+    ];
+
+    protected $casts = [
+        'launch_info' => LaunchInfo::class,
     ];
 
     /**
