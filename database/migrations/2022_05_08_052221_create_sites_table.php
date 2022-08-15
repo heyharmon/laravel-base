@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('organization_id');
             $table->string('title')->nullable();
-            $table->string('url');
-            $table->string('host')->unique();
+            $table->string('url')->nullable();
+            $table->string('domain')->unique();
             $table->string('scheme');
             $table->json('launch_info')->nullable();
             $table->timestamps();

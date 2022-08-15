@@ -20,7 +20,7 @@ class SitesSeeder extends Seeder
             'organization_id' => 1,
             'title' => 'Primary Website',
             'url' => 'https://model.bloomcudev.com',
-            'host' => 'model.bloomcudev.com',
+            'domain' => 'model.bloomcudev.com',
             'scheme' => 'https',
         ]);
     }

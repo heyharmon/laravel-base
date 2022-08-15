@@ -6,9 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-// Rules
-use DDD\Domain\Sites\Rules\UniqueHost;
-
 class SiteStoreRequest extends FormRequest
 {
     /**
@@ -30,18 +27,14 @@ class SiteStoreRequest extends FormRequest
     {
         return [
             'title' => 'nullable|string',
-            'url' => ['required', 'url', new UniqueHost($this->url)],
-            'launch_info' => 'nullable|array'
+            'domain' => 'required|string|unique:sites',
+            'launch_info' => 'nullable|array',
+            'launch_info.launch_date' => 'nullable|date',
+            'launch_info.freeze_date' => 'nullable|date',
+            'launch_info.dev_domain' => 'nullable|string',
+            'launch_info.prod_domain' => 'nullable|string',
+            'launch_info.prod_ip' => 'nullable|ip',
+            'launch_info.notes' => 'nullable|string',
         ];
-    }
-
-    /**
-     * Return exception as json
-     *
-     * @return Exception
-     */
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }

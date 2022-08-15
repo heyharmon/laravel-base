@@ -22,7 +22,7 @@ class SiteResource extends JsonResource
             'organization_id' => $this->organization_id,
             'title' => $this->title,
             'url' => $this->url,
-            'host' => $this->host,
+            'domain' => $this->domain,
             'scheme' => $this->scheme,
             'last_crawl' => new CrawlResource($this->lastCrawl),
             'launch_info' => $this->launch_info,

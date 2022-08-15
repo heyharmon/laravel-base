@@ -33,8 +33,8 @@ class SiteController extends Controller
         $site = $organization->sites()->create([
             'title' => $request->title,
             'url' => $request->url,
-            'host' => UrlService::getHost($request->url), // TODO: Do we need this? If so, make into trait and cast so all url parts are updated
-            'scheme' => UrlService::getScheme($request->url), // TODO: Do we need this?
+            'domain' => $request->domain, // TODO: Do we need this? If so, make into trait and cast so all url parts are updated
+            'scheme' => UrlService::getScheme($request->domain), // TODO: Do we need this?
             'launch_info' => $request->launch_info,
         ]);
 
@@ -48,7 +48,7 @@ class SiteController extends Controller
 
     public function update(Organization $organization, Site $site, SiteUpdateRequest $request)
     {
-        $site->update($request->all());
+        $site->update($request->validated());
 
         return new SiteResource($site);
     }
