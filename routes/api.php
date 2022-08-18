@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use DDD\Http\Auth\AuthController;
+use DDD\Http\Designs\DesignController;
 use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Organizations\OrganizationCommentController;
 use DDD\Http\Organizations\OrganizationMediaController;
@@ -99,6 +100,15 @@ Route::middleware('auth:sanctum')->group(function() {
             Route::get('/crawls/{crawl}', [CrawlController::class, 'show']);
             Route::delete('/crawls/{crawl}', [CrawlController::class, 'destroy']);
         });
+    });
+
+    // Designs
+    Route::prefix('{organization:slug}')->group(function() {
+        Route::get('/designs', [DesignController::class, 'index']);
+        Route::post('/designs', [DesignController::class, 'store']);
+        Route::get('/designs/{design}', [DesignController::class, 'show']);
+        Route::put('designs/{design}', [DesignController::class, 'update']);
+        Route::delete('/designs/{design}', [DesignController::class, 'destroy']);
     });
 
     // Pages

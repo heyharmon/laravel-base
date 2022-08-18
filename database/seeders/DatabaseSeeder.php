@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             OrganizationsSeeder::class,
             UsersSeeder::class,
             SitesSeeder::class,
+            DesignsSeeder::class,
             PagesSeeder::class,
             TagsSeeder::class,
         ]);
