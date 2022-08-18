@@ -45,6 +45,15 @@ Route::prefix('/organizations/{organization:slug}')->group(function() {
     Route::get('/media', [OrganizationMediaController::class, 'index']);
 });
 
+// Public - Designs
+Route::prefix('{organization:slug}')->group(function() {
+    Route::get('/designs', [DesignController::class, 'index']);
+    Route::post('/designs', [DesignController::class, 'store']);
+    Route::get('/designs/{design}', [DesignController::class, 'show']);
+    Route::put('designs/{design}', [DesignController::class, 'update']);
+    Route::delete('/designs/{design}', [DesignController::class, 'destroy']);
+});
+
 Route::middleware('auth:sanctum')->group(function() {
     // Auth
     Route::post('auth/logout', [AuthController::class, 'logout']);
@@ -100,15 +109,6 @@ Route::middleware('auth:sanctum')->group(function() {
             Route::get('/crawls/{crawl}', [CrawlController::class, 'show']);
             Route::delete('/crawls/{crawl}', [CrawlController::class, 'destroy']);
         });
-    });
-
-    // Designs
-    Route::prefix('{organization:slug}')->group(function() {
-        Route::get('/designs', [DesignController::class, 'index']);
-        Route::post('/designs', [DesignController::class, 'store']);
-        Route::get('/designs/{design}', [DesignController::class, 'show']);
-        Route::put('designs/{design}', [DesignController::class, 'update']);
-        Route::delete('/designs/{design}', [DesignController::class, 'destroy']);
     });
 
     // Pages
