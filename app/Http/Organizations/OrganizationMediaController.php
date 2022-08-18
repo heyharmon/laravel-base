@@ -5,23 +5,30 @@ namespace DDD\Http\Organizations;
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
+// Vendors
+use Spatie\QueryBuilder\QueryBuilder;
+
+// Models
+use DDD\Domain\Organizations\Organization;
+use DDD\Domain\Media\Media;
+
 // Requests
 use DDD\Domain\Media\Requests\StoreMediaRequest;
 
 // Resources
 use DDD\Domain\Media\Resources\MediaResource;
 
-// Models
-use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Media\Media;
-
 class OrganizationMediaController extends Controller
 {
-    public function index(Organization $organization)
+    public function index(Organization $organization, Request $request)
     {
-        return MediaResource::collection(
-            $organization->media->load('tags')->all()
-        );
+        $media = QueryBuilder::for(Media::class)
+            ->where('model_id', $organization->id)
+            ->allowedFilters(['tags.slug'])
+            ->with('tags')
+            ->get();
+
+        return MediaResource::collection($media);
     }
 
     public function store(Organization $organization, StoreMediaRequest $request)
