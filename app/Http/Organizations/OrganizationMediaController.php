@@ -26,6 +26,7 @@ class OrganizationMediaController extends Controller
             ->where('model_id', $organization->id)
             ->allowedFilters(['tags.slug'])
             ->with('tags')
+            ->latest()
             ->get();
 
         return MediaResource::collection($media);

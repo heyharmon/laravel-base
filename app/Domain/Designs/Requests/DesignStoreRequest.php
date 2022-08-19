@@ -28,9 +28,6 @@ class DesignStoreRequest extends FormRequest
         return [
             'title' => 'nullable|string',
             'designer' => 'required|string', // Anonynous or name
-            'variables' => 'nullable|array',
-            'variables.color_primary' => 'nullable|string',
-            'variables.color_accent' => 'nullable|string',
         ];
     }
 }

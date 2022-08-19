@@ -98,17 +98,17 @@ class TagsSeeder extends Seeder
                 ],
                 [
                     'id' => 17,
-                    'title' => 'Fonts',
+                    'title' => 'Font',
                     'parent_id' => 14,
                 ],
                 [
                     'id' => 18,
-                    'title' => 'Photos',
+                    'title' => 'Photo',
                     'parent_id' => 14,
                 ],
                 [
                     'id' => 19,
-                    'title' => 'Other Media',
+                    'title' => 'Other',
                     'parent_id' => 14,
                 ],
         ];
