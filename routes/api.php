@@ -5,16 +5,17 @@ use Illuminate\Support\Facades\Route;
 
 use DDD\Http\Auth\AuthController;
 use DDD\Http\Designs\DesignController;
+use DDD\Http\Media\MediaController;
+use DDD\Http\Media\MediaDownloadController;
 use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Organizations\OrganizationCommentController;
-use DDD\Http\Organizations\OrganizationMediaController;
+// use DDD\Http\Organizations\OrganizationMediaController;
 use DDD\Http\Teams\TeamController;
 use DDD\Http\Tags\TagController;
 use DDD\Http\Sites\SiteController;
 use DDD\Http\Sites\Crawls\CrawlController;
 use DDD\Http\Pages\PageController;
 use DDD\Http\Pages\PageTagController;
-use DDD\Http\Files\FileController; // TODO: Delete
 
 use DDD\Http\Test\TestController; // TODO: Delete
 
@@ -29,21 +30,19 @@ Route::middleware('auth:sanctum')->group(function() {
 Route::post('auth/register', [AuthController::class, 'register']);
 Route::post('auth/login', [AuthController::class, 'login']);
 
-// Public - Organization - Files
-// TODO: Remove
-Route::prefix('{organization:slug}')->group(function() {
-    Route::get('/files', [FileController::class, 'index']);
-});
-
 // Public - Organization - Comments
 Route::prefix('/organizations/{organization:slug}')->group(function() {
     Route::get('/comments', [OrganizationCommentController::class, 'index']);
 });
 
-// Public - Organization - Media
-Route::prefix('/organizations/{organization:slug}')->group(function() {
-    Route::get('/media', [OrganizationMediaController::class, 'index']);
+// Public - Media
+Route::prefix('/{organization:slug}')->group(function() {
+    Route::get('/media', [MediaController::class, 'index']);
+    Route::get('/media/{media}', [MediaController::class, 'show']);
 });
+
+// Public - Media Download
+Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
 
 // Public - Designs
 Route::prefix('{organization:slug}')->group(function() {
@@ -72,17 +71,10 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::delete('comments/{comment}', [OrganizationCommentController::class, 'destroy']);
     });
 
-    // Organization - Media
-    Route::prefix('/organizations/{organization:slug}')->group(function() {
-        Route::post('/media', [OrganizationMediaController::class, 'store']);
-        Route::delete('media/{media}', [OrganizationMediaController::class, 'destroy']);
-    });
-
-    // TODO: Remove
-    // Files
+    // Media
     Route::prefix('{organization:slug}')->group(function() {
-        Route::post('/files', [FileController::class, 'store']);
-        Route::delete('files/{file}', [FileController::class, 'destroy']);
+        Route::post('/media', [MediaController::class, 'store']);
+        Route::delete('media/{file}', [MediaController::class, 'destroy']);
     });
 
     // Teams

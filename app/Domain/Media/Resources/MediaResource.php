@@ -19,11 +19,12 @@ class MediaResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'uuid' => $this->uuid,
             'collection' => $this->collection_name,
             'name' => $this->name,
+            'size' => $this->size,
             'original_url' => $this->original_url,
             'extension' => $this->extension,
-            'size' => $this->size,
             'tags' => TagResource::collection($this->whenLoaded('tags'))->pluck('slug')
         ];
     }

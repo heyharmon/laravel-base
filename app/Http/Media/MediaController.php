@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Http\Organizations;
+namespace DDD\Http\Media;
 
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
@@ -18,7 +18,7 @@ use DDD\Domain\Media\Requests\StoreMediaRequest;
 // Resources
 use DDD\Domain\Media\Resources\MediaResource;
 
-class OrganizationMediaController extends Controller
+class MediaController extends Controller
 {
     public function index(Organization $organization, Request $request)
     {
@@ -38,6 +38,11 @@ class OrganizationMediaController extends Controller
             ->addMedia($request->file)
             ->toMediaCollection($request->collection);
 
+        return new MediaResource($media->load('tags'));
+    }
+
+    public function show(Organization $organization, Media $media)
+    {
         return new MediaResource($media->load('tags'));
     }
 
