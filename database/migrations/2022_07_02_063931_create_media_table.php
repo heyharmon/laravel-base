@@ -9,9 +9,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('media', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
+            $table->id();
             $table->morphs('model');
+            $table->foreignId('user_id');
             $table->uuid('uuid')->nullable()->unique();
             $table->string('collection_name');
             $table->string('name');
@@ -25,8 +25,13 @@ return new class extends Migration
             $table->json('generated_conversions');
             $table->json('responsive_images');
             $table->unsignedInteger('order_column')->nullable()->index();
-
             $table->nullableTimestamps();
+
+            // Indexes
+            $table->index(['user_id']);
+
+            // Foreign constraints
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 };

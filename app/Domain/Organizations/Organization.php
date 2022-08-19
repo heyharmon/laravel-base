@@ -24,19 +24,8 @@ class Organization extends Model implements HasMedia
 
     protected $guarded = ['id', 'slug'];
 
-    // TODO: Associate with a user
-    // /**
-    //  * Get the user who owns this organization.
-    //  *
-    //  * @return BelongsTo
-    //  */
-    // public function user()
-    // {
-    //     return $this->belongsTo('Cms\Domain\Users\User');
-    // }
-
     /**
-     * Get the users associated with the organization.
+     * Users associated with the organization.
      *
      * @return hasMany
      */
@@ -46,7 +35,7 @@ class Organization extends Model implements HasMedia
     }
 
     /**
-     * Get the teams that belong to this team.
+     * Teams that belong to this team.
      *
      * @return hasMany
      */
@@ -56,17 +45,7 @@ class Organization extends Model implements HasMedia
     }
 
     /**
-     * Get the files associated with this organization.
-     *
-     * @return hasMany
-     */
-    public function files()
-    {
-        return $this->hasMany('DDD\Domain\Files\File');
-    }
-
-    /**
-     * Get the sites associated with this organization.
+     * Sites associated with this organization.
      *
      * @return hasMany
      */
@@ -76,7 +55,7 @@ class Organization extends Model implements HasMedia
     }
 
     /**
-     * Get the designs associated with this organization.
+     * Designs associated with this organization.
      *
      * @return hasMany
      */

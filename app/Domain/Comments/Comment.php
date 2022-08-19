@@ -16,6 +16,7 @@ class Comment extends Model
         'taggable_type',
     ];
 
+    // TODO: Use the BelongsToUser Trait
     public function user()
     {
         return $this->belongsTo('DDD\Domain\Users\User');

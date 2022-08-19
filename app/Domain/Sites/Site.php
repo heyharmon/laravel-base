@@ -11,9 +11,6 @@ use DDD\Domain\Sites\Casts\LaunchInfo;
 // Traits
 // use DDD\App\Traits\BelongsToOrganization;
 
-// Models
-use DDD\Domain\Pages\Page;
-
 class Site extends Model
 {
     use HasFactory;
@@ -34,7 +31,7 @@ class Site extends Model
      */
     public function pages()
     {
-        return $this->hasMany(Page::class);
+        return $this->hasMany('DDD\Domain\Pages\Page');
     }
 
     /**

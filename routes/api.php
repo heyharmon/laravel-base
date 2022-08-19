@@ -9,7 +9,6 @@ use DDD\Http\Media\MediaController;
 use DDD\Http\Media\MediaDownloadController;
 use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Organizations\OrganizationCommentController;
-// use DDD\Http\Organizations\OrganizationMediaController;
 use DDD\Http\Teams\TeamController;
 use DDD\Http\Tags\TagController;
 use DDD\Http\Sites\SiteController;
