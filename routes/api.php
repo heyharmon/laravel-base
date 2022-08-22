@@ -73,7 +73,7 @@ Route::middleware('auth:sanctum')->group(function() {
     // Media
     Route::prefix('{organization:slug}')->group(function() {
         Route::post('/media', [MediaController::class, 'store']);
-        Route::delete('media/{file}', [MediaController::class, 'destroy']);
+        Route::delete('media/{media}', [MediaController::class, 'destroy']);
     });
 
     // Teams
