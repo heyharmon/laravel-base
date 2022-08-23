@@ -18,6 +18,7 @@ use DDD\Http\Auth\Requests\AuthLoginRequest;
 
 // Resources
 use DDD\Domain\Users\Resources\UserResource;
+use DDD\Domain\Organizations\Resources\OrganizationResource;
 
 class AuthController extends Controller
 {
@@ -26,6 +27,8 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role' => $request->role, // TODO: Remove
+            'organization_id' => $request->organization_id, // TODO: Remove
             'password' => Hash::make($request->password),
         ]);
 
@@ -37,6 +40,7 @@ class AuthController extends Controller
                 'access_token' => $token,
                 'name' => $user->name,
                 'email' => $user->email,
+                'organization' => new OrganizationResource($user->organization)
             ]
         ], 200);
     }
@@ -59,6 +63,7 @@ class AuthController extends Controller
                 'access_token' => $token,
                 'name' => auth()->user()->name,
                 'email' => auth()->user()->email,
+                'organization' => new OrganizationResource(auth()->user()->organization),
             ]
         ], 200);
     }

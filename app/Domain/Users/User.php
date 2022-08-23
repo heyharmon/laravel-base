@@ -53,6 +53,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // TODO: Move to a one to many (user belongs to many orgs)
+    public function organization()
+    {
+        return $this->belongsTo('DDD\Domain\Organizations\Organization');
+    }
+
     public function comments()
     {
         return $this->hasMany('DDD\Domain\Comments\Comment');
