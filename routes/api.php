@@ -47,9 +47,9 @@ Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
 Route::prefix('{organization:slug}')->group(function() {
     Route::get('/designs', [DesignController::class, 'index']);
     Route::post('/designs', [DesignController::class, 'store']);
-    Route::get('/designs/{design}', [DesignController::class, 'show']);
-    Route::put('designs/{design}', [DesignController::class, 'update']);
-    Route::delete('/designs/{design}', [DesignController::class, 'destroy']);
+    Route::get('/designs/{design:uuid}', [DesignController::class, 'show']);
+    Route::put('designs/{design:uuid}', [DesignController::class, 'update']);
+    Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
 });
 
 Route::middleware('auth:sanctum')->group(function() {
