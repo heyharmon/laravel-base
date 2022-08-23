@@ -5,6 +5,9 @@ namespace DDD\Http\Designs;
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
+// Vendors
+use Spatie\QueryBuilder\QueryBuilder;
+
 // Models
 use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Designs\Design;
@@ -18,9 +21,13 @@ use DDD\Domain\Designs\Resources\DesignResource;
 
 class DesignController extends Controller
 {
-    public function index(Organization $organization)
+    public function index(Organization $organization, Request $request)
     {
-        $designs = $organization->designs()->latest()->get();
+        $designs = QueryBuilder::for(Design::class)
+            ->where('organization_id', $organization->id)
+            ->allowedFilters(['designer_email'])
+            ->latest()
+            ->get();
 
         return DesignResource::collection($designs);
     }
