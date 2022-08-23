@@ -27,8 +27,10 @@ class DesignUpdateRequest extends FormRequest
     {
         return [
             'title' => 'nullable|string',
-            'variables' => 'nullable|array',
+            'designer_name' => 'nullable|string',
+            'designer_email' => 'nullable|email',
 
+            'variables' => 'nullable|array',
             'variables.color_white' => 'nullable|string',
             'variables.color_black' => 'nullable|string',
             'variables.color_primary' => 'nullable|string',

@@ -27,7 +27,8 @@ class DesignStoreRequest extends FormRequest
     {
         return [
             'title' => 'nullable|string',
-            'designer' => 'required|string', // Anonynous or name
+            'designer_name' => 'required|string',
+            'designer_email' => 'required|email',
         ];
     }
 }
