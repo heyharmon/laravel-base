@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('designs', function (Blueprint $table) {
-            $table->uuid('uuid')->after('id')->unique();
+            $table->uuid('uuid')->after('organization_id')->unique();
        });
     }
 
