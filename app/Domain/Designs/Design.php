@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 // Casts
 use DDD\Domain\Designs\Casts\DesignVariables;
 
+// Traits
+use DDD\App\Traits\HasUuid;
+
 class Design extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        HasUuid;
 
     protected $guarded = [
         'id',

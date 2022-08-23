@@ -16,6 +16,7 @@ class DesignResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'uuid' => $this->uuid,
             'title' => $this->title,
             'designer_name' => $this->designer_name,
             'designer_email' => $this->designer_email,
