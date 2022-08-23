@@ -11,6 +11,7 @@
         "php": "^8.0",
         "aws/aws-sdk-php": "^3.225",
         "cloudinary-labs/cloudinary-laravel": "^2.0",
+        "doctrine/dbal": "^3.4",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.17",
         "laravel/sanctum": "^2.15",

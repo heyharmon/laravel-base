@@ -19,7 +19,8 @@ class DesignsSeeder extends Seeder
         Design::create([
             'organization_id' => 1,
             'title' => 'Design #1',
-            'designer' => 'Ryan Harmon',
+            'designer_name' => 'Ryan Harmon',
+            'designer_email' => 'ryan@bloomcu.com',
         ]);
     }
 }
