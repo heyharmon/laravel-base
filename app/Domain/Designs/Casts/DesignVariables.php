@@ -20,13 +20,13 @@ class DesignVariables implements CastsAttributes
         $value = isset($value) ? json_decode($value, true) : [];
 
         $defaults = [
-            'color_white' => '#fff',
-            'color_black' => '#000',
-            'color_primary' => '#000',
+            'color_white' => '#ffffff',
+            'color_black' => '#000000',
+            'color_primary' => '#000000',
             'color_accent' => '#16e09a',
-            'color_contrast_high' => '#000',
-            'color_contrast_higher' => '#000',
-            'color_background' => '#fff',
+            'color_contrast_high' => '#000000',
+            'color_contrast_higher' => '#000000',
+            'color_background' => '#ffffff',
             'text_base_size' => '1.3',
             'font_primary' => 'Roboto Slab',
             'font_primary_weight' => '400',
