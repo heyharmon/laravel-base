@@ -20,10 +20,10 @@ use DDD\Http\Test\TestController; // TODO: Delete
 
 // TODO: Delete
 // Test Routes
-Route::middleware('auth:sanctum')->group(function() {
-    Route::get('test',  [TestController::class, 'test']);
-    Route::get('{organization:slug}/users', [TestController::class, 'users']);
-});
+// Route::middleware('auth:sanctum')->group(function() {
+//     Route::get('test',  [TestController::class, 'test']);
+//     Route::get('{organization:slug}/users', [TestController::class, 'users']);
+// });
 
 // Public - Auth
 Route::post('auth/register', [AuthController::class, 'register']);
@@ -46,10 +46,8 @@ Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
 // Public - Designs
 Route::prefix('{organization:slug}')->group(function() {
     Route::get('/designs', [DesignController::class, 'index']);
-    Route::post('/designs', [DesignController::class, 'store']);
     Route::get('/designs/{design:uuid}', [DesignController::class, 'show']);
     Route::put('designs/{design:uuid}', [DesignController::class, 'update']);
-    Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
 });
 
 Route::middleware('auth:sanctum')->group(function() {
@@ -100,6 +98,12 @@ Route::middleware('auth:sanctum')->group(function() {
             Route::get('/crawls/{crawl}', [CrawlController::class, 'show']);
             Route::delete('/crawls/{crawl}', [CrawlController::class, 'destroy']);
         });
+    });
+
+    // Public - Designs
+    Route::prefix('{organization:slug}')->group(function() {
+        Route::post('/designs', [DesignController::class, 'store']);
+        Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
     });
 
     // Pages
