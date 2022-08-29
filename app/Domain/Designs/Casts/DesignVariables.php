@@ -32,7 +32,12 @@ class DesignVariables implements CastsAttributes
             'font_primary_weight' => '400',
             'font_secondary' => 'Inter',
             'font_secondary_weight' => '400',
-            'button_radius' => '0.25',
+            'btn_primary_text_color' => null,
+            'btn_secondary_text_color' => null,
+            'btn_tertiary_text_color' => null,
+            'btn_radius' => '0.25',
+            'btn_text_weight' => '400',
+            'btn_text_transform' => 'none',
         ];
 
         return array_merge($defaults, $value);

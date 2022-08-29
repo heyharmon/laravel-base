@@ -43,7 +43,12 @@ class DesignUpdateRequest extends FormRequest
             'variables.font_primary_weight' => 'nullable|string',
             'variables.font_secondary' => 'nullable|string',
             'variables.font_secondary_weight' => 'nullable|string',
+            'variables.btn_primary_text_color' => 'nullable|string',
+            'variables.btn_secondary_text_color' => 'nullable|string',
+            'variables.btn_tertiary_text_color' => 'nullable|string',
             'variables.button_radius' => 'nullable|string',
+            'variables.btn_text_weight' => 'nullable|string',
+            'variables.btn_text_transform' => 'nullable|string',
         ];
     }
 }
