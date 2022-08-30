@@ -21,11 +21,11 @@ class DesignVariables implements CastsAttributes
 
         $defaults = [
             'color_white' => '#ffffff',
-            'color_black' => '#000000',
-            'color_primary' => '#000000',
+            'color_black' => '#404040',
+            'color_primary' => '#404040',
             'color_accent' => '#16e09a',
-            'color_contrast_high' => '#000000',
-            'color_contrast_higher' => '#000000',
+            'color_contrast_high' => '#404040',
+            'color_contrast_higher' => '#404040',
             'color_background' => '#ffffff',
             'text_base_size' => '1.3',
             'font_primary' => [
