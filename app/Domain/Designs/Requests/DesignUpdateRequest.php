@@ -39,9 +39,18 @@ class DesignUpdateRequest extends FormRequest
             'variables.color_contrast_higher' => 'nullable|string',
             'variables.color_background' => 'nullable|string',
             'variables.text_base_size' => 'nullable|string',
-            'variables.font_primary' => 'nullable|string',
+
+            'variables.font_primary' => 'nullable|array',
+            'variables.font_primary.source' => 'nullable|string',
+            'variables.font_primary.name' => 'nullable|string',
+            'variables.font_primary.url' => 'nullable|string',
+
+            'variables.font_secondary' => 'nullable|array',
+            'variables.font_secondary.source' => 'nullable|string',
+            'variables.font_secondary.name' => 'nullable|string',
+            'variables.font_secondary.url' => 'nullable|string',
+
             'variables.font_primary_weight' => 'nullable|string',
-            'variables.font_secondary' => 'nullable|string',
             'variables.font_secondary_weight' => 'nullable|string',
             'variables.btn_primary_text_color' => 'nullable|string',
             'variables.btn_secondary_text_color' => 'nullable|string',

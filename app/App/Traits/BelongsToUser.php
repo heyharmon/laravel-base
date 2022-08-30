@@ -9,9 +9,9 @@ trait BelongsToUser
     protected static function bootBelongsToUser(): void
     {
         static::creating(function (Model $model) {
-            // if ($user = request()->user()) {
+            if ($user = request()->user()) {
                 $model->user_id = request()->user()->id;
-            // }
+            }
         });
     }
 
