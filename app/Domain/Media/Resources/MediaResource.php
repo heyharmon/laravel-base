@@ -22,6 +22,7 @@ class MediaResource extends JsonResource
             'uuid' => $this->uuid,
             'collection' => $this->collection_name,
             'name' => $this->name,
+            'file_name' => $this->file_name,
             'size' => $this->size,
             'original_url' => $this->original_url,
             'extension' => $this->extension,
