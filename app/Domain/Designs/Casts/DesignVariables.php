@@ -20,6 +20,7 @@ class DesignVariables implements CastsAttributes
         $value = isset($value) ? json_decode($value, true) : [];
 
         $defaults = [
+            // Colors
             'color_white' => '#ffffff',
             'color_black' => '#404040',
             'color_primary' => '#404040',
@@ -27,26 +28,41 @@ class DesignVariables implements CastsAttributes
             'color_contrast_high' => '#404040',
             'color_contrast_higher' => '#404040',
             'color_background' => '#ffffff',
+
+            // Base text
             'text_base_size' => '1.3',
+
+            // Primary font
             'font_primary' => [
                 'source' => null,
                 'name' => null,
                 'url' => null,
-                'weight' => 'normal',
+                'weight' => '400',
             ],
+
+            // Secondary font
             'font_secondary' => [
                 'source' => null,
                 'name' => null,
                 'url' => null,
-                'weight' => 'normal',
+                'weight' => '400',
             ],
-            'font_primary_weight' => 'normal',
-            'font_secondary_weight' => 'normal',
+
+            // Buttons font
+            'font_buttons' => [
+                'source' => null,
+                'name' => null,
+                'url' => null,
+                'weight' => '400',
+            ],
+
+            // Buttons text colors
             'btn_primary_text_color' => null,
             'btn_secondary_text_color' => null,
             'btn_tertiary_text_color' => null,
+
+            // Buttons styles
             'btn_radius' => '0.25',
-            'btn_text_weight' => '400',
             'btn_text_transform' => 'none',
         ];
 
