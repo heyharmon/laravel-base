@@ -62,6 +62,8 @@ class DesignVariables implements CastsAttributes
             'btn_tertiary_text_color' => null,
 
             // Buttons styles
+            'btn_padding_y' => '0.5',
+            'btn_padding_x' => '0.75',
             'btn_radius' => '0.25',
             'btn_text_transform' => 'none',
         ];

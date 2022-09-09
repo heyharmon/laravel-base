@@ -70,6 +70,8 @@ class DesignUpdateRequest extends FormRequest
             'variables.btn_tertiary_text_color' => 'nullable|string',
 
             // Buttons style
+            'variables.btn_padding_y' => 'nullable|string',
+            'variables.btn_padding_x' => 'nullable|string',
             'variables.btn_radius' => 'nullable|string',
             'variables.btn_text_transform' => 'nullable|string',
         ];
