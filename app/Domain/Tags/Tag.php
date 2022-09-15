@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 // Traits
 use DDD\App\Traits\HasSlug;
-use DDD\App\Traits\IsNestable;
+use DDD\App\Traits\HasParents;
 
 class Tag extends Model
 {
     use HasFactory,
         HasSlug,
-        IsNestable;
+        HasParents;
 
     protected $guarded = [
         'id',

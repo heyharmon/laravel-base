@@ -5,7 +5,7 @@ namespace DDD\App\Traits;
 // Vendors
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
-trait IsNestable
+trait HasParents
 {
     use HasRecursiveRelationships;
 

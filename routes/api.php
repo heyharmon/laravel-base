@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use DDD\Http\Auth\AuthController;
 use DDD\Http\Designs\DesignController;
 use DDD\Http\Designs\DesignMediaController;
+use DDD\Http\Designs\DesignDuplicationController;
 use DDD\Http\Media\MediaController;
 use DDD\Http\Media\MediaDownloadController;
 use DDD\Http\Organizations\OrganizationController;
@@ -51,7 +52,12 @@ Route::prefix('{organization:slug}')->group(function() {
     Route::put('designs/{design:uuid}', [DesignController::class, 'update']);
     Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
 
-    // Public - Designs media
+    // Public - Duplicate design
+    Route::prefix('/designs/{design:uuid}')->group(function() {
+        Route::post('/duplicate', [DesignDuplicationController::class, 'duplicate']);
+    });
+
+    // Public - Design media
     Route::prefix('/designs/{design:uuid}')->group(function() {
         Route::post('/media', [DesignMediaController::class, 'store']);
     });
