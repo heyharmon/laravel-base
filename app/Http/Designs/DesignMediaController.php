@@ -17,6 +17,7 @@ class DesignMediaController extends Controller
 {
     public function store(Organization $organization, Design $design, Request $request)
     {
+        // TODO: Add a request class to this
         $media = $design
             ->addMedia($request->file)
             ->toMediaCollection('fonts');

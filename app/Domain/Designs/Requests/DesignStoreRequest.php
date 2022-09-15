@@ -26,9 +26,18 @@ class DesignStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'nullable|string',
             'designer_name' => 'required|string',
             'designer_email' => 'required|email',
         ];
+    }
+
+    /**
+     * Return exception as json
+     *
+     * @return Exception
+     */
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }

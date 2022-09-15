@@ -26,7 +26,6 @@ class DesignUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'nullable|string',
             'designer_name' => 'nullable|string',
             'designer_email' => 'nullable|email',
             'variables' => 'nullable|array',
@@ -75,5 +74,15 @@ class DesignUpdateRequest extends FormRequest
             'variables.btn_radius' => 'nullable|string',
             'variables.btn_text_transform' => 'nullable|string',
         ];
+    }
+
+    /**
+     * Return exception as json
+     *
+     * @return Exception
+     */
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }
