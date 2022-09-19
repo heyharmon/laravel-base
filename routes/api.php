@@ -48,8 +48,10 @@ Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
 // Public - Designs
 Route::prefix('{organization:slug}')->group(function() {
     Route::get('/designs', [DesignController::class, 'index']);
+    // Route::post('/designs', [DesignController::class, 'store']);
     Route::get('/designs/{design:uuid}', [DesignController::class, 'show']);
     Route::put('designs/{design:uuid}', [DesignController::class, 'update']);
+    Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
     Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
 
     // Public - Duplicate design
@@ -114,10 +116,10 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     // Public - Designs
-    Route::prefix('{organization:slug}')->group(function() {
-        Route::post('/designs', [DesignController::class, 'store']);
-        Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
-    });
+    // Route::prefix('{organization:slug}')->group(function() {
+    //     Route::post('/designs', [DesignController::class, 'store']);
+    //     Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
+    // });
 
     // Pages
     Route::prefix('/sites/{site}')->group(function() {
