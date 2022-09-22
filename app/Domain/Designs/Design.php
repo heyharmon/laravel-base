@@ -38,7 +38,7 @@ class Design extends Model implements HasMedia
         parent::boot();
 
         static::creating(function (Model $model) {
-            $count = self::where('organization_id', $model->organization_id)->count();
+            $count = self::where('organization_id', $model->organization_id)->withTrashed()->count();
 
             $model->title = 'Style #' . $count + 1;
         });
