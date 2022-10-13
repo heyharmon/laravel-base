@@ -11,6 +11,7 @@ use DDD\Domain\Sites\Site;
 
 // Requests
 use DDD\Domain\Pages\Requests\PageStoreRequest;
+use DDD\Domain\Pages\Requests\PageUpdateRequest;
 
 class PageController extends Controller
 {
@@ -21,7 +22,6 @@ class PageController extends Controller
         // $pages = $site->pages()->withAllTags(['tag-two', 'tag-three'])->get();
 
         return response()->json($pages);
-        // return response()->json($site->pages);
     }
 
     public function store(Site $site, PageStoreRequest $request)
@@ -33,15 +33,22 @@ class PageController extends Controller
         return response()->json($page);
     }
 
-    // public function show(Site $site)
-    // {
-    //     return response()->json($site);
-    // }
-    //
-    // public function destroy(Site $site)
-    // {
-    //     $site->delete();
-    //
-    //     return response()->json($site);
-    // }
+    public function show(Site $site, Page $page)
+    {
+        return response()->json($page);
+    }
+
+    public function update(Site $site, Page $page, PageUpdateRequest $request)
+    {
+        $page->update($request->validated());
+
+        return response()->json($page);
+    }
+
+    public function destroy(Site $site, Page $page)
+    {
+        $page->delete();
+
+        return response()->json($page);
+    }
 }

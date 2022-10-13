@@ -103,7 +103,7 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('/sites', [SiteController::class, 'index']);
         Route::post('/sites', [SiteController::class, 'store']);
         Route::get('/sites/{site}', [SiteController::class, 'show']);
-        Route::put('sites/{site}', [SiteController::class, 'update']);
+        Route::put('/sites/{site}', [SiteController::class, 'update']);
         Route::delete('/sites/{site}', [SiteController::class, 'destroy']);
 
         // Crawl site
@@ -125,6 +125,9 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::prefix('/sites/{site}')->group(function() {
         Route::get('/pages', [PageController::class, 'index']);
         Route::post('/pages', [PageController::class, 'store']);
+        Route::get('/pages/{page}', [PageController::class, 'show']);
+        Route::put('/pages/{page}', [PageController::class, 'update']);
+        Route::delete('/pages/{page}', [PageController::class, 'destroy']);
 
         // Tagging
         route::post('/pages/{page}/tag', [PageTagController::class, 'tag']);

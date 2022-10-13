@@ -2,14 +2,20 @@
 
 namespace DDD\Domain\Pages;
 
-use DDD\Domain\Sites\Site;
-use DDD\App\Traits\IsTaggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+
+// Domains
+use DDD\Domain\Sites\Site;
+
+// Traits
+use DDD\App\Traits\IsTaggable;
 
 class Page extends Model
 {
     use HasFactory,
+        SoftDeletes,
         IsTaggable;
 
     protected $guarded = [
