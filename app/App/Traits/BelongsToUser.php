@@ -16,9 +16,9 @@ trait BelongsToUser
     }
 
     /**
-     * User associated with this site.
+     * User this model belongs to.
      *
-     * @return hasMany
+     * @return belongsTo
      */
     public function user()
     {
