@@ -83,6 +83,9 @@ class DesignUpdateRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json($validator->errors(), 422));
+        throw new HttpResponseException(response()->json([
+            'message' => 'The given data was invalid.',
+            'errors' => $validator->errors()
+        ], 422));
     }
 }
