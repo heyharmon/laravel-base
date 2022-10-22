@@ -35,6 +35,16 @@ class Organization extends Model implements HasMedia
     }
 
     /**
+     * User invitations associated with the organization.
+     *
+     * @return hasMany
+     */
+    public function userInvitations()
+    {
+        return $this->hasMany('DDD\Domain\Users\UserInvitation');
+    }
+
+    /**
      * Teams that belong to this team.
      *
      * @return hasMany

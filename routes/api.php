@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use DDD\Http\Auth\AuthController;
+use DDD\Http\Users\UserInvitationController;
 use DDD\Http\Designs\DesignController;
 use DDD\Http\Designs\DesignMediaController;
 use DDD\Http\Designs\DesignDuplicationController;
@@ -69,6 +70,13 @@ Route::middleware('auth:sanctum')->group(function() {
     // Auth
     Route::post('auth/logout', [AuthController::class, 'logout']);
     Route::get('auth/me', [AuthController::class, 'me']);
+
+    // User invitations
+    Route::prefix('{organization:slug}')->group(function() {
+        Route::get('invitations', [UserInvitationController::class, 'index']);
+        Route::post('invitations', [UserInvitationController::class, 'store']);
+        Route::delete('invitations/{invitation}', [UserInvitationController::class, 'destroy']);
+    });
 
     // Organizations
     Route::get('organizations', [OrganizationController::class, 'index']);
