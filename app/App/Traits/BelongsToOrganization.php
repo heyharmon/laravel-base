@@ -16,4 +16,14 @@ trait BelongsToOrganization
     {
         $query->where('organization_id', $organization_id);
     }
+
+    /**
+     * Organization this model belongs to.
+     *
+     * @return belongsTo
+     */
+    public function organization()
+    {
+        return $this->belongsTo('DDD\Domain\Organizations\Organization');
+    }
 }
