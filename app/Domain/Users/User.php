@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+// Enums
+use DDD\Domain\Users\Enums\UserRoleEnum;
+
 // Traits
 use Laravel\Sanctum\HasApiTokens;
 use DDD\App\Traits\BelongsToOrganization;
@@ -50,6 +53,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
+        'role' => UserRoleEnum::class,
         'email_verified_at' => 'datetime',
     ];
 

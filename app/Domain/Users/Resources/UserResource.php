@@ -4,9 +4,6 @@ namespace DDD\Domain\Users\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-// Resources
-use DDD\Domain\Organizations\Resources\OrganizationResource;
-
 class UserResource extends JsonResource
 {
     /**
@@ -21,6 +18,7 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
+            'role' => $this->role,
         ];
     }
 }
