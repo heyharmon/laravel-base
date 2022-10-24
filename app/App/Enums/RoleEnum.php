@@ -1,8 +1,8 @@
 <?php
 
-namespace DDD\Domain\Users\Enums;
+namespace DDD\App\Enums;
 
-enum UserRoleEnum: string
+enum RoleEnum: string
 {
     case Admin = 'admin';
     case Editor = 'editor';

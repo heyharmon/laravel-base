@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 // Enums
-use DDD\Domain\Users\Enums\UserRoleEnum;
+use DDD\App\Enums\RoleEnum;
 
 // Traits
 use Laravel\Sanctum\HasApiTokens;
@@ -53,7 +53,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'role' => UserRoleEnum::class,
+        'role' => RoleEnum::class,
         'email_verified_at' => 'datetime',
     ];
 
@@ -67,9 +67,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('DDD\Domain\Comments\Comment');
     }
-
-    // protected static function booted()
-    // {
-    //     static::addGlobalScope(new OrganizationScope);
-    // }
 }
