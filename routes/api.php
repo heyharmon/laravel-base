@@ -3,8 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use DDD\Http\Auth\AuthController;
-use DDD\Http\Users\UserInvitationController;
+use DDD\Http\Auth\AuthLoginController;
+use DDD\Http\Auth\AuthLogoutController;
+use DDD\Http\Auth\AuthMeController;
+use DDD\Http\Auth\AuthRegisterController;
+use DDD\Http\Auth\AuthRegisterWithInvitationController;
+use DDD\Http\Invitations\InvitationController;
 use DDD\Http\Designs\DesignController;
 use DDD\Http\Designs\DesignMediaController;
 use DDD\Http\Designs\DesignDuplicationController;
@@ -19,18 +23,16 @@ use DDD\Http\Sites\Crawls\CrawlController;
 use DDD\Http\Pages\PageController;
 use DDD\Http\Pages\PageTagController;
 
-use DDD\Http\Test\TestController; // TODO: Delete
-
-// TODO: Delete
-// Test Routes
-// Route::middleware('auth:sanctum')->group(function() {
-//     Route::get('test',  [TestController::class, 'test']);
-//     Route::get('{organization:slug}/users', [TestController::class, 'users']);
-// });
-
 // Public - Auth
-Route::post('auth/register', [AuthController::class, 'register']);
-Route::post('auth/login', [AuthController::class, 'login']);
+Route::post('auth/login', AuthLoginController::class);
+// Route::post('auth/register', AuthRegisterController::class);
+Route::post('auth/register/invitation/{invitation:uuid}', AuthRegisterWithInvitationController::class);
+
+// Public - Media Download
+Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
+
+// Public - Invitation
+Route::get('{organization:slug}/invitations/{invitation:uuid}', [InvitationController::class, 'show']);
 
 // Public - Organization - Comments
 Route::prefix('/organizations/{organization:slug}')->group(function() {
@@ -42,9 +44,6 @@ Route::prefix('/{organization:slug}')->group(function() {
     Route::get('/media', [MediaController::class, 'index']);
     Route::get('/media/{media}', [MediaController::class, 'show']);
 });
-
-// Public - Media Download
-Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
 
 // Public - Designs
 Route::prefix('{organization:slug}')->group(function() {
@@ -68,14 +67,14 @@ Route::prefix('{organization:slug}')->group(function() {
 
 Route::middleware('auth:sanctum')->group(function() {
     // Auth
-    Route::post('auth/logout', [AuthController::class, 'logout']);
-    Route::get('auth/me', [AuthController::class, 'me']);
+    Route::post('auth/logout', AuthLogoutController::class);
+    Route::get('auth/me', AuthMeController::class);
 
-    // User invitations
+    // Invitations
     Route::prefix('{organization:slug}')->group(function() {
-        Route::get('invitations', [UserInvitationController::class, 'index']);
-        Route::post('invitations', [UserInvitationController::class, 'store']);
-        Route::delete('invitations/{invitation}', [UserInvitationController::class, 'destroy']);
+        Route::get('invitations', [InvitationController::class, 'index']);
+        Route::post('invitations', [InvitationController::class, 'store']);
+        Route::delete('invitations/{invitation:uuid}', [InvitationController::class, 'destroy']);
     });
 
     // Organizations
