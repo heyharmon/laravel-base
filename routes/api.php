@@ -8,6 +8,9 @@ use DDD\Http\Auth\AuthLogoutController;
 use DDD\Http\Auth\AuthMeController;
 use DDD\Http\Auth\AuthRegisterController;
 use DDD\Http\Auth\AuthRegisterWithInvitationController;
+
+use DDD\Http\Users\UserController;
+
 use DDD\Http\Invitations\InvitationController;
 use DDD\Http\Designs\DesignController;
 use DDD\Http\Designs\DesignMediaController;
@@ -69,6 +72,11 @@ Route::middleware('auth:sanctum')->group(function() {
     // Auth
     Route::post('auth/logout', AuthLogoutController::class);
     Route::get('auth/me', AuthMeController::class);
+
+    // Users
+    Route::prefix('{organization:slug}')->group(function() {
+        Route::get('users', [UserController::class, 'index']);
+    });
 
     // Invitations
     Route::prefix('{organization:slug}')->group(function() {
