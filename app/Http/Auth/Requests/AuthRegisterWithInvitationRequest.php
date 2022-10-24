@@ -1,29 +1,13 @@
 <?php
 
-namespace DDD\Domain\Users\Requests;
+namespace DDD\Http\Auth\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-// Rules
-use Illuminate\Validation\Rules\Enum;
-
-// Enums
-use DDD\Domain\Users\Enums\UserRoleEnum;
-
-class UserInvitationStoreRequest extends FormRequest
+class AuthRegisterWithInvitationRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -32,8 +16,9 @@ class UserInvitationStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|unique:user_invitations',
-            'role' => ['nullable', new Enum(UserRoleEnum::class)],
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
         ];
     }
 

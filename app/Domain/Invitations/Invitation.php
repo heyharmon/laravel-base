@@ -1,20 +1,22 @@
 <?php
 
-namespace DDD\Domain\Users;
+namespace DDD\Domain\Invitations;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 // Enums
-use DDD\Domain\Users\Enums\UserRoleEnum;
+use DDD\App\Enums\RoleEnum;
 
 // Traits
+use DDD\App\Traits\HasUuid;
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\App\Traits\BelongsToUser;
 
-class UserInvitation extends Model
+class Invitation extends Model
 {
     use HasFactory,
+        HasUuid,
         BelongsToOrganization,
         BelongsToUser;
 
@@ -33,32 +35,15 @@ class UserInvitation extends Model
      * @var array
      */
     protected $casts = [
-        'role' => UserRoleEnum::class,
+        'role' => RoleEnum::class,
         'registered_at' => 'datetime',
     ];
-
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function (Model $model) {
-            $model->generateToken();
-        });
-    }
-
-    /*
-     * Store a random invitation token on model
-     */
-    public function generateToken()
-    {
-        $this->invitation_token = substr(md5(rand(0, 9) . $this->email . time()), 0, 32);
-    }
 
     /*
      * Get invite url
      */
     public function url()
     {
-        return urldecode(env('APP_UI_URL') . '?invitation_token=' . $this->invitation_token);
+        return urldecode(env('APP_UI_URL') . '/' . $this->organization->slug . '/invitation/' . $this->uuid);
     }
 }

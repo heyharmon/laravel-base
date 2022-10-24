@@ -35,13 +35,13 @@ class Organization extends Model implements HasMedia
     }
 
     /**
-     * User invitations associated with the organization.
+     * Invitations associated with the organization.
      *
      * @return hasMany
      */
-    public function userInvitations()
+    public function invitations()
     {
-        return $this->hasMany('DDD\Domain\Users\UserInvitation');
+        return $this->hasMany('DDD\Domain\Invitations\Invitation');
     }
 
     /**
