@@ -23,7 +23,7 @@ class AuthRegisterWithInvitationController extends Controller
     {
         $user = User::create([
             'name' => $request->name,
-            'email' => $request->email,
+            'email' => $invitation->email,
             'role' => 'editor', // TODO: Remove
             'organization_id' => $invitation->organization->id,
             'password' => Hash::make($request->password),
