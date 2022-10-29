@@ -32,8 +32,20 @@ class InvitationStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|unique:invitations|unique:users',
+            'email' => 'required|email:rfc,strict|max:255|unique:invitations|unique:users',
             'role' => ['nullable', new Enum(RoleEnum::class)],
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'email.unique' => 'That email is already in use.',
         ];
     }
 
@@ -48,10 +60,5 @@ class InvitationStoreRequest extends FormRequest
             'message' => 'The given data was invalid.',
             'errors' => $validator->errors()
         ], 422));
-
-        // return response()->json([
-        //     'message' => 'The given data was invalid.',
-        //     'errors' => $validator->errors()
-        // ], 422);
     }
 }

@@ -16,9 +16,9 @@ class AuthRegisterWithInvitationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'nullable|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email:rfc,strict', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:12', 'confirmed'],
         ];
     }
 

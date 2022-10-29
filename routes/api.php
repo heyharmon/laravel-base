@@ -28,7 +28,7 @@ use DDD\Http\Pages\PageTagController;
 
 // Public - Auth
 Route::post('auth/login', AuthLoginController::class);
-// Route::post('auth/register', AuthRegisterController::class);
+Route::post('auth/register', AuthRegisterController::class);
 Route::post('auth/register/invitation/{invitation:uuid}', AuthRegisterWithInvitationController::class);
 
 // Public - Media Download
