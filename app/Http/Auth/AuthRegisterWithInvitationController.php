@@ -34,7 +34,7 @@ class AuthRegisterWithInvitationController extends Controller
         $invitation->delete();
 
         return response()->json([
-            'message' => ['Registration successful'],
+            'message' => 'Registration successful',
             'data' => [
                 'access_token' => $token,
                 'name' => $user->name,

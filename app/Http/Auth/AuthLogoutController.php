@@ -13,7 +13,7 @@ class AuthLogoutController extends Controller
         auth()->user()->tokens()->delete();
 
         return response()->json([
-            'message' => ['Tokens Revoked']
+            'message' => 'Tokens Revoked'
         ], 200);
     }
 }

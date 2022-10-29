@@ -18,8 +18,11 @@ class AuthLoginController extends Controller
     {
         if (!Auth::attempt($request->validated())) {
             return response()->json([
-                'message' => ['Credentials do not match']
-            ], 401);
+                'message' => 'The given data was invalid.',
+                'errors' => [
+                    'credentials' => ['Credentials do not match.']
+                ]
+            ], 422);
         }
 
         auth()->user()->tokens()->delete();
@@ -27,7 +30,7 @@ class AuthLoginController extends Controller
         $token = auth()->user()->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'message' => ['Login successful'],
+            'message' => 'Login successful',
             'data' => [
                 'access_token' => $token,
                 'name' => auth()->user()->name,

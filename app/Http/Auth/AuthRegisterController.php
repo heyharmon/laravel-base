@@ -31,7 +31,7 @@ class AuthRegisterController extends Controller
         // TODO: Create an organization for this user
 
         return response()->json([
-            'message' => ['Registration successful'],
+            'message' => 'Registration successful',
             'data' => [
                 'access_token' => $token,
                 'name' => $user->name,
