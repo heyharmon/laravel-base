@@ -5,6 +5,7 @@ namespace DDD\Http\Auth\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rules\Password;
 
 class AuthRegisterWithInvitationRequest extends FormRequest
 {
@@ -18,7 +19,17 @@ class AuthRegisterWithInvitationRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email:rfc,strict', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:12', 'confirmed'],
+            'password' => [
+                'required',
+                'string',
+                'confirmed',
+                Password::min(12)
+                    ->mixedCase()
+                    ->letters()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(),
+            ],
         ];
     }
 

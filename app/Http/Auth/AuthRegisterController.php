@@ -23,6 +23,7 @@ class AuthRegisterController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role' => 'admin', // TODO: Remove
             'password' => Hash::make($request->password),
         ]);
 
