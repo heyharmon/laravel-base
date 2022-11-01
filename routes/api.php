@@ -22,7 +22,8 @@ use DDD\Http\Organizations\OrganizationCommentController;
 use DDD\Http\Teams\TeamController;
 use DDD\Http\Tags\TagController;
 use DDD\Http\Sites\SiteController;
-use DDD\Http\Sites\Crawls\CrawlController;
+use DDD\Http\Crawls\CrawlController;
+use DDD\Http\Crawls\CrawlResultsController;
 use DDD\Http\Pages\PageController;
 use DDD\Http\Pages\PageTagController;
 
@@ -127,6 +128,10 @@ Route::middleware('auth:sanctum')->group(function() {
             Route::post('/crawls', [CrawlController::class, 'store']);
             Route::get('/crawls/{crawl}', [CrawlController::class, 'show']);
             Route::delete('/crawls/{crawl}', [CrawlController::class, 'destroy']);
+
+            Route::prefix('/crawls/{crawl}')->group(function() {
+                Route::get('/results', [CrawlResultsController::class, 'show']);
+            });
         });
     });
 
