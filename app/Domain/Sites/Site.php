@@ -41,18 +41,11 @@ class Site extends Model
      */
     public function crawls()
     {
-        return $this->hasMany('DDD\Domain\Sites\Crawls\Crawl');
+        return $this->hasMany('DDD\Domain\Crawls\Crawl');
     }
 
     public function lastCrawl()
     {
-        return $this->hasOne('DDD\Domain\Sites\Crawls\Crawl')->latest();
+        return $this->hasOne('DDD\Domain\Crawls\Crawl')->latest();
     }
-
-    // protected function lastCrawl(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: fn ($value) => $value,
-    //     );
-    // }
 }

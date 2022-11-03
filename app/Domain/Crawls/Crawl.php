@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Domain\Sites\Crawls;
+namespace DDD\Domain\Crawls;
 
 use Illuminate\Database\Eloquent\Model;
 

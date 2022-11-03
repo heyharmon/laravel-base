@@ -37,4 +37,17 @@ class SiteStoreRequest extends FormRequest
             'launch_info.notes' => 'nullable|string',
         ];
     }
+
+    /**
+     * Return exception as json
+     *
+     * @return Exception
+     */
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'message' => 'The given data was invalid.',
+            'errors' => $validator->errors()
+        ], 422));
+    }
 }

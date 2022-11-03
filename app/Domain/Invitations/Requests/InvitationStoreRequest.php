@@ -1,12 +1,18 @@
 <?php
 
-namespace DDD\Domain\Pages\Requests;
+namespace DDD\Domain\Invitations\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PageStoreRequest extends FormRequest
+// Rules
+use Illuminate\Validation\Rules\Enum;
+
+// Enums
+use DDD\App\Enums\RoleEnum;
+
+class InvitationStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +32,20 @@ class PageStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
-            'url' => 'nullable|string',
-            'status' => 'nullable|integer',
-            'wordcount' => 'nullable|integer',
+            'email' => 'required|email:rfc,strict|max:255|unique:invitations|unique:users',
+            'role' => ['nullable', new Enum(RoleEnum::class)],
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'email.unique' => 'That email is already in use.',
         ];
     }
 

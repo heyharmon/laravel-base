@@ -9,16 +9,6 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 class AuthLoginRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    // public function authorize()
-    // {
-    //     return false;
-    // }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -26,8 +16,8 @@ class AuthLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:6',
+            'email' => ['required'],
+            'password' => ['required'],
         ];
     }
 
@@ -38,6 +28,9 @@ class AuthLoginRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json($validator->errors(), 422));
+        throw new HttpResponseException(response()->json([
+            'message' => 'The given data was invalid.',
+            'errors' => $validator->errors()
+        ], 422));
     }
 }
