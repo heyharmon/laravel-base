@@ -10,12 +10,14 @@ use Illuminate\Database\Eloquent\Model;
 use DDD\Domain\Sites\Site;
 
 // Traits
+use DDD\App\Traits\IsCategorizable;
 use DDD\App\Traits\IsTaggable;
 
 class Page extends Model
 {
     use HasFactory,
         SoftDeletes,
+        IsCategorizable,
         IsTaggable;
 
     protected $guarded = [

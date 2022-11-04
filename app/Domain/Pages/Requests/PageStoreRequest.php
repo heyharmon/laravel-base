@@ -28,8 +28,9 @@ class PageStoreRequest extends FormRequest
         return [
             'title' => 'required|string',
             'url' => 'nullable|string',
-            'status' => 'nullable|integer',
+            'http_status' => 'nullable|integer',
             'wordcount' => 'nullable|integer',
+            'category' => 'nullable|string',
         ];
     }
 

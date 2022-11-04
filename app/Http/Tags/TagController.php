@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
 // Models
-use DDD\Domain\Tags\TagGroup;
 use DDD\Domain\Tags\Tag;
 
 // Resources

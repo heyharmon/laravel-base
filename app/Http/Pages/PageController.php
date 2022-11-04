@@ -13,15 +13,19 @@ use DDD\Domain\Sites\Site;
 use DDD\Domain\Pages\Requests\PageStoreRequest;
 use DDD\Domain\Pages\Requests\PageUpdateRequest;
 
+// Resources
+use DDD\Domain\Pages\Resources\PageResource;
+
 class PageController extends Controller
 {
     public function index(Site $site)
     {
-        $pages = $site->pages()->latest()->get();
-        // $pages = $site->pages()->withAnyTag(['tag-two'])->get();
-        // $pages = $site->pages()->withAllTags(['tag-two', 'tag-three'])->get();
+        $pages = $site->pages()
+            ->with('category')
+            ->latest()
+            ->get();
 
-        return response()->json($pages);
+        return PageResource::collection($pages);
     }
 
     public function store(Site $site, PageStoreRequest $request)
@@ -30,25 +34,27 @@ class PageController extends Controller
             $request->validated()
         );
 
-        return response()->json($page);
+        return new PageResource($page);
     }
 
     public function show(Site $site, Page $page)
     {
-        return response()->json($page);
+        $page = $page->load('category');
+
+        return new PageResource($page);
     }
 
     public function update(Site $site, Page $page, PageUpdateRequest $request)
     {
         $page->update($request->validated());
 
-        return response()->json($page);
+        return new PageResource($page->load('category'));
     }
 
     public function destroy(Site $site, Page $page)
     {
         $page->delete();
 
-        return response()->json($page);
+        return new PageResource($page);
     }
 }

@@ -28,8 +28,9 @@ class PageUpdateRequest extends FormRequest
         return [
             'title' => 'nullable|string',
             'url' => 'nullable|string',
-            'status' => 'nullable|integer',
+            'http_status' => 'nullable|integer',
             'wordcount' => 'nullable|integer',
+            'category' => 'nullable|string',
         ];
     }
 

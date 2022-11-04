@@ -20,7 +20,7 @@ trait HasParents
     }
 
     /**
-     * Get only parent (top level) tags.
+     * Get only parents (top level models).
      *
      * @param Builder $query
      * @return Builder

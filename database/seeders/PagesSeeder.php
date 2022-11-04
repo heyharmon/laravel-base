@@ -19,21 +19,21 @@ class PagesSeeder extends Seeder
         $pages = [
             [
                 'site_id' => 1,
-                'status' => '200',
+                'http_status' => '200',
                 'title' => 'About',
                 'url' => 'https://google.com',
                 'wordcount' => 3000,
             ],
             [
                 'site_id' => 1,
-                'status' => '200',
+                'http_status' => '200',
                 'title' => 'Checking',
                 'url' => 'https://google.com',
                 'wordcount' => 3000,
             ],
             [
                 'site_id' => 1,
-                'status' => '200',
+                'http_status' => '200',
                 'title' => 'Homepage',
                 'url' => 'https://google.com',
                 'wordcount' => 3000,

@@ -8,24 +8,25 @@ use DDD\Http\Auth\AuthLogoutController;
 use DDD\Http\Auth\AuthMeController;
 use DDD\Http\Auth\AuthRegisterController;
 use DDD\Http\Auth\AuthRegisterWithInvitationController;
-
-use DDD\Http\Users\UserController;
-
-use DDD\Http\Invitations\InvitationController;
+use DDD\Http\Categories\CategoryController;
+use DDD\Http\Crawls\CrawlController;
+use DDD\Http\Crawls\CrawlResultsController;
 use DDD\Http\Designs\DesignController;
 use DDD\Http\Designs\DesignMediaController;
 use DDD\Http\Designs\DesignDuplicationController;
+use DDD\Http\Invitations\InvitationController;
 use DDD\Http\Media\MediaController;
 use DDD\Http\Media\MediaDownloadController;
 use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Organizations\OrganizationCommentController;
-use DDD\Http\Teams\TeamController;
-use DDD\Http\Tags\TagController;
-use DDD\Http\Sites\SiteController;
-use DDD\Http\Crawls\CrawlController;
-use DDD\Http\Crawls\CrawlResultsController;
 use DDD\Http\Pages\PageController;
 use DDD\Http\Pages\PageTagController;
+use DDD\Http\Sites\SiteController;
+use DDD\Http\Tags\TagController;
+use DDD\Http\Teams\TeamController;
+use DDD\Http\Users\UserController;
+
+// TODO: Alphabetize routes
 
 // Public - Auth
 Route::post('auth/login', AuthLoginController::class);
@@ -73,6 +74,15 @@ Route::middleware('auth:sanctum')->group(function() {
     // Auth
     Route::post('auth/logout', AuthLogoutController::class);
     Route::get('auth/me', AuthMeController::class);
+
+    // Categories
+    Route::prefix('categories')->group(function() {
+        Route::get('/', [CategoryController::class, 'index']);
+        Route::post('/', [CategoryController::class, 'store']);
+        Route::get('/{category}', [CategoryController::class, 'show']);
+        Route::put('/{category}', [CategoryController::class, 'update']);
+        Route::delete('/{category}', [CategoryController::class, 'destroy']);
+    });
 
     // Users
     Route::prefix('{organization:slug}')->group(function() {
