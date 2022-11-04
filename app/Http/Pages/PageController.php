@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
 // Models
+use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Pages\Page;
-use DDD\Domain\Sites\Site;
 
 // Requests
 use DDD\Domain\Pages\Requests\PageStoreRequest;
@@ -18,9 +18,9 @@ use DDD\Domain\Pages\Resources\PageResource;
 
 class PageController extends Controller
 {
-    public function index(Site $site)
+    public function index(Organization $organization)
     {
-        $pages = $site->pages()
+        $pages = $organization->pages()
             ->with('category')
             ->latest()
             ->get();
@@ -28,28 +28,28 @@ class PageController extends Controller
         return PageResource::collection($pages);
     }
 
-    public function store(Site $site, PageStoreRequest $request)
+    public function store(Organization $organization, PageStoreRequest $request)
     {
-        $page = $site->pages()->create(
+        $page = $organization->pages()->create(
             $request->validated()
         );
 
         return new PageResource($page->load(['category', 'user']));
     }
 
-    public function show(Site $site, Page $page)
+    public function show(Organization $organization, Page $page)
     {
         return new PageResource($page->load(['category', 'user']));
     }
 
-    public function update(Site $site, Page $page, PageUpdateRequest $request)
+    public function update(Organization $organization, Page $page, PageUpdateRequest $request)
     {
         $page->update($request->validated());
 
         return new PageResource($page->load(['category', 'user']));
     }
 
-    public function destroy(Site $site, Page $page)
+    public function destroy(Organization $organization, Page $page)
     {
         $page->delete();
 

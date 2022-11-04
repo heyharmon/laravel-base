@@ -23,7 +23,9 @@ class InvitationController extends Controller
 {
     public function index(Organization $organization)
     {
-        $invitations = $organization->invitations()->latest()->get();
+        $invitations = $organization->invitations()
+            ->latest()
+            ->get();
 
         return InvitationResource::collection($invitations);
     }

@@ -20,7 +20,7 @@ use DDD\Http\Media\MediaDownloadController;
 use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Organizations\OrganizationCommentController;
 use DDD\Http\Pages\PageController;
-use DDD\Http\Pages\PageTagController;
+// use DDD\Http\Pages\PageTagController;
 use DDD\Http\Sites\SiteController;
 use DDD\Http\Tags\TagController;
 use DDD\Http\Teams\TeamController;
@@ -125,12 +125,12 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     // Sites
-    Route::prefix('{organization:slug}')->group(function() {
-        Route::get('/sites', [SiteController::class, 'index']);
-        Route::post('/sites', [SiteController::class, 'store']);
-        Route::get('/sites/{site}', [SiteController::class, 'show']);
-        Route::put('/sites/{site}', [SiteController::class, 'update']);
-        Route::delete('/sites/{site}', [SiteController::class, 'destroy']);
+    Route::prefix('{organization:slug}/sites')->group(function() {
+        Route::get('/', [SiteController::class, 'index']);
+        Route::post('/', [SiteController::class, 'store']);
+        Route::get('/{site}', [SiteController::class, 'show']);
+        Route::put('/{site}', [SiteController::class, 'update']);
+        Route::delete('/{site}', [SiteController::class, 'destroy']);
 
         // Crawl site
         Route::prefix('/sites/{site}')->group(function() {
@@ -145,25 +145,25 @@ Route::middleware('auth:sanctum')->group(function() {
         });
     });
 
+    // Pages
+    Route::prefix('{organization:slug}/pages')->group(function() {
+        Route::get('/', [PageController::class, 'index']);
+        Route::post('/', [PageController::class, 'store']);
+        Route::get('/{page}', [PageController::class, 'show']);
+        Route::put('/{page}', [PageController::class, 'update']);
+        Route::delete('/{page}', [PageController::class, 'destroy']);
+
+        // Tagging
+        // route::post('/pages/{page}/tag', [PageTagController::class, 'tag']);
+        // route::post('/pages/{page}/untag', [PageTagController::class, 'untag']);
+        // route::post('/pages/{page}/retag', [PageTagController::class, 'retag']);
+    });
+
     // Public - Designs
     // Route::prefix('{organization:slug}')->group(function() {
     //     Route::post('/designs', [DesignController::class, 'store']);
     //     Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
     // });
-
-    // Pages
-    Route::prefix('/sites/{site}')->group(function() {
-        Route::get('/pages', [PageController::class, 'index']);
-        Route::post('/pages', [PageController::class, 'store']);
-        Route::get('/pages/{page}', [PageController::class, 'show']);
-        Route::put('/pages/{page}', [PageController::class, 'update']);
-        Route::delete('/pages/{page}', [PageController::class, 'destroy']);
-
-        // Tagging
-        route::post('/pages/{page}/tag', [PageTagController::class, 'tag']);
-        route::post('/pages/{page}/untag', [PageTagController::class, 'untag']);
-        route::post('/pages/{page}/retag', [PageTagController::class, 'retag']);
-    });
 
     // Tags
     Route::prefix('tags')->group(function() {

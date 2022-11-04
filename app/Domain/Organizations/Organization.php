@@ -45,6 +45,16 @@ class Organization extends Model implements HasMedia
     }
 
     /**
+     * Pages associated with the organization.
+     *
+     * @return hasMany
+     */
+    public function pages()
+    {
+        return $this->hasMany('DDD\Domain\Pages\Page');
+    }
+
+    /**
      * Teams that belong to this team.
      *
      * @return hasMany
