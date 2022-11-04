@@ -34,21 +34,19 @@ class PageController extends Controller
             $request->validated()
         );
 
-        return new PageResource($page);
+        return new PageResource($page->load(['category', 'user']));
     }
 
     public function show(Site $site, Page $page)
     {
-        $page = $page->load('category');
-
-        return new PageResource($page);
+        return new PageResource($page->load(['category', 'user']));
     }
 
     public function update(Site $site, Page $page, PageUpdateRequest $request)
     {
         $page->update($request->validated());
 
-        return new PageResource($page->load('category'));
+        return new PageResource($page->load(['category', 'user']));
     }
 
     public function destroy(Site $site, Page $page)

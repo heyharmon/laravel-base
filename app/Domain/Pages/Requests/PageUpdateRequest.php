@@ -5,6 +5,7 @@ namespace DDD\Domain\Pages\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 
 class PageUpdateRequest extends FormRequest
 {
@@ -27,7 +28,11 @@ class PageUpdateRequest extends FormRequest
     {
         return [
             'title' => 'nullable|string',
-            'url' => 'nullable|string',
+            'url' => [
+                'nullable',
+                'string',
+                Rule::unique('pages')->ignore($this->route('page')),
+            ],
             'http_status' => 'nullable|integer',
             'wordcount' => 'nullable|integer',
             'category' => 'nullable|string',

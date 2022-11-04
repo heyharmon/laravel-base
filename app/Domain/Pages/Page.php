@@ -10,15 +10,18 @@ use Illuminate\Database\Eloquent\Model;
 use DDD\Domain\Sites\Site;
 
 // Traits
+// use DDD\App\Traits\BelongsToOrganization;
+use DDD\App\Traits\BelongsToUser;
 use DDD\App\Traits\IsCategorizable;
 use DDD\App\Traits\IsTaggable;
 
 class Page extends Model
 {
-    use HasFactory,
-        SoftDeletes,
+    use BelongsToUser,
+        HasFactory,
         IsCategorizable,
-        IsTaggable;
+        IsTaggable,
+        SoftDeletes;
 
     protected $guarded = [
         'id',

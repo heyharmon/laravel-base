@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::table('pages', function (Blueprint $table) {
             $table->renameColumn('status', 'http_status');
             // $table->foreignId('organization_id');
-            // $table->foreignId('user_id');
+            $table->foreignId('user_id');
             $table->foreignId('category_id')->nullable()->after('site_id');
 
             // Foreign constraints
             // $table->foreign('organization_id')->references('id')->on('organizations');
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }

@@ -18,6 +18,7 @@ class PagesSeeder extends Seeder
     {
         $pages = [
             [
+                'user_id' => 1,
                 'site_id' => 1,
                 'http_status' => '200',
                 'title' => 'About',
@@ -25,6 +26,7 @@ class PagesSeeder extends Seeder
                 'wordcount' => 3000,
             ],
             [
+                'user_id' => 1,
                 'site_id' => 1,
                 'http_status' => '200',
                 'title' => 'Checking',
@@ -32,6 +34,7 @@ class PagesSeeder extends Seeder
                 'wordcount' => 3000,
             ],
             [
+                'user_id' => 1,
                 'site_id' => 1,
                 'http_status' => '200',
                 'title' => 'Homepage',

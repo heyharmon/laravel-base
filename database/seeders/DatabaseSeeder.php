@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         // \DDD\Domain\Users\User::factory(1)->create();
 
         $this->call([
+            CategoriesSeeder::class,
             OrganizationsSeeder::class,
             UsersSeeder::class,
             SitesSeeder::class,
