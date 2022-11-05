@@ -35,7 +35,16 @@ return new class extends Migration
     public function down()
     {
         Schema::table('pages', function (Blueprint $table) {
+            $table->foreignId('site_id')->nullable(false)->change();
             $table->renameColumn('http_status', 'status');
+
+            $table->dropColumn('organization_id');
+            $table->dropColumn('user_id');
+            $table->dropColumn('category_id');
+
+            $table->dropForeign('pages_organization_id_foreign');
+            $table->dropForeign('pages_user_id_foreign');
+            $table->dropForeign('pages_category_id_foreign');
         });
     }
 };
