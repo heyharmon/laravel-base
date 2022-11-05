@@ -14,10 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pages', function (Blueprint $table) {
+            // Modify existing columns
             $table->foreignId('site_id')->nullable(true)->change();
             $table->renameColumn('status', 'http_status');
-            $table->foreignId('organization_id')->default(1);
-            $table->foreignId('user_id')->nullable();
+
+            // Add new columns
+            $table->foreignId('organization_id')->default(1)->after('id');
+            $table->foreignId('user_id')->nullable()->after('organization_id');
             $table->foreignId('category_id')->nullable()->after('site_id');
 
             // Foreign constraints
