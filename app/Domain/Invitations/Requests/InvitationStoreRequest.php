@@ -10,7 +10,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rules\Enum;
 
 // Enums
-use DDD\App\Enums\RoleEnum;
+use DDD\Domain\Users\Enums\RoleEnum;
 
 class InvitationStoreRequest extends FormRequest
 {

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 // Enums
-use DDD\App\Enums\RoleEnum;
+use DDD\Domain\Users\Enums\RoleEnum;
 
 // Traits
 use Laravel\Sanctum\HasApiTokens;

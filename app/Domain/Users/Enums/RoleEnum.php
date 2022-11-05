@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\App\Enums;
+namespace DDD\Domain\Users\Enums;
 
 enum RoleEnum: string
 {

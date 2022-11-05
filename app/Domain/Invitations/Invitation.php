@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 // Enums
-use DDD\App\Enums\RoleEnum;
+use DDD\Domain\Users\Enums\RoleEnum;
 
 // Traits
 use DDD\App\Traits\HasUuid;
