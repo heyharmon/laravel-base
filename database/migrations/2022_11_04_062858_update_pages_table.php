@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::table('pages', function (Blueprint $table) {
             $table->foreignId('site_id')->nullable(true)->change();
             $table->renameColumn('status', 'http_status');
-            $table->foreignId('organization_id');
-            $table->foreignId('user_id');
+            $table->foreignId('organization_id')->default(1);
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('category_id')->nullable()->after('site_id');
 
             // Foreign constraints
