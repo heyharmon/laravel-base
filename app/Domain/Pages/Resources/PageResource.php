@@ -5,8 +5,9 @@ namespace DDD\Domain\Pages\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 // Resources
-use DDD\Domain\Users\Resources\UserResource;
+use DDD\Domain\Statuses\Resources\StatusResource;
 use DDD\Domain\Categories\Resources\CategoryResource;
+use DDD\Domain\Users\Resources\UserResource;
 
 class PageResource extends JsonResource
 {
@@ -25,6 +26,7 @@ class PageResource extends JsonResource
             'url' => $this->url,
             'wordcount' => $this->wordcount,
             'user' => new UserResource($this->whenLoaded('user')),
+            'status' => new StatusResource($this->whenLoaded('status')),
             'category' => new CategoryResource($this->whenLoaded('category')),
             'created_at' => $this->created_at,
         ];

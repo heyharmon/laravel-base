@@ -22,6 +22,7 @@ use DDD\Http\Organizations\OrganizationCommentController;
 use DDD\Http\Pages\PageController;
 // use DDD\Http\Pages\PageTagController;
 use DDD\Http\Sites\SiteController;
+use DDD\Http\Statuses\StatusController;
 use DDD\Http\Tags\TagController;
 use DDD\Http\Teams\TeamController;
 use DDD\Http\Users\UserController;
@@ -32,23 +33,6 @@ use DDD\Http\Users\UserController;
 Route::post('auth/login', AuthLoginController::class);
 Route::post('auth/register', AuthRegisterController::class);
 Route::post('auth/register/invitation/{invitation:uuid}', AuthRegisterWithInvitationController::class);
-
-// Public - Media Download
-Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
-
-// Public - Invitation
-Route::get('{organization:slug}/invitations/{invitation:uuid}', [InvitationController::class, 'show']);
-
-// Public - Organization - Comments
-Route::prefix('/organizations/{organization:slug}')->group(function() {
-    Route::get('/comments', [OrganizationCommentController::class, 'index']);
-});
-
-// Public - Media
-Route::prefix('/{organization:slug}')->group(function() {
-    Route::get('/media', [MediaController::class, 'index']);
-    Route::get('/media/{media}', [MediaController::class, 'show']);
-});
 
 // Public - Designs
 Route::prefix('{organization:slug}')->group(function() {
@@ -70,6 +54,23 @@ Route::prefix('{organization:slug}')->group(function() {
     });
 });
 
+// Public - Invitations
+Route::get('{organization:slug}/invitations/{invitation:uuid}', [InvitationController::class, 'show']);
+
+// Public - Organization - Comments
+Route::prefix('/organizations/{organization:slug}')->group(function() {
+    Route::get('/comments', [OrganizationCommentController::class, 'index']);
+});
+
+// Public - Media
+Route::prefix('/{organization:slug}')->group(function() {
+    Route::get('/media', [MediaController::class, 'index']);
+    Route::get('/media/{media}', [MediaController::class, 'show']);
+});
+
+// Public - Media Download
+Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
+
 Route::middleware('auth:sanctum')->group(function() {
     // Auth
     Route::post('auth/logout', AuthLogoutController::class);
@@ -84,16 +85,17 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::delete('/{category}', [CategoryController::class, 'destroy']);
     });
 
-    // Users
-    Route::prefix('{organization:slug}')->group(function() {
-        Route::get('users', [UserController::class, 'index']);
-    });
-
     // Invitations
     Route::prefix('{organization:slug}')->group(function() {
         Route::get('invitations', [InvitationController::class, 'index']);
         Route::post('invitations', [InvitationController::class, 'store']);
         Route::delete('invitations/{invitation:uuid}', [InvitationController::class, 'destroy']);
+    });
+
+    // Media
+    Route::prefix('{organization:slug}')->group(function() {
+        Route::post('/media', [MediaController::class, 'store']);
+        Route::delete('media/{media}', [MediaController::class, 'destroy']);
     });
 
     // Organizations
@@ -109,19 +111,18 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::delete('comments/{comment}', [OrganizationCommentController::class, 'destroy']);
     });
 
-    // Media
-    Route::prefix('{organization:slug}')->group(function() {
-        Route::post('/media', [MediaController::class, 'store']);
-        Route::delete('media/{media}', [MediaController::class, 'destroy']);
-    });
+    // Pages
+    Route::prefix('{organization:slug}/pages')->group(function() {
+        Route::get('/', [PageController::class, 'index']);
+        Route::post('/', [PageController::class, 'store']);
+        Route::get('/{page}', [PageController::class, 'show']);
+        Route::put('/{page}', [PageController::class, 'update']);
+        Route::delete('/{page}', [PageController::class, 'destroy']);
 
-    // Teams
-    Route::prefix('{organization:slug}')->group(function() {
-        Route::get('/teams', [TeamController::class, 'index']);
-        Route::post('/teams', [TeamController::class, 'store']);
-        Route::get('/teams/{team:slug}', [TeamController::class, 'show']);
-        Route::put('teams/{team:slug}', [TeamController::class, 'update']);
-        Route::delete('/teams/{team:slug}', [TeamController::class, 'destroy']);
+        // Tagging
+        // route::post('/pages/{page}/tag', [PageTagController::class, 'tag']);
+        // route::post('/pages/{page}/untag', [PageTagController::class, 'untag']);
+        // route::post('/pages/{page}/retag', [PageTagController::class, 'retag']);
     });
 
     // Sites
@@ -145,25 +146,14 @@ Route::middleware('auth:sanctum')->group(function() {
         });
     });
 
-    // Pages
-    Route::prefix('{organization:slug}/pages')->group(function() {
-        Route::get('/', [PageController::class, 'index']);
-        Route::post('/', [PageController::class, 'store']);
-        Route::get('/{page}', [PageController::class, 'show']);
-        Route::put('/{page}', [PageController::class, 'update']);
-        Route::delete('/{page}', [PageController::class, 'destroy']);
-
-        // Tagging
-        // route::post('/pages/{page}/tag', [PageTagController::class, 'tag']);
-        // route::post('/pages/{page}/untag', [PageTagController::class, 'untag']);
-        // route::post('/pages/{page}/retag', [PageTagController::class, 'retag']);
+    // Statuses
+    Route::prefix('statuses')->group(function() {
+        Route::get('/', [StatusController::class, 'index']);
+        Route::post('/', [StatusController::class, 'store']);
+        Route::get('/{status}', [StatusController::class, 'show']);
+        Route::put('/{status}', [StatusController::class, 'update']);
+        Route::delete('/{status}', [StatusController::class, 'destroy']);
     });
-
-    // Public - Designs
-    // Route::prefix('{organization:slug}')->group(function() {
-    //     Route::post('/designs', [DesignController::class, 'store']);
-    //     Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
-    // });
 
     // Tags
     Route::prefix('tags')->group(function() {
@@ -172,5 +162,19 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('/{tag:slug}', [TagController::class, 'show']);
         Route::put('/{tag:slug}', [TagController::class, 'update']);
         Route::delete('/{tag:slug}', [TagController::class, 'destroy']);
+    });
+
+    // Teams
+    Route::prefix('{organization:slug}')->group(function() {
+        Route::get('/teams', [TeamController::class, 'index']);
+        Route::post('/teams', [TeamController::class, 'store']);
+        Route::get('/teams/{team:slug}', [TeamController::class, 'show']);
+        Route::put('teams/{team:slug}', [TeamController::class, 'update']);
+        Route::delete('/teams/{team:slug}', [TeamController::class, 'destroy']);
+    });
+
+    // Users
+    Route::prefix('{organization:slug}')->group(function() {
+        Route::get('users', [UserController::class, 'index']);
     });
 });

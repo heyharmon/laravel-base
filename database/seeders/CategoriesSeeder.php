@@ -20,7 +20,7 @@ class CategoriesSeeder extends Seeder
         $categories = [
             [
                 'id' => 1,
-                'title' => 'Content Categories',
+                'title' => 'Page Categories',
             ],
                 [
                     'id' => 2,
@@ -64,7 +64,7 @@ class CategoriesSeeder extends Seeder
                 ],
             [
                 'id' => 10,
-                'title' => 'Content Types',
+                'title' => 'Page Types',
             ],
                 [
                     'id' => 11,

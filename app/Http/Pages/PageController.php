@@ -21,7 +21,7 @@ class PageController extends Controller
     public function index(Organization $organization)
     {
         $pages = $organization->pages()
-            ->with('category')
+            ->with(['status', 'category'])
             ->latest()
             ->get();
 
@@ -34,19 +34,19 @@ class PageController extends Controller
             $request->validated()
         );
 
-        return new PageResource($page->load(['category', 'user']));
+        return new PageResource($page->load(['status', 'category', 'user']));
     }
 
     public function show(Organization $organization, Page $page)
     {
-        return new PageResource($page->load(['category', 'user']));
+        return new PageResource($page->load(['status', 'category', 'user']));
     }
 
     public function update(Organization $organization, Page $page, PageUpdateRequest $request)
     {
         $page->update($request->validated());
 
-        return new PageResource($page->load(['category', 'user']));
+        return new PageResource($page->load(['status', 'category', 'user']));
     }
 
     public function destroy(Organization $organization, Page $page)

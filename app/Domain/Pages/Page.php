@@ -13,6 +13,7 @@ use DDD\Domain\Sites\Site;
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\App\Traits\BelongsToUser;
 use DDD\App\Traits\IsCategorizable;
+use DDD\App\Traits\IsStatusable;
 use DDD\App\Traits\IsTaggable;
 
 class Page extends Model
@@ -22,15 +23,12 @@ class Page extends Model
         BelongsToOrganization,
         BelongsToUser,
         IsCategorizable,
+        IsStatusable,
         IsTaggable;
 
     protected $guarded = [
         'id',
     ];
-
-    // protected $casts = [
-    //     'meta' => 'json'
-    // ];
 
     public function site()
     {
