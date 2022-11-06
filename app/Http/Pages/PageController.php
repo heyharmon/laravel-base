@@ -5,6 +5,10 @@ namespace DDD\Http\Pages;
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
+// Vendors
+use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
+
 // Models
 use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Pages\Page;
@@ -20,8 +24,14 @@ class PageController extends Controller
 {
     public function index(Organization $organization)
     {
-        $pages = $organization->pages()
+        $pages = QueryBuilder::for(Page::class)
+            ->where('organization_id', $organization->id)
             ->with(['status', 'category'])
+            ->allowedFilters([
+                'status.slug',
+                'category.slug',
+                AllowedFilter::trashed(),
+            ])
             ->latest()
             ->get();
 
