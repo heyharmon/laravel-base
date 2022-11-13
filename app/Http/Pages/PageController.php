@@ -26,10 +26,10 @@ class PageController extends Controller
     {
         $pages = QueryBuilder::for(Page::class)
             ->where('organization_id', $organization->id)
-            ->with(['status', 'category'])
+            ->with(['category', 'status'])
             ->allowedFilters([
-                'status.slug',
                 'category.slug',
+                'status.slug',
                 AllowedFilter::trashed(),
             ])
             ->latest()

@@ -28,6 +28,8 @@ class PageResource extends JsonResource
             'user' => new UserResource($this->whenLoaded('user')),
             'status' => new StatusResource($this->whenLoaded('status')),
             'category' => new CategoryResource($this->whenLoaded('category')),
+            // 'status' => $this->whenLoaded('status', fn() => $this->status->slug),
+            // 'category' => $this->whenLoaded('category', fn() => $this->category->slug),
             'created_at' => $this->created_at,
         ];
     }
