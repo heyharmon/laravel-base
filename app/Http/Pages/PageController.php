@@ -15,7 +15,7 @@ use DDD\Domain\Pages\Page;
 
 // Requests
 use DDD\Domain\Pages\Requests\PageStoreRequest;
-use DDD\Domain\Pages\Requests\PageUpdateRequest;
+// use DDD\Domain\Pages\Requests\PageUpdateRequest;
 
 // Resources
 use DDD\Domain\Pages\Resources\PageResource;
@@ -52,17 +52,25 @@ class PageController extends Controller
         return new PageResource($page->load(['status', 'category', 'user']));
     }
 
-    public function update(Organization $organization, Page $page, PageUpdateRequest $request)
+    public function update(Organization $organization, Request $request)
     {
-        $page->update($request->validated());
+        $pages = Page::whereIn('id', $request->ids)->get();
 
-        return new PageResource($page->load(['status', 'category', 'user']));
+        foreach ($pages as $page) {
+            $page->update($request->except('ids'));
+        }
+
+        return response()->json([
+            'message' => 'Pages successfully updated.',
+        ], 200);
     }
 
-    public function destroy(Organization $organization, Page $page)
+    public function destroy(Organization $organization, Request $request)
     {
-        $page->delete();
+        Page::whereIn('id', $request->ids)->delete();
 
-        return new PageResource($page);
+        return response()->json([
+            'message' => 'Pages successfully deleted.',
+        ], 200);
     }
 }

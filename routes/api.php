@@ -20,7 +20,6 @@ use DDD\Http\Media\MediaDownloadController;
 use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Organizations\OrganizationCommentController;
 use DDD\Http\Pages\PageController;
-use DDD\Http\Pages\PageBatchController;
 // use DDD\Http\Pages\PageTagController;
 use DDD\Http\Sites\SiteController;
 use DDD\Http\Statuses\StatusController;
@@ -117,18 +116,13 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('/', [PageController::class, 'index']);
         Route::post('/', [PageController::class, 'store']);
         Route::get('/{page}', [PageController::class, 'show']);
-        Route::put('/{page}', [PageController::class, 'update']);
-        Route::delete('/{page}', [PageController::class, 'destroy']);
+        Route::put('/', [PageController::class, 'update']);
+        Route::post('/destroy', [PageController::class, 'destroy']);
 
         // Tagging
         // route::post('/pages/{page}/tag', [PageTagController::class, 'tag']);
         // route::post('/pages/{page}/untag', [PageTagController::class, 'untag']);
         // route::post('/pages/{page}/retag', [PageTagController::class, 'retag']);
-    });
-
-    // Pages batch operations
-    Route::prefix('{organization:slug}/pages-batch')->group(function() {
-        Route::post('/', [PageBatchController::class, 'destroy']);
     });
 
     // Sites
