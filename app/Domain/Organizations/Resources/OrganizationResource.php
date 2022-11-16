@@ -6,6 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 // Resources
 use DDD\Domain\Meta\Resources\MetaResource;
+// use DDD\Domain\Crawls\Resources\CrawlResource;
 
 class OrganizationResource extends JsonResource
 {
@@ -22,6 +23,7 @@ class OrganizationResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'meta' => MetaResource::collection($this->whenLoaded('meta')),
+            // 'last_crawl' => new CrawlResource($this->lastCrawl),
         ];
     }
 }

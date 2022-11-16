@@ -10,6 +10,7 @@ use DDD\Http\Auth\AuthRegisterController;
 use DDD\Http\Auth\AuthRegisterWithInvitationController;
 use DDD\Http\Categories\CategoryController;
 use DDD\Http\Crawls\CrawlController;
+use DDD\Http\Crawls\CrawlImportResultsController;
 use DDD\Http\Crawls\CrawlResultsController;
 use DDD\Http\Designs\DesignController;
 use DDD\Http\Designs\DesignMediaController;
@@ -85,6 +86,24 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::delete('/{category}', [CategoryController::class, 'destroy']);
     });
 
+    // Crawls
+    Route::prefix('{organization:slug}/crawls')->group(function() {
+        Route::get('/', [CrawlController::class, 'index']);
+        Route::post('/', [CrawlController::class, 'store']);
+        Route::get('/{crawl}', [CrawlController::class, 'show']);
+        Route::delete('/{crawl}', [CrawlController::class, 'destroy']);
+
+        // Crawl results
+        Route::prefix('/{crawl}')->group(function() {
+            Route::get('/results', [CrawlResultsController::class, 'show']);
+        });
+
+        // Import crawl results
+        Route::prefix('/{crawl}')->group(function() {
+            Route::get('/import', [CrawlImportResultsController::class, 'import']);
+        });
+    });
+
     // Invitations
     Route::prefix('{organization:slug}')->group(function() {
         Route::get('invitations', [InvitationController::class, 'index']);
@@ -132,18 +151,6 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('/{site}', [SiteController::class, 'show']);
         Route::put('/{site}', [SiteController::class, 'update']);
         Route::delete('/{site}', [SiteController::class, 'destroy']);
-
-        // Crawl site
-        Route::prefix('/sites/{site}')->group(function() {
-            Route::get('/crawls', [CrawlController::class, 'index']);
-            Route::post('/crawls', [CrawlController::class, 'store']);
-            Route::get('/crawls/{crawl}', [CrawlController::class, 'show']);
-            Route::delete('/crawls/{crawl}', [CrawlController::class, 'destroy']);
-
-            Route::prefix('/crawls/{crawl}')->group(function() {
-                Route::get('/results', [CrawlResultsController::class, 'show']);
-            });
-        });
     });
 
     // Statuses

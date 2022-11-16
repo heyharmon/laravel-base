@@ -46,7 +46,14 @@ class monitorCrawlStatusJob implements ShouldQueue
 
         $this->crawl->update($crawl);
 
-        if ($crawl['status'] === 'RUNNING') {
+        $monitoredStatuses = [
+            'READY',
+            'RUNNING',
+            'TIMING-OUT',
+            'ABORTING',
+        ];
+
+        if (in_array($crawl['status'], $monitoredStatuses)) {
             dispatch(new self($this->crawl))->delay(5);
         }
     }

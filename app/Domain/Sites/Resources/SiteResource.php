@@ -4,9 +4,6 @@ namespace DDD\Domain\Sites\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-// Resources
-use DDD\Domain\Crawls\Resources\CrawlResource;
-
 class SiteResource extends JsonResource
 {
     /**
@@ -24,7 +21,6 @@ class SiteResource extends JsonResource
             'url' => $this->url,
             'domain' => $this->domain,
             'scheme' => $this->scheme,
-            'last_crawl' => new CrawlResource($this->lastCrawl),
             'launch_info' => $this->launch_info,
         ];
     }

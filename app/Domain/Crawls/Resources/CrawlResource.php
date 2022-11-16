@@ -15,7 +15,12 @@ class CrawlResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
+            'url' => $this->url,
             'status' => $this->status,
+            'total' => $this->total,
+            'handled' => $this->handled,
+            'pending' => $this->pending,
             'created_at' => $this->created_at,
         ];
     }

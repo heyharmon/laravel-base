@@ -8,7 +8,6 @@ use DDD\App\Controllers\Controller;
 
 // Models
 use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Sites\Site;
 use DDD\Domain\Crawls\Crawl;
 
 // Services
@@ -17,22 +16,29 @@ use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
 // Jobs
 use DDD\Domain\Crawls\Jobs\monitorCrawlStatusJob;
 
+// Requests
+use DDD\Domain\Crawls\Requests\CrawlStoreRequest;
+
+// Resources
+use DDD\Domain\Crawls\Resources\CrawlResource;
+
 class CrawlController extends Controller
 {
-    public function index(Organization $organization, Site $site)
+    public function index(Organization $organization)
     {
-        $crawls = $site->crawls;
+        $crawls = $organization->crawls()->latest()->get();
 
-        return response()->json($crawls);
+        return CrawlResource::collection($crawls);
     }
 
-    public function store(Organization $organization, Site $site, Crawler $crawler)
+    public function store(Organization $organization, CrawlStoreRequest $request, Crawler $crawler)
     {
-        $service = $crawler->crawlSite($site->url);
+        $service = $crawler->crawlSite($request->url);
 
-        $crawl = $site->crawls()->create([
-            'crawl_id' => $service['crawl_id'],
-            'queue_id' => $service['queue_id'],
+        $crawl = $organization->crawls()->create([
+            'url'        => $request->url,
+            'crawl_id'   => $service['crawl_id'],
+            'queue_id'   => $service['queue_id'],
             'results_id' => $service['results_id'],
         ]);
 
@@ -40,16 +46,16 @@ class CrawlController extends Controller
 
         return response()->json([
             'message' => 'Crawl in progress',
-            'data' => $crawl,
+            'data' => new CrawlResource($crawl),
         ]);
     }
 
-    public function show(Organization $organization, Site $site, Crawl $crawl)
+    public function show(Organization $organization, Crawl $crawl)
     {
-        return response()->json($crawl);
+        return new CrawlResource($crawl);
     }
 
-    public function destroy(Organization $organization, Site $site, Crawl $crawl, Crawler $crawler)
+    public function destroy(Organization $organization, Crawl $crawl, Crawler $crawler)
     {
         $crawler->abortCrawl($crawl->crawl_id);
 
