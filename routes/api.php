@@ -21,6 +21,7 @@ use DDD\Http\Media\MediaDownloadController;
 use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Organizations\OrganizationCommentController;
 use DDD\Http\Pages\PageController;
+use DDD\Http\Pages\PageExportToCSVController;
 // use DDD\Http\Pages\PageTagController;
 use DDD\Http\Sites\SiteController;
 use DDD\Http\Statuses\StatusController;
@@ -71,6 +72,11 @@ Route::prefix('/{organization:slug}')->group(function() {
 
 // Public - Media Download
 Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
+
+// Public - Pages export to CSV
+Route::prefix('{organization:slug}/pages/export')->group(function() {
+    Route::get('/csv', [PageExportToCSVController::class, 'export']);
+});
 
 Route::middleware('auth:sanctum')->group(function() {
     // Auth
