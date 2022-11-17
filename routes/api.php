@@ -10,8 +10,8 @@ use DDD\Http\Auth\AuthRegisterController;
 use DDD\Http\Auth\AuthRegisterWithInvitationController;
 use DDD\Http\Categories\CategoryController;
 use DDD\Http\Crawls\CrawlController;
-use DDD\Http\Crawls\CrawlImportResultsController;
 use DDD\Http\Crawls\CrawlResultsController;
+use DDD\Http\Crawls\CrawlResultsImportController;
 use DDD\Http\Designs\DesignController;
 use DDD\Http\Designs\DesignMediaController;
 use DDD\Http\Designs\DesignDuplicationController;
@@ -98,9 +98,9 @@ Route::middleware('auth:sanctum')->group(function() {
             Route::get('/results', [CrawlResultsController::class, 'show']);
         });
 
-        // Import crawl results
+        // Crawl results import
         Route::prefix('/{crawl}')->group(function() {
-            Route::get('/import', [CrawlImportResultsController::class, 'import']);
+            Route::get('/import', [CrawlResultsImportController::class, 'import']);
         });
     });
 

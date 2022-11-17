@@ -19,7 +19,7 @@ use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
 // Jobs
 // use DDD\Domain\Crawls\Jobs\monitorCrawlImportStatusJob;
 
-class CrawlImportResultsController extends Controller
+class CrawlResultsImportController extends Controller
 {
     public function import(Organization $organization, Crawl $crawl, Crawler $crawler)
     {
