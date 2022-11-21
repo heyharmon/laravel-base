@@ -20,8 +20,9 @@ class CrawlResultResource extends JsonResource
             'http_status' => $this['#debug']['statusCode'],
             'title' => $this['title'],
             'url' => $this['url'],
-            'loaded_url' => $this['#debug']['loadedUrl'],
-            // 'wordcount' => $this['wordcount'],
+            'wordcount' => $this['wordcount'],
+            'redirected' => $this['redirected'],
+            'requested_url' => $this['requestedUrl'],
         ];
     }
 }

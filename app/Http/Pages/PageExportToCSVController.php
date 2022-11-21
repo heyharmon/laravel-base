@@ -17,7 +17,7 @@ class PageExportToCSVController extends Controller
 {
     public function export(Organization $organization, Request $request)
     {
-        $fileName = 'pages.csv';
+        $fileName = $organization->slug . '-pages.csv';
 
         $pages = $organization->pages()->latest()->get();
 
@@ -29,7 +29,7 @@ class PageExportToCSVController extends Controller
             "Expires"             => "0"
         );
 
-        $columns = array('Title', 'Old URL', 'Category');
+        $columns = array('Title', 'Url', 'Category', 'Wordcount');
 
         $callback = function() use($pages, $columns) {
             $file = fopen('php://output', 'w');
@@ -37,13 +37,15 @@ class PageExportToCSVController extends Controller
 
             foreach ($pages as $page) {
                 $row['Title']  = $page->title;
-                $row['Old URL'] = $page->url;
+                $row['Url'] = $page->url;
                 $row['Category'] = $page->category ? $page->category->title : 'Uncategorized';
+                $row['Wordcount'] = $page->wordcount;
 
                 fputcsv($file, array(
                     $row['Title'],
-                    $row['Old URL'],
+                    $row['Url'],
                     $row['Category'],
+                    $row['Wordcount'],
                 ));
             }
 
