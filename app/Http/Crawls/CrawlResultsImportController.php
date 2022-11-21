@@ -26,11 +26,17 @@ class CrawlResultsImportController extends Controller
         $results = $crawler->getResults($crawl->results_id);
 
         foreach ($results as $result) {
-            $organization->pages()->create([
-                'http_status' => $result['#debug']['statusCode'],
-                'title'       => $result['pageTitle'],
-                'url'         => $result['url'],
-            ]);
+            $organization->pages()->updateOrCreate(
+                ['url' => $result['url']],
+                [
+                    'http_status'   => $result['#debug']['statusCode'],
+                    'title'         => $result['title'],
+                    'url'           => $result['url'],
+                    'wordcount'     => $result['wordcount'],
+                    'redirected'    => $result['redirected'],
+                    'requested_url' => $result['requestedUrl'],
+                ]
+            );
         }
 
         return response()->json([

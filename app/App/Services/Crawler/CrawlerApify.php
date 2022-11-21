@@ -18,7 +18,7 @@ class CrawlerApify implements CrawlerInterface
     {
         try {
             $response = Http::post('https://api.apify.com/v2/actor-tasks/' . $this->cheerioActor . '/runs?token=' . $this->token, [
-                'startUrls' => [['url' => $url]],
+                'startUrls' => [['url' => $url . '/']],
                 'pseudoUrls' => [['purl' => $url . '/[.*?]']]
             ])->json();
 
