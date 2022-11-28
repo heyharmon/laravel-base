@@ -1,21 +1,33 @@
 <?php
 
-namespace Database\Seeders;
+namespace DDD\App\Console\Commands;
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
+use Illuminate\Console\Command;
 
-// Models
 use DDD\Domain\Categories\Category;
 
-class CategoriesSeeder extends Seeder
+class SeedCategories extends Command
 {
     /**
-     * Run the database seeds.
+     * The name and signature of the console command.
      *
-     * @return void
+     * @var string
      */
-    public function run()
+    protected $signature = 'categories:seed';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Seed categories in the database';
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
     {
         $categories = [
             [
