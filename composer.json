@@ -18,6 +18,7 @@
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.0",
         "plank/laravel-metable": "^5.2",
+        "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-query-builder": "^5.0",
         "staudenmeir/laravel-adjacency-list": "^1.0",

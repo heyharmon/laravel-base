@@ -14,7 +14,7 @@ use DDD\Domain\Crawls\Crawl;
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
 
 // Jobs
-use DDD\Domain\Crawls\Jobs\monitorCrawlStatusJob;
+use DDD\Domain\Crawls\Jobs\MonitorCrawlStatusJob;
 
 // Requests
 use DDD\Domain\Crawls\Requests\CrawlStoreRequest;
@@ -42,7 +42,7 @@ class CrawlController extends Controller
             'results_id' => $service['results_id'],
         ]);
 
-        dispatch(new monitorCrawlStatusJob($crawl));
+        dispatch(new MonitorCrawlStatusJob($crawl));
 
         return response()->json([
             'message' => 'Crawl in progress',

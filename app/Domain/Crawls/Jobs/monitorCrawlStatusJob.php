@@ -13,10 +13,13 @@ use Illuminate\Queue\SerializesModels;
 // Domains
 use DDD\Domain\Crawls\Crawl;
 
+// Events
+use DDD\Domain\Crawls\Events\CrawlStatusUpdated;
+
 // Services
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
 
-class monitorCrawlStatusJob implements ShouldQueue
+class MonitorCrawlStatusJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Batchable, Queueable, SerializesModels;
 
@@ -45,6 +48,8 @@ class monitorCrawlStatusJob implements ShouldQueue
         );
 
         $this->crawl->update($crawl);
+
+        CrawlStatusUpdated::dispatch($this->crawl);
 
         $monitoredStatuses = [
             'READY',
