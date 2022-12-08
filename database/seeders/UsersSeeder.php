@@ -25,7 +25,7 @@ class UsersSeeder extends Seeder
                 'role' => 'admin',
                 'organization_id' => 1,
                 'email_verified_at' => now(),
-                'password' => Hash::make('6MyUHw[7(J4pdBBe'),
+                'password' => Hash::make(''),
             ],
             [
                 'name' => 'Derik Krauss',
@@ -33,7 +33,7 @@ class UsersSeeder extends Seeder
                 'role' => 'admin',
                 'organization_id' => 1,
                 'email_verified_at' => now(),
-                'password' => Hash::make('eynwKg8D$7zh[~HS'),
+                'password' => Hash::make(''),
             ]
         ];
 
