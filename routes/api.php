@@ -37,10 +37,10 @@ Route::get('broadcast', function() {
     Test::dispatch('test');
 });
 
-use DDD\Domain\Crawls\Events\CrawlStatusUpdated;
+use DDD\Domain\Crawls\Events\CrawlStatusUpdatedEvent;
 use DDD\Domain\Crawls\Crawl;
 Route::get('broadcast/private', function() {
-    CrawlStatusUpdated::dispatch(Crawl::find(1));
+    CrawlStatusUpdatedEvent::dispatch(Crawl::find(1));
 });
 
 // Public - Auth

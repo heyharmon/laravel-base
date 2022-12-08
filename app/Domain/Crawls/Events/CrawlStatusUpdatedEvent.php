@@ -13,7 +13,7 @@ use Illuminate\Queue\SerializesModels;
 // Domains
 use DDD\Domain\Crawls\Crawl;
 
-class CrawlStatusUpdated implements ShouldBroadcastNow
+class CrawlStatusUpdatedEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

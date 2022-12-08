@@ -14,7 +14,7 @@ use Illuminate\Queue\SerializesModels;
 use DDD\Domain\Crawls\Crawl;
 
 // Events
-use DDD\Domain\Crawls\Events\CrawlStatusUpdated;
+use DDD\Domain\Crawls\Events\CrawlStatusUpdatedEvent;
 
 // Services
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
@@ -49,7 +49,7 @@ class MonitorCrawlStatusJob implements ShouldQueue
 
         $this->crawl->update($crawl);
 
-        CrawlStatusUpdated::dispatch($this->crawl);
+        CrawlStatusUpdatedEvent::dispatch($this->crawl);
 
         $monitoredStatuses = [
             'READY',
