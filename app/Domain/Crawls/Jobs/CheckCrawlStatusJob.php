@@ -19,7 +19,7 @@ use DDD\Domain\Crawls\Events\CrawlStatusUpdatedEvent;
 // Services
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
 
-class MonitorCrawlStatusJob implements ShouldQueue
+class CheckCrawlStatusJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Batchable, Queueable, SerializesModels;
 
