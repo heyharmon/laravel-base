@@ -19,6 +19,18 @@ class CrawlStoreRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'url' => parse_url($this->url, PHP_URL_SCHEME) . '://' . parse_url($this->url, PHP_URL_HOST),
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -26,7 +38,7 @@ class CrawlStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'url' => 'required|string',
+            'url' => 'required|string|url',
         ];
     }
 
