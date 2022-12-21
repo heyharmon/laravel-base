@@ -53,7 +53,25 @@ class CrawlerApify implements CrawlerInterface
     {
         try {
             $request = Http::get('https://api.apify.com/v2/datasets/' . $datasetId . '/items?token=' . $this->token)->json();
-            return $request;
+
+            $collection = collect($request);
+
+            $filtered = $collection->filter(function ($item) {
+                return isset($item['url']);
+            });
+
+            $mapped = $filtered->map(function ($item) {
+                return [
+                    'http_status' => $item['#debug']['statusCode'] ?? null,
+                    'title' => $item['title'] ?? null,
+                    'url' => $item['url'] ?? null,
+                    'wordcount' => $item['wordcount'] ?? null,
+                    'redirected' => $item['redirected'] ?? null,
+                    'requested_url' => $item['requestedUrl'] ?? null,
+                ];
+            });
+
+            return $mapped;
         } catch (RequestException $exception) {
             abort(500, 'Could not get Apify crawl results.');
         }

@@ -13,12 +13,6 @@ use DDD\Domain\Crawls\Crawl;
 // Services
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
 
-// Resources
-// use DDD\Domain\Crawls\Resources\CrawlResultResource;
-
-// Jobs
-// use DDD\Domain\Crawls\Jobs\monitorCrawlImportStatusJob;
-
 class CrawlResultsImportController extends Controller
 {
     public function import(Organization $organization, Crawl $crawl, Crawler $crawler)
@@ -29,12 +23,12 @@ class CrawlResultsImportController extends Controller
             $organization->pages()->updateOrCreate(
                 ['url' => $result['url']],
                 [
-                    'http_status'   => $result['#debug']['statusCode'],
+                    'http_status'   => $result['http_status'],
                     'title'         => $result['title'],
                     'url'           => $result['url'],
                     'wordcount'     => $result['wordcount'],
                     'redirected'    => $result['redirected'],
-                    'requested_url' => $result['requestedUrl'],
+                    'requested_url' => $result['requested_url'],
                 ]
             );
         }

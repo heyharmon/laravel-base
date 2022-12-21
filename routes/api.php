@@ -32,16 +32,16 @@ use DDD\Http\Users\UserController;
 // TODO: Alphabetize routes
 
 // Test - Soketi event
-use DDD\App\Events\Test;
-Route::get('broadcast', function() {
-    Test::dispatch('test');
-});
-
-use DDD\Domain\Crawls\Events\CrawlStatusUpdatedEvent;
-use DDD\Domain\Crawls\Crawl;
-Route::get('broadcast/private', function() {
-    CrawlStatusUpdatedEvent::dispatch(Crawl::find(1));
-});
+// use DDD\App\Events\Test;
+// Route::get('broadcast', function() {
+//     Test::dispatch('test');
+// });
+//
+// use DDD\Domain\Crawls\Events\CrawlStatusUpdatedEvent;
+// use DDD\Domain\Crawls\Crawl;
+// Route::get('broadcast/private', function() {
+//     CrawlStatusUpdatedEvent::dispatch(Crawl::find(1));
+// });
 
 // Public - Auth
 Route::post('auth/login', AuthLoginController::class);
