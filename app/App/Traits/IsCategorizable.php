@@ -8,8 +8,13 @@ use Illuminate\Support\Str;
 // Domains
 use DDD\Domain\Categories\Category;
 
+// Scopes
+use DDD\App\Scopes\CategorizableScopes;
+
 trait IsCategorizable
 {
+    use CategorizableScopes;
+
     protected static function bootIsCategorizable(): void
     {
         static::saving(function (Model $model) {
