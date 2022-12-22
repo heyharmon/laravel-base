@@ -12,6 +12,12 @@ trait IsStatusable
 {
     protected static function bootIsStatusable(): void
     {
+        static::creating(function (Model $model) {
+            if (!$model->status_id) {
+                $model->setStatus('needs-review');
+            }
+        });
+
         static::saving(function (Model $model) {
             if (request()->status) {
                 $model->setStatus(request()->status);

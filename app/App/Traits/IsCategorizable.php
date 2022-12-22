@@ -12,6 +12,12 @@ trait IsCategorizable
 {
     protected static function bootIsCategorizable(): void
     {
+        static::creating(function (Model $model) {
+            if (!$model->category_id) {
+                $model->setCategory('uncategorized');
+            }
+        });
+
         static::saving(function (Model $model) {
             if (request()->category) {
                 $model->setCategory(request()->category);
