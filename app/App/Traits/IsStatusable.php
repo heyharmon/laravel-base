@@ -8,13 +8,8 @@ use Illuminate\Support\Str;
 // Domains
 use DDD\Domain\Statuses\Status;
 
-// Scopes
-use DDD\App\Scopes\StatusableScopes;
-
 trait IsStatusable
 {
-    use StatusableScopes;
-
     protected static function bootIsStatusable(): void
     {
         static::saving(function (Model $model) {
