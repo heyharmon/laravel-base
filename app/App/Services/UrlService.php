@@ -11,11 +11,25 @@ class UrlService
     {
         return $url_parts = [
             'url'    => $url,
+            'clean'  => $this->getClean($url),
             'scheme' => $this->getScheme($url),
             'host'   => $this->getHost($url),
             'domain' => $this->getDomain($url),
             'path'   => $this->getPath($url),
         ];
+    }
+
+    /*
+     * Get clean url
+     *
+     * e.g., "https://google.com?foo=bar#hash" to "https://google.com"
+     */
+    public static function getClean($url)
+    {
+        $clean = explode('?', $url)[0];
+        $clean = explode('#', $clean)[0];
+
+        return $clean;
     }
 
     /*

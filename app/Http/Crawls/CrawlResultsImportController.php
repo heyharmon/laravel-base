@@ -12,6 +12,7 @@ use DDD\Domain\Crawls\Crawl;
 
 // Services
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
+use DDD\App\Services\UrlService;
 
 class CrawlResultsImportController extends Controller
 {
@@ -20,15 +21,15 @@ class CrawlResultsImportController extends Controller
         $results = $crawler->getResults($crawl->results_id);
 
         foreach ($results as $result) {
+            $cleanDestinationUrl = UrlService::getClean($result['destination_url']);
+
             $organization->pages()->updateOrCreate(
-                ['url' => $result['url']],
+                ['url' => $cleanDestinationUrl],
                 [
                     'http_status'   => $result['http_status'],
                     'title'         => $result['title'],
-                    'url'           => $result['url'],
                     'wordcount'     => $result['wordcount'],
-                    'redirected'    => $result['redirected'],
-                    'requested_url' => $result['requested_url'],
+                    'url'           => $cleanDestinationUrl,
                 ]
             );
         }
