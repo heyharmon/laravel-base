@@ -57,17 +57,17 @@ class CrawlerApify implements CrawlerInterface
             $collection = collect($request);
 
             $filtered = $collection->filter(function ($item) {
-                return isset($item['url']);
+                return isset($item['destination_url']);
             });
 
             $mapped = $filtered->map(function ($item) {
                 return [
-                    'http_status' => $item['#debug']['statusCode'] ?? null,
-                    'title' => $item['title'] ?? null,
-                    'url' => $item['url'] ?? null,
-                    'wordcount' => $item['wordcount'] ?? null,
-                    'redirected' => $item['redirected'] ?? null,
-                    'requested_url' => $item['requestedUrl'] ?? null,
+                    'http_status'     => $item['#debug']['statusCode'] ?? null,
+                    'title'           => $item['title'] ?? null,
+                    'wordcount'       => $item['wordcount'] ?? null,
+                    'redirected'      => $item['redirected'] ?? null,
+                    'requested_url'   => $item['requested_url'] ?? null,
+                    'destination_url' => $item['destination_url'],
                 ];
             });
 
