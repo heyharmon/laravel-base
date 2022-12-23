@@ -36,7 +36,7 @@ class PageExportToCSVController extends Controller
             fputcsv($file, $columns);
 
             foreach ($pages as $page) {
-                $row['Title']  = $page->title;
+                $row['Title'] = $page->title;
                 $row['Url'] = $page->url;
                 $row['Category'] = $page->category ? $page->category->title : 'Uncategorized';
                 $row['Wordcount'] = $page->wordcount;
