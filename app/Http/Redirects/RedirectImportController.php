@@ -1,25 +1,20 @@
 <?php
 
-namespace DDD\Http\Crawls;
+namespace DDD\Http\Redirects;
 
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
 // Models
 use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Crawls\Crawl;
+use DDD\Domain\Redirects\Redirect;
 
-// Services
-use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
-use DDD\App\Services\UrlService;
-
-class CrawlResultsImportController extends Controller
+class RedirectImportController extends Controller
 {
     public function import(Organization $organization, Crawl $crawl, Crawler $crawler)
     {
         $results = $crawler->getResults($crawl->results_id);
 
-        // Import clean, unique items as pages
         foreach ($results as $result) {
             $cleanDestinationUrl = UrlService::getClean($result['destination_url']);
 
@@ -32,21 +27,6 @@ class CrawlResultsImportController extends Controller
                     'url'           => $cleanDestinationUrl,
                 ]
             );
-        }
-
-        // Import redirects
-        foreach ($results as $result) {
-            if ($result['redirected']) {
-                $organization->redirects()->updateOrCreate(
-                    ['requested_url' => $result['requested_url']],
-                    [
-                        'title'           => $result['title'],
-                        'requested_url'   => $result['requested_url'],
-                        'destination_url' => $result['destination_url'],
-                        'group'           => 'Old Website'
-                    ]
-                );
-            }
         }
 
         return response()->json([

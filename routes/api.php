@@ -23,6 +23,7 @@ use DDD\Http\Organizations\OrganizationCommentController;
 use DDD\Http\Pages\PageController;
 use DDD\Http\Pages\PageExportToCSVController;
 // use DDD\Http\Pages\PageTagController;
+use DDD\Http\Redirects\RedirectController;
 use DDD\Http\Sites\SiteController;
 use DDD\Http\Statuses\StatusController;
 use DDD\Http\Tags\TagController;
@@ -160,6 +161,15 @@ Route::middleware('auth:sanctum')->group(function() {
         // route::post('/pages/{page}/tag', [PageTagController::class, 'tag']);
         // route::post('/pages/{page}/untag', [PageTagController::class, 'untag']);
         // route::post('/pages/{page}/retag', [PageTagController::class, 'retag']);
+    });
+
+    // Redirects
+    Route::prefix('{organization:slug}/redirects')->group(function() {
+        Route::get('/', [RedirectController::class, 'index']);
+        Route::post('/', [RedirectController::class, 'store']);
+        Route::get('/{redirect}', [RedirectController::class, 'show']);
+        Route::put('/{redirect}', [RedirectController::class, 'update']);
+        Route::delete('/{redirect}', [RedirectController::class, 'destroy']);
     });
 
     // Sites

@@ -75,6 +75,16 @@ class Organization extends Model implements HasMedia
     }
 
     /**
+     * Redirects associated with the organization.
+     *
+     * @return hasMany
+     */
+    public function redirects()
+    {
+        return $this->hasMany('DDD\Domain\Redirects\Redirect');
+    }
+
+    /**
      * Teams that belong to this team.
      *
      * @return hasMany

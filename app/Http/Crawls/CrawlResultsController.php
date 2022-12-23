@@ -3,7 +3,6 @@
 namespace DDD\Http\Crawls;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Client\RequestException;
 use DDD\App\Controllers\Controller;
 
 // Models
