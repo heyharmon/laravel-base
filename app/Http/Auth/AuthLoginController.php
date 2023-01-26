@@ -35,6 +35,7 @@ class AuthLoginController extends Controller
                 'access_token' => $token,
                 'name' => auth()->user()->name,
                 'email' => auth()->user()->email,
+                'role' => auth()->user()->role,
                 'organization' => new OrganizationResource(auth()->user()->organization),
             ]
         ], 200);
