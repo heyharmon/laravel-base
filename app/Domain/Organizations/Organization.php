@@ -83,14 +83,4 @@ class Organization extends Model implements HasMedia
     {
         return $this->hasMany('DDD\Domain\Sites\Site');
     }
-
-    /**
-     * Designs associated with this organization.
-     *
-     * @return hasMany
-     */
-    public function designs()
-    {
-        return $this->hasMany('DDD\Domain\Designs\Design');
-    }
 }

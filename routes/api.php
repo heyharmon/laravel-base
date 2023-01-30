@@ -9,9 +9,6 @@ use DDD\Http\Auth\AuthMeController;
 use DDD\Http\Auth\AuthRegisterController;
 use DDD\Http\Auth\AuthRegisterWithInvitationController;
 use DDD\Http\Categories\CategoryController;
-use DDD\Http\Designs\DesignController;
-use DDD\Http\Designs\DesignMediaController;
-use DDD\Http\Designs\DesignDuplicationController;
 use DDD\Http\Invitations\InvitationController;
 use DDD\Http\Media\MediaController;
 use DDD\Http\Media\MediaDownloadController;
@@ -45,26 +42,6 @@ use DDD\Http\Users\UserController;
 Route::post('auth/login', AuthLoginController::class);
 Route::post('auth/register', AuthRegisterController::class);
 Route::post('auth/register/invitation/{invitation:uuid}', AuthRegisterWithInvitationController::class);
-
-// Public - Designs
-Route::prefix('{organization:slug}')->group(function() {
-    Route::get('/designs', [DesignController::class, 'index']);
-    Route::post('/designs', [DesignController::class, 'store']);
-    Route::get('/designs/{design:uuid}', [DesignController::class, 'show']);
-    Route::put('designs/{design:uuid}', [DesignController::class, 'update']);
-    Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
-    Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
-
-    // Public - Duplicate design
-    Route::prefix('/designs/{design:uuid}')->group(function() {
-        Route::post('/duplicate', [DesignDuplicationController::class, 'duplicate']);
-    });
-
-    // Public - Design media
-    Route::prefix('/designs/{design:uuid}')->group(function() {
-        Route::post('/media', [DesignMediaController::class, 'store']);
-    });
-});
 
 // Public - Invitations
 Route::get('{organization:slug}/invitations/{invitation:uuid}', [InvitationController::class, 'show']);
