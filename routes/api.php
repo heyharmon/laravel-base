@@ -60,11 +60,6 @@ Route::prefix('/{organization:slug}')->group(function() {
 // Public - Media Download
 Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
 
-// Public - Pages export to CSV
-Route::prefix('{organization:slug}/pages/export')->group(function() {
-    Route::get('/csv', [PageExportToCSVController::class, 'export']);
-});
-
 Route::middleware('auth:sanctum')->group(function() {
     // Auth
     Route::post('auth/logout', AuthLogoutController::class);
@@ -103,20 +98,6 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::prefix('/organizations/{organization:slug}')->group(function() {
         Route::post('/comments', [OrganizationCommentController::class, 'store']);
         Route::delete('comments/{comment}', [OrganizationCommentController::class, 'destroy']);
-    });
-
-    // Pages
-    Route::prefix('{organization:slug}/pages')->group(function() {
-        Route::get('/', [PageController::class, 'index']);
-        Route::post('/', [PageController::class, 'store']);
-        Route::get('/{page}', [PageController::class, 'show']);
-        Route::put('/', [PageController::class, 'update']);
-        Route::post('/destroy', [PageController::class, 'destroy']);
-
-        // Tagging
-        // route::post('/pages/{page}/tag', [PageTagController::class, 'tag']);
-        // route::post('/pages/{page}/untag', [PageTagController::class, 'untag']);
-        // route::post('/pages/{page}/retag', [PageTagController::class, 'retag']);
     });
 
     // Redirects

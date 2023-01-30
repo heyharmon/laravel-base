@@ -25,14 +25,4 @@ class Site extends Model
     protected $casts = [
         'launch_info' => LaunchInfo::class,
     ];
-
-    /**
-     * Get the pages associated with this site.
-     *
-     * @return hasMany
-     */
-    public function pages()
-    {
-        return $this->hasMany('DDD\Domain\Pages\Page');
-    }
 }

@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
             OrganizationsSeeder::class,
             UsersSeeder::class,
             SitesSeeder::class,
-            PagesSeeder::class,
             TagsSeeder::class,
             StatusesSeeder::class,
         ]);
