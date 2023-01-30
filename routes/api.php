@@ -14,29 +14,11 @@ use DDD\Http\Media\MediaController;
 use DDD\Http\Media\MediaDownloadController;
 use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Organizations\OrganizationCommentController;
-use DDD\Http\Pages\PageController;
-use DDD\Http\Pages\PageExportToCSVController;
-// use DDD\Http\Pages\PageTagController;
-use DDD\Http\Redirects\RedirectController;
 use DDD\Http\Sites\SiteController;
 use DDD\Http\Statuses\StatusController;
 use DDD\Http\Tags\TagController;
 use DDD\Http\Teams\TeamController;
 use DDD\Http\Users\UserController;
-
-// TODO: Alphabetize routes
-
-// Test - Soketi event
-// use DDD\App\Events\Test;
-// Route::get('broadcast', function() {
-//     Test::dispatch('test');
-// });
-//
-// use DDD\Domain\Crawls\Events\CrawlStatusUpdatedEvent;
-// use DDD\Domain\Crawls\Crawl;
-// Route::get('broadcast/private', function() {
-//     CrawlStatusUpdatedEvent::dispatch(Crawl::find(1));
-// });
 
 // Public - Auth
 Route::post('auth/login', AuthLoginController::class);
@@ -98,15 +80,6 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::prefix('/organizations/{organization:slug}')->group(function() {
         Route::post('/comments', [OrganizationCommentController::class, 'store']);
         Route::delete('comments/{comment}', [OrganizationCommentController::class, 'destroy']);
-    });
-
-    // Redirects
-    Route::prefix('{organization:slug}/redirects')->group(function() {
-        Route::get('/', [RedirectController::class, 'index']);
-        Route::post('/', [RedirectController::class, 'store']);
-        Route::get('/{redirect}', [RedirectController::class, 'show']);
-        Route::put('/{redirect}', [RedirectController::class, 'update']);
-        Route::delete('/{redirect}', [RedirectController::class, 'destroy']);
     });
 
     // Sites

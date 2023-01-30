@@ -6,7 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 // Resources
 use DDD\Domain\Meta\Resources\MetaResource;
-// use DDD\Domain\Crawls\Resources\CrawlResource;
 
 class OrganizationResource extends JsonResource
 {
