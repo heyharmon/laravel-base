@@ -12,15 +12,13 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 // Traits
 use DDD\App\Traits\HasComments;
 use DDD\App\Traits\HasSlug;
-use DDD\App\Traits\HasMeta;
 
 class Organization extends Model implements HasMedia
 {
     use HasFactory,
         InteractsWithMedia,
         HasComments,
-        HasSlug,
-        HasMeta;
+        HasSlug;
 
     protected $guarded = ['id', 'slug'];
 
