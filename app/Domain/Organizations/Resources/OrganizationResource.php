@@ -23,7 +23,6 @@ class OrganizationResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'meta' => MetaResource::collection($this->whenLoaded('meta')),
-            // 'last_crawl' => new CrawlResource($this->lastCrawl),
         ];
     }
 }

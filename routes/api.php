@@ -105,24 +105,6 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::delete('/{category:slug}', [CategoryController::class, 'destroy']);
     });
 
-    // Crawls
-    Route::prefix('{organization:slug}/crawls')->group(function() {
-        Route::get('/', [CrawlController::class, 'index']);
-        Route::post('/', [CrawlController::class, 'store']);
-        Route::get('/{crawl}', [CrawlController::class, 'show']);
-        Route::delete('/{crawl}', [CrawlController::class, 'destroy']);
-
-        // Crawl results
-        Route::prefix('/{crawl}')->group(function() {
-            Route::get('/results', [CrawlResultsController::class, 'show']);
-        });
-
-        // Crawl results import
-        Route::prefix('/{crawl}')->group(function() {
-            Route::get('/import', [CrawlResultsImportController::class, 'import']);
-        });
-    });
-
     // Invitations
     Route::prefix('{organization:slug}')->group(function() {
         Route::get('invitations', [InvitationController::class, 'index']);

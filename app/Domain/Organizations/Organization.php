@@ -25,26 +25,6 @@ class Organization extends Model implements HasMedia
     protected $guarded = ['id', 'slug'];
 
     /**
-     * Crawls associated with the organization.
-     *
-     * @return hasMany
-     */
-    public function crawls()
-    {
-        return $this->hasMany('DDD\Domain\Crawls\Crawl');
-    }
-
-    /**
-     * Last crawl associated with the organization.
-     *
-     * @return model
-     */
-    public function lastCrawl()
-    {
-        return $this->hasOne('DDD\Domain\Crawls\Crawl')->latest();
-    }
-
-    /**
      * Users associated with the organization.
      *
      * @return hasMany
