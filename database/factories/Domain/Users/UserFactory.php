@@ -16,7 +16,7 @@ class UserFactory extends Factory
      *
      * @var string
      */
-    protected $model = \DDD\Domain\Users\User::class;
+    protected $model = \DDD\Domain\Base\Users\User::class;
 
     /**
      * Define the model's default state.
@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
-            'organization_id' => factory(\DDD\Domain\Organizations\Organization::class)
+            'organization_id' => factory(\DDD\Domain\Base\Organizations\Organization::class)
         ];
     }
 

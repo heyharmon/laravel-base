@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \DDD\Domain\Users\User::factory(1)->create();
+        // \DDD\Domain\Base\Users\User::factory(1)->create();
 
         $this->call([
             // CategoriesSeeder::class,

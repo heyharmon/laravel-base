@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
 // Models
-use DDD\Domain\Categories\Category;
+use DDD\Domain\Base\Categories\Category;
 
 class CategoriesSeeder extends Seeder
 {

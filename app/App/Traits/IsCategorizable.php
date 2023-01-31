@@ -5,8 +5,8 @@ namespace DDD\App\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-// Domains
-use DDD\Domain\Categories\Category;
+// Models
+use DDD\Domain\Base\Categories\Category;
 
 trait IsCategorizable
 {

@@ -28,7 +28,7 @@ return [
     /*
      * The fully qualified class name of the media model.
      */
-    'media_model' => DDD\Domain\Media\Media::class,
+    'media_model' => DDD\Domain\Base\Media\Media::class,
 
     /*
      * The fully qualified class name of the model used for temporary uploads.

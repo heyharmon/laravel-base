@@ -82,7 +82,7 @@ The Token Authentication allows you to issue API tokens / personal access tokens
 After you install, migrate and seed your database, open Tinker and generate a personal access token:
 ```
 php artisan tinker
-$user = DDD\Domain\Users\User::find(1);
+$user = DDD\Domain\Base\Users\User::find(1);
 $user->createToken('test');
 ```
 

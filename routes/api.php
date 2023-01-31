@@ -3,22 +3,22 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use DDD\Http\Auth\AuthLoginController;
-use DDD\Http\Auth\AuthLogoutController;
-use DDD\Http\Auth\AuthMeController;
-use DDD\Http\Auth\AuthRegisterController;
-use DDD\Http\Auth\AuthRegisterWithInvitationController;
-use DDD\Http\Categories\CategoryController;
-use DDD\Http\Invitations\InvitationController;
-use DDD\Http\Media\MediaController;
-use DDD\Http\Media\MediaDownloadController;
-use DDD\Http\Organizations\OrganizationController;
-use DDD\Http\Organizations\OrganizationCommentController;
-use DDD\Http\Sites\SiteController;
-use DDD\Http\Statuses\StatusController;
-use DDD\Http\Tags\TagController;
-use DDD\Http\Teams\TeamController;
-use DDD\Http\Users\UserController;
+use DDD\Http\Base\Auth\AuthLoginController;
+use DDD\Http\Base\Auth\AuthLogoutController;
+use DDD\Http\Base\Auth\AuthMeController;
+use DDD\Http\Base\Auth\AuthRegisterController;
+use DDD\Http\Base\Auth\AuthRegisterWithInvitationController;
+use DDD\Http\Base\Categories\CategoryController;
+use DDD\Http\Base\Invitations\InvitationController;
+use DDD\Http\Base\Media\MediaController;
+use DDD\Http\Base\Media\MediaDownloadController;
+use DDD\Http\Base\Organizations\OrganizationController;
+use DDD\Http\Base\Organizations\OrganizationCommentController;
+use DDD\Http\Base\Sites\SiteController;
+use DDD\Http\Base\Statuses\StatusController;
+use DDD\Http\Base\Tags\TagController;
+use DDD\Http\Base\Teams\TeamController;
+use DDD\Http\Base\Users\UserController;
 
 // Public - Auth
 Route::post('auth/login', AuthLoginController::class);

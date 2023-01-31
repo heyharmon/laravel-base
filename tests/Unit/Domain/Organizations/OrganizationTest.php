@@ -5,10 +5,10 @@ namespace Tests\Unit\Domain\Organizations;
 use Tests\TestCase;
 
 // Models
-use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Users\User;
-use DDD\Domain\Teams\Team;
-use DDD\Domain\Files\File;
+use DDD\Domain\Base\Organizations\Organization;
+use DDD\Domain\Base\Users\User;
+use DDD\Domain\Base\Teams\Team;
+use DDD\Domain\Base\Media\Media;
 
 class OrganizationTest extends TestCase
 {
@@ -54,12 +54,12 @@ class OrganizationTest extends TestCase
     }
 
     /** @test */
-    public function it_has_many_files()
+    public function it_has_many_media()
     {
         $organization = Organization::factory()
-            ->has(File::factory())
+            ->has(Media::factory())
             ->create();
 
-        $this->assertInstanceOf(File::class, $organization->files->first());
+        $this->assertInstanceOf(Media::class, $organization->media->first());
     }
 }

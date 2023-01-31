@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
 // Models
-use DDD\Domain\Statuses\Status;
+use DDD\Domain\Base\Statuses\Status;
 
 class StatusesSeeder extends Seeder
 {

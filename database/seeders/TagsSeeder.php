@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
 // Models
-use DDD\Domain\Tags\Tag;
+use DDD\Domain\Base\Tags\Tag;
 
 class TagsSeeder extends Seeder
 {

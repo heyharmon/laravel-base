@@ -4,7 +4,8 @@ namespace DDD\App\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 
-use DDD\Domain\Comments\Comment;
+// Models
+use DDD\Domain\Base\Comments\Comment;
 
 trait HasComments
 {

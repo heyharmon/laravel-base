@@ -7,8 +7,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 
-// Domains
-use DDD\Domain\Tags\Tag;
+// Models
+use DDD\Domain\Base\Tags\Tag;
 
 // Scopes
 use DDD\App\Scopes\TaggableScopes;

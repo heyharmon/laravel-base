@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 
 // Models
-use DDD\Domain\Sites\Site;
+use DDD\Domain\Base\Sites\Site;
 
 class SitesSeeder extends Seeder
 {

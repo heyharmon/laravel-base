@@ -14,7 +14,7 @@ class OrganizationFactory extends Factory
      *
      * @var string
      */
-    protected $model = \DDD\Domain\Organizations\Organization::class;
+    protected $model = \DDD\Domain\Base\Organizations\Organization::class;
 
     /**
      * Define the model's default state.
