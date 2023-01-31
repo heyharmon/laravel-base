@@ -1,14 +1,13 @@
+# Laravel Base
 
-# Build Api
-
-A BloomCU build api.
+A Laravel SaaS starter.
 
 ## Install Locally
 
 **Step 1:** Clone this repository
 
 ```
-git clone https://github.com/bloomcu/build-api.git
+git clone https://github.com/heyharmon/laravel-starter.git
 ```
 
 <br>
@@ -16,7 +15,7 @@ git clone https://github.com/bloomcu/build-api.git
 **Step 2:** Change directory into application
 
 ```
-cd build-api
+cd 'app-name'
 ```
 
 <br>
@@ -35,7 +34,7 @@ composer install
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=build-api
+DB_DATABASE=app-name
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -50,13 +49,11 @@ php artisan key:generate
 
 <br>
 
-**Step 6:** Migrate and seed database with a user
+**Step 6:** Migrate and seed database
 
 ```php
 php artisan migrate --seed
 ```
-> This users' credentials will be:
-`email: test@email.com, password: password`
 
 <br>
 
@@ -71,9 +68,9 @@ Then visit: http://127.0.0.1:8000
 
 > Using Valet, run:
 ```
-valet link build-api
+valet link app-name
 ```
-Then visit: http://build-api.test
+Then visit: http://app-name.test
 
 ## Get started
 
