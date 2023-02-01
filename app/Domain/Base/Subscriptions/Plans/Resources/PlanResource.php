@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Domain\Base\Billing\Plans\Resources;
+namespace DDD\Domain\Base\Subscriptions\Plans\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

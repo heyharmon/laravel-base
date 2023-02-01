@@ -3,16 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// Auth
 use DDD\Http\Base\Auth\AuthLoginController;
 use DDD\Http\Base\Auth\AuthLogoutController;
 use DDD\Http\Base\Auth\AuthMeController;
 use DDD\Http\Base\Auth\AuthRegisterController;
 use DDD\Http\Base\Auth\AuthRegisterWithInvitationController;
-
-// Billing
-use DDD\Http\Base\Billing\Plans\PlanController;
-
 use DDD\Http\Base\Categories\CategoryController;
 use DDD\Http\Base\Invitations\InvitationController;
 use DDD\Http\Base\Media\MediaController;
@@ -21,6 +16,7 @@ use DDD\Http\Base\Organizations\OrganizationController;
 use DDD\Http\Base\Organizations\OrganizationCommentController;
 use DDD\Http\Base\Sites\SiteController;
 use DDD\Http\Base\Statuses\StatusController;
+use DDD\Http\Base\Subscriptions\Plans\PlanController;
 use DDD\Http\Base\Tags\TagController;
 use DDD\Http\Base\Teams\TeamController;
 use DDD\Http\Base\Users\UserController;
@@ -52,8 +48,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post('auth/logout', AuthLogoutController::class);
     Route::get('auth/me', AuthMeController::class);
 
-    // Billing
-    Route::prefix('billing')->group(function() {
+    // Subscriptions
+    Route::prefix('subscriptions')->group(function() {
         Route::get('/plans', [PlanController::class, 'index']);
     });
 

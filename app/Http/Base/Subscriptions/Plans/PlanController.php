@@ -1,15 +1,15 @@
 <?php
 
-namespace DDD\Http\Base\Billing\Plans;
+namespace DDD\Http\Base\Subscriptions\Plans;
 
 use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
 
 // Models
-use DDD\Domain\Base\Billing\Plans\Plan;
+use DDD\Domain\Base\Subscriptions\Plans\Plan;
 
 // Resources
-use DDD\Domain\Base\Billing\Plans\Resources\PlanResource;
+use DDD\Domain\Base\Subscriptions\Plans\Resources\PlanResource;
 
 class PlanController extends Controller
 {
