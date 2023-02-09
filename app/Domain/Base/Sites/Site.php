@@ -3,7 +3,7 @@
 namespace DDD\Domain\Base\Sites;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 // Casts
@@ -15,7 +15,7 @@ use DDD\App\Traits\BelongsToOrganization;
 class Site extends Model
 {
     use HasFactory,
-        SoftDeletes,
+        // SoftDeletes,
         BelongsToOrganization;
 
     protected $guarded = [
