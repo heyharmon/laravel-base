@@ -16,4 +16,13 @@ class Plan extends Model
     protected $table = 'subscription_plans';
 
     protected $guarded = ['id'];
+
+    protected $casts = [
+         'limits' => 'json',
+     ];
+
+    public static function free()
+    {
+        return static::where('buyable', false)->first();
+    }
 }

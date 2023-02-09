@@ -14,7 +14,7 @@ use DDD\Domain\Base\Subscriptions\Plans\Resources\PlanResource;
 class PlanController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * List plans.
      */
     public function index()
     {

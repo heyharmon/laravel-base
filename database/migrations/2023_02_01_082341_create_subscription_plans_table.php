@@ -17,7 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('stripe_id');
+            $table->integer('price');
+            $table->string('interval')->nullable();
+            $table->boolean('buyable')->default(true);
+            $table->json('limits')->nullable();
+            $table->string('stripe_price_id')->nullable();
             $table->timestamps();
         });
     }

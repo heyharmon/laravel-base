@@ -18,7 +18,9 @@ class PlanResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
-            'stripe_id' => $this->stripe_id,
+            'price' => '$' . number_format($this->price / 100),
+            'interval' => $this->interval,
+            'limits' => $this->limits,
         ];
     }
 }
