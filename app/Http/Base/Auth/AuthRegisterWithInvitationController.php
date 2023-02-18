@@ -39,6 +39,7 @@ class AuthRegisterWithInvitationController extends Controller
                 'access_token' => $token,
                 'name' => $user->name,
                 'email' => $user->email,
+                'role' => $user->role,
                 'organization' => new OrganizationResource($user->organization)
             ]
         ], 200);
