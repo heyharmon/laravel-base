@@ -1,10 +1,10 @@
 <?php
 
-namespace DDD\Domain\Base\Categories\Resources;
+namespace DDD\Domain\Base\Subscriptions\Plans\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryResource extends JsonResource
+class PlanResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,10 +15,12 @@ class CategoryResource extends JsonResource
     public function toArray($request)
     {
         return [
-            // 'id' => $this->id,
+            'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
-            'children' => CategoryResource::collection($this->whenLoaded('children'))
+            'price' => '$' . number_format($this->price / 100),
+            'interval' => $this->interval,
+            'limits' => $this->limits,
         ];
     }
 }
