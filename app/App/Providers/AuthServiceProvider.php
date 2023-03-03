@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         ResetPassword::createUrlUsing(function ($user, string $token) {
-            return env('SPA_URL') . '/password?token=' . $token;
+            return env('APP_UI_URL') . '/password?token=' . $token;
         });
     }
 }

@@ -8,6 +8,7 @@ use DDD\Http\Base\Auth\AuthLogoutController;
 use DDD\Http\Base\Auth\AuthMeController;
 use DDD\Http\Base\Auth\AuthRegisterController;
 use DDD\Http\Base\Auth\AuthRegisterWithInvitationController;
+use DDD\Http\Base\Auth\AuthRequestPasswordResetController;
 use DDD\Http\Base\Categories\CategoryController;
 use DDD\Http\Base\Invitations\InvitationController;
 use DDD\Http\Base\Media\MediaController;
@@ -28,6 +29,7 @@ use DDD\Http\Base\Users\UserController;
 Route::post('auth/login', AuthLoginController::class);
 Route::post('auth/register', AuthRegisterController::class);
 Route::post('auth/register/invitation/{invitation:uuid}', AuthRegisterWithInvitationController::class);
+Route::post('auth/password/request-reset', AuthRequestPasswordResetController::class);
 
 // Public - Invitations
 Route::get('{organization:slug}/invitations/{invitation:uuid}', [InvitationController::class, 'show']);
