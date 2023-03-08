@@ -5,8 +5,9 @@ namespace DDD\Http\Base\Auth\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rules\Password;
 
-class AuthLoginRequest extends FormRequest
+class AuthPasswordResetRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -16,8 +17,19 @@ class AuthLoginRequest extends FormRequest
     public function rules()
     {
         return [
+            'token' => ['required', 'string'],
             'email' => ['required', 'email:rfc,strict', 'max:255'],
-            'password' => ['required', 'string'],
+            'password' => [
+                'required',
+                'string',
+                'confirmed',
+                Password::min(12)
+                    ->mixedCase()
+                    ->letters()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(),
+            ],
         ];
     }
 

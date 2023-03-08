@@ -7,13 +7,13 @@ use DDD\App\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
 
 // Requests
-use DDD\Http\Base\Auth\Requests\AuthRequestPasswordResetRequest;
+use DDD\Http\Base\Auth\Requests\AuthPasswordForgotRequest;
 
-class AuthRequestPasswordResetController extends Controller
+class AuthPasswordForgotController extends Controller
 {
-    public function __invoke(AuthRequestPasswordResetRequest $request)
+    public function __invoke(AuthPasswordForgotRequest $request)
     {
-        $resetStatus = Password::sendResetLink([
+        Password::sendResetLink([
             'email' => $request->email
         ]);
 
