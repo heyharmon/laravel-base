@@ -1,8 +1,8 @@
 <?php
 
-namespace DDD\App\Services;
+namespace DDD\App\Helpers;
 
-class UrlService
+class UrlHelpers
 {
     /*
      * Get all url parts

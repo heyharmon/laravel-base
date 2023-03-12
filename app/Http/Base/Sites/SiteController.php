@@ -10,7 +10,7 @@ use DDD\Domain\Base\Organizations\Organization;
 use DDD\Domain\Base\Sites\Site;
 
 // Services
-use DDD\App\Services\UrlService;
+use DDD\App\Helpers\UrlHelpers;
 
 // Requests
 use DDD\Domain\Base\Sites\Requests\SiteStoreRequest;
@@ -34,7 +34,7 @@ class SiteController extends Controller
             'title' => $request->title,
             'url' => $request->url,
             'domain' => $request->domain, // TODO: Do we need this? If so, make into trait and cast so all url parts are updated
-            'scheme' => UrlService::getScheme($request->domain), // TODO: Do we need this?
+            'scheme' => UrlHelpers::getScheme($request->domain), // TODO: Do we need this?
             'launch_info' => $request->launch_info,
         ]);
 
