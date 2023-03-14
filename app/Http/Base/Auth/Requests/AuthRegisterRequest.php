@@ -19,6 +19,7 @@ class AuthRegisterRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email:rfc,strict', 'max:255', 'unique:users', 'unique:invitations'],
+            'organization_title' => ['required', 'string', 'max:255'],
             'password' => [
                 'required',
                 'string',
