@@ -50,45 +50,62 @@ Route::prefix('/{organization:slug}')->group(function() {
 // Public - Media Download
 Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
 
+// TODO: CREATE AN ENDPOINT FOR LAUNCH DASHBOARD
 // Public - Sites
-Route::prefix('{organization:slug}/sites')->group(function() {
-    Route::get('/{site}', [SiteController::class, 'show']);
-});
+// Route::prefix('{organization:slug}/sites')->group(function() {
+//     Route::get('/{site}', [SiteController::class, 'show']);
+// });
 
 Route::middleware('auth:sanctum')->group(function() {
     // Auth
     Route::post('auth/logout', AuthLogoutController::class);
     Route::get('auth/me', AuthMeController::class);
 
-    // Subscriptions
-    Route::prefix('{organization:slug}/subscriptions')->group(function() {
-        Route::get('/intent', IntentController::class);
-        Route::get('/plans', [PlanController::class, 'index']);
-        Route::get('/plans/availability', PlanSwapAvailabilityController::class);
-        Route::post('/subscriptions', [SubscriptionController::class, 'store']);
-        Route::patch('/subscriptions', [SubscriptionController::class, 'update']);
-    });
+    Route::prefix('{organization:slug}')->middleware(['organization'])->scopeBindings()->group(function() {
+        // Subscriptions
+        Route::prefix('subscriptions')->group(function() {
+            Route::get('/intent', IntentController::class);
+            Route::get('/plans', [PlanController::class, 'index']);
+            Route::get('/plans/availability', PlanSwapAvailabilityController::class);
+            Route::post('/subscriptions', [SubscriptionController::class, 'store']);
+            Route::patch('/subscriptions', [SubscriptionController::class, 'update']);
+        });
 
-    // Categories
-    Route::prefix('categories')->group(function() {
-        Route::get('/', [CategoryController::class, 'index']);
-        Route::post('/', [CategoryController::class, 'store']);
-        Route::get('/{category:slug}', [CategoryController::class, 'show']);
-        Route::put('/{category:slug}', [CategoryController::class, 'update']);
-        Route::delete('/{category:slug}', [CategoryController::class, 'destroy']);
-    });
+        // Invitations
+        Route::prefix('invitations')->group(function() {
+            Route::get('/', [InvitationController::class, 'index']);
+            Route::post('/', [InvitationController::class, 'store']);
+            Route::delete('/{invitation:uuid}', [InvitationController::class, 'destroy']);
+        });
 
-    // Invitations
-    Route::prefix('{organization:slug}')->group(function() {
-        Route::get('invitations', [InvitationController::class, 'index']);
-        Route::post('invitations', [InvitationController::class, 'store']);
-        Route::delete('invitations/{invitation:uuid}', [InvitationController::class, 'destroy']);
-    });
+        // Media
+        Route::prefix('media')->group(function() {
+            Route::post('/', [MediaController::class, 'store']);
+            Route::delete('/{media}', [MediaController::class, 'destroy']);
+        });
 
-    // Media
-    Route::prefix('{organization:slug}')->group(function() {
-        Route::post('/media', [MediaController::class, 'store']);
-        Route::delete('media/{media}', [MediaController::class, 'destroy']);
+        // Sites
+        Route::prefix('sites')->group(function() {
+            Route::get('/', [SiteController::class, 'index']);
+            Route::post('/', [SiteController::class, 'store']);
+            Route::get('/{site}', [SiteController::class, 'show']);
+            Route::put('/{site}', [SiteController::class, 'update']);
+            Route::delete('/{site}', [SiteController::class, 'destroy']);
+        });
+
+        // Teams
+        Route::prefix('teams')->group(function() {
+            Route::get('/', [TeamController::class, 'index']);
+            Route::post('/', [TeamController::class, 'store']);
+            Route::get('/{team:slug}', [TeamController::class, 'show']);
+            Route::put('/{team:slug}', [TeamController::class, 'update']);
+            Route::delete('/{team:slug}', [TeamController::class, 'destroy']);
+        });
+
+        // Users
+        Route::prefix('users')->group(function() {
+            Route::get('/', [UserController::class, 'index']);
+        });
     });
 
     // Organizations
@@ -104,12 +121,13 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::delete('comments/{comment}', [OrganizationCommentController::class, 'destroy']);
     });
 
-    // Sites
-    Route::prefix('{organization:slug}/sites')->group(function() {
-        Route::get('/', [SiteController::class, 'index']);
-        Route::post('/', [SiteController::class, 'store']);
-        Route::put('/{site}', [SiteController::class, 'update']);
-        Route::delete('/{site}', [SiteController::class, 'destroy']);
+    // Categories
+    Route::prefix('categories')->group(function() {
+        Route::get('/', [CategoryController::class, 'index']);
+        Route::post('/', [CategoryController::class, 'store']);
+        Route::get('/{category:slug}', [CategoryController::class, 'show']);
+        Route::put('/{category:slug}', [CategoryController::class, 'update']);
+        Route::delete('/{category:slug}', [CategoryController::class, 'destroy']);
     });
 
     // Statuses
@@ -128,19 +146,5 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('/{tag:slug}', [TagController::class, 'show']);
         Route::put('/{tag:slug}', [TagController::class, 'update']);
         Route::delete('/{tag:slug}', [TagController::class, 'destroy']);
-    });
-
-    // Teams
-    Route::prefix('{organization:slug}')->group(function() {
-        Route::get('/teams', [TeamController::class, 'index']);
-        Route::post('/teams', [TeamController::class, 'store']);
-        Route::get('/teams/{team:slug}', [TeamController::class, 'show']);
-        Route::put('teams/{team:slug}', [TeamController::class, 'update']);
-        Route::delete('/teams/{team:slug}', [TeamController::class, 'destroy']);
-    });
-
-    // Users
-    Route::prefix('{organization:slug}')->group(function() {
-        Route::get('users', [UserController::class, 'index']);
     });
 });
