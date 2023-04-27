@@ -11,18 +11,18 @@ use DDD\Domain\Base\Subscriptions\Plans\Plan;
 // Vendors
 use Laravel\Cashier\Billable;
 use Laravel\Cashier\Subscription;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
+// use Spatie\MediaLibrary\HasMedia;
+// use Spatie\MediaLibrary\InteractsWithMedia;
 
 // Traits
 use DDD\App\Traits\HasComments;
 use DDD\App\Traits\HasSlug;
 
-class Organization extends Model implements HasMedia
+class Organization extends Model
 {
     use HasFactory,
         Billable,
-        InteractsWithMedia,
+        // InteractsWithMedia,
         HasComments,
         HasSlug;
 
@@ -46,6 +46,16 @@ class Organization extends Model implements HasMedia
     public function invitations()
     {
         return $this->hasMany('DDD\Domain\Base\Invitations\Invitation');
+    }
+
+    /**
+     * Files associated with the organization.
+     *
+     * @return hasMany
+     */
+    public function files()
+    {
+        return $this->hasMany('DDD\Domain\Base\Files\File');
     }
 
     /**

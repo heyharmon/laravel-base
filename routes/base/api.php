@@ -11,6 +11,8 @@ use DDD\Http\Base\Auth\AuthRegisterWithInvitationController;
 use DDD\Http\Base\Auth\AuthPasswordForgotController;
 use DDD\Http\Base\Auth\AuthPasswordResetController;
 use DDD\Http\Base\Categories\CategoryController;
+use DDD\Http\Base\Files\FileController;
+use DDD\Http\Base\Files\FileDownloadController;
 use DDD\Http\Base\Invitations\InvitationController;
 use DDD\Http\Base\Media\MediaController;
 use DDD\Http\Base\Media\MediaDownloadController;
@@ -41,6 +43,15 @@ Route::prefix('/organizations/{organization:slug}')->group(function() {
     Route::get('/comments', [OrganizationCommentController::class, 'index']);
 });
 
+// Public - Files
+Route::prefix('/{organization:slug}')->group(function() {
+    Route::get('/files', [FileController::class, 'index']);
+    Route::get('/files/{file}', [FileController::class, 'show']);
+});
+
+// Public - Files Download
+Route::get('/files/{file}', [FileDownloadController::class, 'download']);
+
 // Public - Media
 Route::prefix('/{organization:slug}')->group(function() {
     Route::get('/media', [MediaController::class, 'index']);
@@ -61,7 +72,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post('auth/logout', AuthLogoutController::class);
     Route::get('auth/me', AuthMeController::class);
 
-    Route::prefix('{organization:slug}')->middleware(['organization'])->scopeBindings()->group(function() {
+    // Route::prefix('{organization:slug}')->middleware(['organization'])->scopeBindings()->group(function() {
+    Route::prefix('{organization:slug}')->scopeBindings()->group(function() {
         // Subscriptions
         Route::prefix('subscriptions')->group(function() {
             Route::get('/intent', IntentController::class);
@@ -76,6 +88,12 @@ Route::middleware('auth:sanctum')->group(function() {
             Route::get('/', [InvitationController::class, 'index']);
             Route::post('/', [InvitationController::class, 'store']);
             Route::delete('/{invitation:uuid}', [InvitationController::class, 'destroy']);
+        });
+
+        // Files
+        Route::prefix('files')->group(function() {
+            Route::post('/', [FileController::class, 'store']);
+            Route::delete('/{file}', [FileController::class, 'destroy']);
         });
 
         // Media

@@ -17,6 +17,16 @@ trait BelongsToOrganization
         $query->where('organization_id', $organization_id);
     }
 
+    // protected static function bootBelongsToOrganization(): void
+    // {
+    //     static::creating(function (Model $model) {
+    //         dd(request());
+    //         if ($user = request()->user()) {
+    //             $model->user_id = request()->user()->id;
+    //         }
+    //     });
+    // }
+
     /**
      * Organization this model belongs to.
      *
