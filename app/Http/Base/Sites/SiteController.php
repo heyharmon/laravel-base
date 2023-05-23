@@ -23,9 +23,7 @@ class SiteController extends Controller
 {
     public function index(Organization $organization)
     {
-        $sites = $organization->sites;
-
-        return SiteResource::collection($sites);
+        return SiteResource::collection($organization->sites);
     }
 
     public function store(Organization $organization, SiteStoreRequest $request)

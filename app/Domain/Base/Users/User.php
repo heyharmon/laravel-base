@@ -67,4 +67,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('DDD\Domain\Base\Comments\Comment');
     }
+
+    public function files()
+    {
+        return $this->hasMany('DDD\Domain\Base\Files\File');
+    }
 }
