@@ -12,39 +12,34 @@ trait IsSortable
 {
     protected static function bootIsSortable(): void
     {
-        // static::creating(function (Model $model) {
-        //     $model->setHighestOrderNumber();
-        // });
-
-        static::created(function (Model $model) {
-            $model->reorder(0);
+        static::creating(function (Model $model) {
+            $model->setHighestOrderNumber();
         });
+
+        // static::created(function (Model $model) {
+        //     $model->reorder(0);
+        // });
 
         // static::deleting(function (Model $model) {
         //     $model->order = 0;
         // });
     }
 
-    // public function setHighestOrderNumber(): void
-    // {
-    //     $this->order = $this->getHighestOrderNumber() + 1;
-    // }
-    //
-    // public function getHighestOrderNumber(): int
-    // {
-    //     return (int) $this->buildSortQuery()->max('order');
-    // }
+    public function setHighestOrderNumber(): void
+    {
+        $this->order = $this->buildSortQuery()->max('order') + 1;
+    }
 
     public function reorder(string $order)
     {
-        // List records by id
+        // List related records by id
         $ids = $this->buildSortQuery()->pluck('id');
 
         // Remove then add self to list at new index
         $ids = $ids->reject($this->id);
-        $ids->splice($order, 0, $this->id);
+        $ids->splice($order - 1, 0, $this->id);
 
-        // Set new order for all records in lest
+        // Set new order for all records in list
         $this->setNewOrder($ids);
     }
 
