@@ -50,18 +50,28 @@ trait IsSortable
 
     public function buildSortQuery(): Collection
     {
-        if ($this->parent_id) {
-            return $this
-                ->siblings()
-                ->orderBy('order')
-                ->get();
-        } else {
-            return static::query()
-                ->where('organization_id', $this->organization->id)
-                ->where('parent_id', null)
-                ->orderBy('order')
-                ->get();
+        // Check if model is nestable
+        if (array_key_exists('parent_id', $this->attributes)) {
+            if ($this->parent_id) {
+                // Model has siblings to be ordered amongst
+                return $this
+                    ->siblings()
+                    ->orderBy('order')
+                    ->get();
+            } else {
+                // Model is a top level parent to be modeled amongst
+                return static::query()
+                    ->where('organization_id', $this->organization->id)
+                    ->where('parent_id', null)
+                    ->orderBy('order')
+                    ->get();
+            }
         }
+        
+        return static::query()
+            ->where('organization_id', $this->organization->id)
+            ->orderBy('order')
+            ->get();
     }
 
     public static function setNewOrder($ids, int $startOrder = 1, string $primaryKeyColumn = null): void
