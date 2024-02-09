@@ -2,6 +2,18 @@
 
 A Laravel SaaS starter.
 
+## Working with queues locally
+
+Start workers
+```
+php artisan queue:work
+```
+
+Restart workers
+```
+php artisan queue:restart
+```
+
 ## Install Locally
 
 **Step 1:** Clone this repository
@@ -71,6 +83,14 @@ Then visit: http://127.0.0.1:8000
 valet link app-name
 ```
 Then visit: http://app-name.test
+
+**Step 8:** Secure application
+
+> Using Artisan CLI, run:
+```
+valet secure analytics-api
+```
+> Unsecure by running: valet unsecure analytics-api
 
 ## Get started
 
