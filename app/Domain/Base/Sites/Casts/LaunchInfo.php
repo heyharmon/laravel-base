@@ -2,6 +2,7 @@
 
 namespace DDD\Domain\Base\Sites\Casts;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 class LaunchInfo implements CastsAttributes
@@ -13,7 +14,7 @@ class LaunchInfo implements CastsAttributes
      * @param  mixed  $value
      * @return mixed
      */
-    public function get($model, string $key, $value, array $attributes)
+    public function get(Model $model, string $key, mixed $value, array $attributes)
     {
         $value = isset($value) ? json_decode($value, true) : [];
 
@@ -36,7 +37,7 @@ class LaunchInfo implements CastsAttributes
      * @param  mixed  $value
      * @return mixed
      */
-    public function set($model, string $key, $value, array $attributes)
+    public function set(Model $model, string $key, mixed $value, array $attributes)
     {
         if (isset($value)) {
             return json_encode($value);
