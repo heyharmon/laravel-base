@@ -2,6 +2,7 @@
 
 namespace DDD\Http\Base\Auth;
 
+use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Http\Base\Auth\Requests\AuthPasswordResetRequest;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +12,7 @@ use Illuminate\Support\Str;
 
 class AuthPasswordResetController extends Controller
 {
-    public function __invoke(AuthPasswordResetRequest $request)
+    public function __invoke(AuthPasswordResetRequest $request): JsonResponse
     {
         $status = Password::reset(
             $request->only('token', 'email', 'password', 'password_confirmation'),

@@ -17,7 +17,7 @@ class InvitationStoreRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -27,7 +27,7 @@ class InvitationStoreRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'email' => 'required|email:rfc,strict|max:255|unique:invitations|unique:users',
@@ -40,7 +40,7 @@ class InvitationStoreRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'email.unique' => 'That email is already in use.',
@@ -52,7 +52,7 @@ class InvitationStoreRequest extends FormRequest
      *
      * @return Exception
      */
-    protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator): Exception
     {
         throw new HttpResponseException(response()->json([
             'message' => 'The given data was invalid.',

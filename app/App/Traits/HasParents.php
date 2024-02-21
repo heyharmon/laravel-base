@@ -26,7 +26,7 @@ trait HasParents
      * @param  Builder  $query
      * @return Builder
      */
-    public function scopeParents($query)
+    public function scopeParents(Builder $query): Builder
     {
         return $query->whereNull('parent_id');
     }

@@ -27,7 +27,7 @@ class Test implements ShouldBroadcastNow
      *
      * @return string Event name
      */
-    public function broadcastAs()
+    public function broadcastAs(): string
     {
         return 'test';
     }

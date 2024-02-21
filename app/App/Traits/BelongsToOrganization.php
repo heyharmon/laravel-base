@@ -2,6 +2,7 @@
 
 namespace DDD\App\Traits;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +14,7 @@ trait BelongsToOrganization
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return void
      */
-    public function scopeOrganization($query, $organization_id)
+    public function scopeOrganization(Builder $query, $organization_id): void
     {
         $query->where('organization_id', $organization_id);
     }

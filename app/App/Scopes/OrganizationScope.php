@@ -13,7 +13,7 @@ class OrganizationScope implements Scope
      *
      * @return void
      */
-    public function apply(Builder $builder, Model $model)
+    public function apply(Builder $builder, Model $model): void
     {
         $builder->where('organization_id', auth()->user()->organization_id);
     }

@@ -2,6 +2,7 @@
 
 namespace DDD\Http\Base\Media;
 
+use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Base\Media\Media;
 // Vendors
@@ -42,7 +43,7 @@ class MediaController extends Controller
         return new MediaResource($media->load('tags'));
     }
 
-    public function destroy(Organization $organization, Media $media)
+    public function destroy(Organization $organization, Media $media): JsonResponse
     {
         $media->delete();
 

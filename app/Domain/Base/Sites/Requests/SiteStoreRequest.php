@@ -13,7 +13,7 @@ class SiteStoreRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -23,7 +23,7 @@ class SiteStoreRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'title' => 'nullable|string',
@@ -43,7 +43,7 @@ class SiteStoreRequest extends FormRequest
      *
      * @return Exception
      */
-    protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator): Exception
     {
         throw new HttpResponseException(response()->json([
             'message' => 'The given data was invalid.',

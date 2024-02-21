@@ -2,6 +2,7 @@
 
 namespace DDD\Http\Base\Files;
 
+use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Base\Files\File;
 // Vendors
@@ -58,7 +59,7 @@ class FileController extends Controller
         return new FileResource($file);
     }
 
-    public function destroy(Organization $organization, File $file)
+    public function destroy(Organization $organization, File $file): JsonResponse
     {
         $file->delete();
 

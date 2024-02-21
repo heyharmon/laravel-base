@@ -2,6 +2,7 @@
 
 namespace DDD\Domain\Base\Organizations\Resources;
 
+use Illuminate\Http\Request;
 use DDD\Domain\Base\Subscriptions\Plans\Resources\PlanResource;
 // Resources
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -14,7 +15,7 @@ class OrganizationResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request): array
+    public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,

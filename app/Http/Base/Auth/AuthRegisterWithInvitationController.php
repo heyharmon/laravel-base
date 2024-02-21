@@ -2,6 +2,7 @@
 
 namespace DDD\Http\Base\Auth;
 
+use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Base\Invitations\Invitation;
 // Models
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthRegisterWithInvitationController extends Controller
 {
-    public function __invoke(Invitation $invitation, AuthRegisterWithInvitationRequest $request)
+    public function __invoke(Invitation $invitation, AuthRegisterWithInvitationRequest $request): JsonResponse
     {
         $user = User::create([
             'name' => $request->name,

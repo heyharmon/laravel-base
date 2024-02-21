@@ -2,6 +2,7 @@
 
 namespace DDD\Domain\Base\Invitations\Resources;
 
+use Illuminate\Http\Request;
 use DDD\Domain\Base\Organizations\Resources\OrganizationResource;
 // Resources
 use DDD\Domain\Base\Users\Resources\UserResource;
@@ -15,7 +16,7 @@ class InvitationResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request): array
+    public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,

@@ -2,6 +2,7 @@
 
 namespace DDD\Http\Base\Auth;
 
+use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Base\Organizations\Organization;
 // Models
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthRegisterController extends Controller
 {
-    public function __invoke(AuthRegisterRequest $request)
+    public function __invoke(AuthRegisterRequest $request): JsonResponse
     {
         $organization = Organization::create([
             'title' => $request->organization_title,
