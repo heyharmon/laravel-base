@@ -15,7 +15,6 @@ use DDD\Http\Base\Media\MediaController;
 use DDD\Http\Base\Media\MediaDownloadController;
 use DDD\Http\Base\Organizations\OrganizationCommentController;
 use DDD\Http\Base\Organizations\OrganizationController;
-use DDD\Http\Base\Sites\SiteController;
 use DDD\Http\Base\Statuses\StatusController;
 use DDD\Http\Base\Subscriptions\Intent\IntentController;
 use DDD\Http\Base\Subscriptions\Plans\PlanController;
@@ -59,12 +58,6 @@ Route::prefix('/{organization:slug}')->group(function () {
 // Public - Media Download
 Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
 
-// TODO: CREATE AN ENDPOINT FOR LAUNCH DASHBOARD
-// Public - Sites
-// Route::prefix('{organization:slug}/sites')->group(function() {
-//     Route::get('/{site}', [SiteController::class, 'show']);
-// });
-
 Route::middleware('auth:sanctum')->group(function () {
     // Auth
     Route::post('auth/logout', AuthLogoutController::class);
@@ -98,15 +91,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::prefix('media')->group(function () {
             Route::post('/', [MediaController::class, 'store']);
             Route::delete('/{media}', [MediaController::class, 'destroy']);
-        });
-
-        // Sites
-        Route::prefix('sites')->group(function () {
-            Route::get('/', [SiteController::class, 'index']);
-            Route::post('/', [SiteController::class, 'store']);
-            Route::get('/{site}', [SiteController::class, 'show']);
-            Route::put('/{site}', [SiteController::class, 'update']);
-            Route::delete('/{site}', [SiteController::class, 'destroy']);
         });
 
         // Teams

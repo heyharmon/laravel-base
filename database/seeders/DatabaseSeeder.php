@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
             // CategoriesSeeder::class,
             SubscriptionPlansSeeder::class,
             OrganizationsSeeder::class,
-            SitesSeeder::class,
             TagsSeeder::class,
             StatusesSeeder::class,
         ]);

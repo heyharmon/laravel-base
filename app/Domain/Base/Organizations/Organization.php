@@ -61,14 +61,6 @@ class Organization extends Model
     }
 
     /**
-     * Sites associated with this organization.
-     */
-    public function sites(): HasMany
-    {
-        return $this->hasMany(\DDD\Domain\Base\Sites\Site::class);
-    }
-
-    /**
      * Plan organization is subscribed to.
      */
     public function plan(): HasOneThrough
