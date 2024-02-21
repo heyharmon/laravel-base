@@ -2,6 +2,8 @@
 
 namespace DDD\Domain\Base\Organizations;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use DDD\App\Traits\HasComments;
 use DDD\App\Traits\HasSlug;
 // Domains
@@ -31,7 +33,7 @@ class Organization extends Model
      *
      * @return hasMany
      */
-    public function users()
+    public function users(): HasMany
     {
         return $this->hasMany(\DDD\Domain\Base\Users\User::class);
     }
@@ -41,7 +43,7 @@ class Organization extends Model
      *
      * @return hasMany
      */
-    public function invitations()
+    public function invitations(): HasMany
     {
         return $this->hasMany(\DDD\Domain\Base\Invitations\Invitation::class);
     }
@@ -51,7 +53,7 @@ class Organization extends Model
      *
      * @return hasMany
      */
-    public function files()
+    public function files(): HasMany
     {
         return $this->hasMany(\DDD\Domain\Base\Files\File::class);
     }
@@ -61,7 +63,7 @@ class Organization extends Model
      *
      * @return hasMany
      */
-    public function teams()
+    public function teams(): HasMany
     {
         return $this->hasMany(\DDD\Domain\Base\Teams\Team::class);
     }
@@ -71,7 +73,7 @@ class Organization extends Model
      *
      * @return hasMany
      */
-    public function sites()
+    public function sites(): HasMany
     {
         return $this->hasMany(\DDD\Domain\Base\Sites\Site::class);
     }
@@ -81,7 +83,7 @@ class Organization extends Model
      *
      * @return hasOneThrough
      */
-    public function plan()
+    public function plan(): HasOneThrough
     {
         return $this->hasOneThrough(
             Plan::class, Subscription::class,

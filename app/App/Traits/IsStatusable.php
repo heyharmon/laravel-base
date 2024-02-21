@@ -2,6 +2,7 @@
 
 namespace DDD\App\Traits;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use DDD\Domain\Base\Statuses\Status;
 use Illuminate\Database\Eloquent\Model;
 // Models
@@ -24,7 +25,7 @@ trait IsStatusable
         });
     }
 
-    public function status()
+    public function status(): BelongsTo
     {
         return $this->belongsTo(Status::class);
     }

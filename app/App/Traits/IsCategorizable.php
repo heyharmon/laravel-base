@@ -2,6 +2,7 @@
 
 namespace DDD\App\Traits;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use DDD\Domain\Base\Categories\Category;
 use Illuminate\Database\Eloquent\Model;
 // Models
@@ -24,7 +25,7 @@ trait IsCategorizable
         });
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }

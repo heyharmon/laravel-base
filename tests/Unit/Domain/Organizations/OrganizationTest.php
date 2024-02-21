@@ -17,7 +17,7 @@ class OrganizationTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_slug()
+    public function it_has_a_slug(): void
     {
         $organization = Organization::factory()->create();
 
@@ -25,7 +25,7 @@ class OrganizationTest extends TestCase
     }
 
     /** @test */
-    public function it_uses_the_slug_for_the_route_key_name()
+    public function it_uses_the_slug_for_the_route_key_name(): void
     {
         $organization = Organization::factory()->create();
 
@@ -33,7 +33,7 @@ class OrganizationTest extends TestCase
     }
 
     /** @test */
-    public function it_has_many_users()
+    public function it_has_many_users(): void
     {
         $organization = Organization::factory()
             ->has(User::factory())
@@ -43,7 +43,7 @@ class OrganizationTest extends TestCase
     }
 
     /** @test */
-    public function it_has_many_teams()
+    public function it_has_many_teams(): void
     {
         $organization = Organization::factory()
             ->has(Team::factory())
@@ -53,7 +53,7 @@ class OrganizationTest extends TestCase
     }
 
     /** @test */
-    public function it_has_many_media()
+    public function it_has_many_media(): void
     {
         $organization = Organization::factory()
             ->has(Media::factory())

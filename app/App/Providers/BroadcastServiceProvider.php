@@ -12,7 +12,7 @@ class BroadcastServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         Broadcast::routes(['prefix' => 'api', 'middleware' => ['auth:sanctum']]);
         // Broadcast::routes(['prefix' => 'api']);

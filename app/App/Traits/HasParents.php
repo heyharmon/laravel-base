@@ -3,6 +3,7 @@
 namespace DDD\App\Traits;
 
 // Vendors
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 trait HasParents
@@ -14,7 +15,7 @@ trait HasParents
      *
      * @return hasMany
      */
-    public function children()
+    public function children(): HasMany
     {
         return $this->hasMany(self::class, 'parent_id');
     }

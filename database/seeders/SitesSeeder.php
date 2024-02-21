@@ -13,7 +13,7 @@ class SitesSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Site::create([
             'organization_id' => 1,

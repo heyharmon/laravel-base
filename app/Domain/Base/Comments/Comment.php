@@ -2,6 +2,9 @@
 
 namespace DDD\Domain\Base\Comments;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,17 +20,17 @@ class Comment extends Model
     ];
 
     // TODO: Use the BelongsToUser Trait
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(\DDD\Domain\Base\Users\User::class);
     }
 
-    public function children()
+    public function children(): HasMany
     {
         return $this->hasMany(\DDD\Domain\Base\Comments\Comment::class, 'parent_id', 'id');
     }
 
-    public function commentable()
+    public function commentable(): MorphTo
     {
         return $this->morphTo();
     }

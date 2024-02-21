@@ -13,7 +13,7 @@ class OrganizationsSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $organizations = [
             ['title' => 'BloomCU'],

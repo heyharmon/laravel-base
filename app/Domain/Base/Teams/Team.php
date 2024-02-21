@@ -2,6 +2,7 @@
 
 namespace DDD\Domain\Base\Teams;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\App\Traits\HasSlug;
 // Traits
@@ -21,7 +22,7 @@ class Team extends Model
      *
      * @return hasMany
      */
-    public function users()
+    public function users(): HasMany
     {
         return $this->hasMany(\DDD\Domain\Base\Users\User::class);
     }

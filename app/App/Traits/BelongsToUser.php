@@ -2,6 +2,7 @@
 
 namespace DDD\App\Traits;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 trait BelongsToUser
@@ -20,7 +21,7 @@ trait BelongsToUser
      *
      * @return belongsTo
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(\DDD\Domain\Base\Users\User::class);
     }
