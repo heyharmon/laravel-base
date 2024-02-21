@@ -22,6 +22,6 @@ trait BelongsToUser
      */
     public function user()
     {
-        return $this->belongsTo('DDD\Domain\Base\Users\User');
+        return $this->belongsTo(\DDD\Domain\Base\Users\User::class);
     }
 }

@@ -33,7 +33,7 @@ class Organization extends Model
      */
     public function users()
     {
-        return $this->hasMany('DDD\Domain\Base\Users\User');
+        return $this->hasMany(\DDD\Domain\Base\Users\User::class);
     }
 
     /**
@@ -43,7 +43,7 @@ class Organization extends Model
      */
     public function invitations()
     {
-        return $this->hasMany('DDD\Domain\Base\Invitations\Invitation');
+        return $this->hasMany(\DDD\Domain\Base\Invitations\Invitation::class);
     }
 
     /**
@@ -53,7 +53,7 @@ class Organization extends Model
      */
     public function files()
     {
-        return $this->hasMany('DDD\Domain\Base\Files\File');
+        return $this->hasMany(\DDD\Domain\Base\Files\File::class);
     }
 
     /**
@@ -63,7 +63,7 @@ class Organization extends Model
      */
     public function teams()
     {
-        return $this->hasMany('DDD\Domain\Base\Teams\Team');
+        return $this->hasMany(\DDD\Domain\Base\Teams\Team::class);
     }
 
     /**
@@ -73,7 +73,7 @@ class Organization extends Model
      */
     public function sites()
     {
-        return $this->hasMany('DDD\Domain\Base\Sites\Site');
+        return $this->hasMany(\DDD\Domain\Base\Sites\Site::class);
     }
 
     /**

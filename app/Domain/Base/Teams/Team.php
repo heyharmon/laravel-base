@@ -23,6 +23,6 @@ class Team extends Model
      */
     public function users()
     {
-        return $this->hasMany('DDD\Domain\Base\Users\User');
+        return $this->hasMany(\DDD\Domain\Base\Users\User::class);
     }
 }
