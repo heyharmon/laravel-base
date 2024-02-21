@@ -2,26 +2,23 @@
 
 namespace DDD\Http\Base\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use DDD\App\Controllers\Controller;
-
+use DDD\Domain\Base\Organizations\Resources\OrganizationResource;
 // Requests
 use DDD\Http\Base\Auth\Requests\AuthLoginRequest;
-
 // Resources
-use DDD\Domain\Base\Organizations\Resources\OrganizationResource;
+use Illuminate\Support\Facades\Auth;
 
 class AuthLoginController extends Controller
 {
     public function __invoke(AuthLoginRequest $request)
     {
-        if (!Auth::attempt($request->validated())) {
+        if (! Auth::attempt($request->validated())) {
             return response()->json([
                 'message' => 'The given data was invalid.',
                 'errors' => [
-                    'credentials' => ['Credentials do not match.']
-                ]
+                    'credentials' => ['Credentials do not match.'],
+                ],
             ], 422);
         }
 
@@ -37,7 +34,7 @@ class AuthLoginController extends Controller
                 'email' => auth()->user()->email,
                 'role' => auth()->user()->role,
                 'organization' => new OrganizationResource(auth()->user()->organization),
-            ]
+            ],
         ], 200);
     }
 }

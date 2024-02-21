@@ -2,8 +2,8 @@
 
 namespace DDD\Domain\Base\Subscriptions\Subscriptions\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 class SubscriptionUpdateRequest extends FormRequest
@@ -39,7 +39,7 @@ class SubscriptionUpdateRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'message' => 'The given data was invalid.',
-            'errors' => $validator->errors()
+            'errors' => $validator->errors(),
         ], 422));
     }
 }

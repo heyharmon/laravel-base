@@ -2,13 +2,11 @@
 
 namespace DDD\App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-
-// Vendors
-use Laravel\Cashier\Cashier;
-
-// Domains
 use DDD\Domain\Base\Organizations\Organization;
+// Vendors
+use Illuminate\Support\ServiceProvider;
+// Domains
+use Laravel\Cashier\Cashier;
 
 // Interfaces
 // use DDD\App\Services\CDN\CDNInterface;

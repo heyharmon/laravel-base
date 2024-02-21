@@ -22,7 +22,7 @@ trait HasParents
     /**
      * Get only parents (top level models).
      *
-     * @param Builder $query
+     * @param  Builder  $query
      * @return Builder
      */
     public function scopeParents($query)

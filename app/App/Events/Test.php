@@ -4,8 +4,6 @@ namespace DDD\App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -27,7 +25,7 @@ class Test implements ShouldBroadcastNow
     /**
      * Overwrite the event name.
      *
-     * @return String Event name
+     * @return string Event name
      */
     public function broadcastAs()
     {

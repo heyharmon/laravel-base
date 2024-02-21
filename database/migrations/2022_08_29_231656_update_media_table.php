@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('media', function (Blueprint $table) {
             $table->foreignId('user_id')->nullable(true)->change();
-       });
+        });
     }
 
     /**

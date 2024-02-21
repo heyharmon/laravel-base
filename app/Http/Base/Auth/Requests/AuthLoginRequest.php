@@ -2,8 +2,8 @@
 
 namespace DDD\Http\Base\Auth\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 class AuthLoginRequest extends FormRequest
@@ -30,7 +30,7 @@ class AuthLoginRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'message' => 'The given data was invalid.',
-            'errors' => $validator->errors()
+            'errors' => $validator->errors(),
         ], 422));
     }
 }

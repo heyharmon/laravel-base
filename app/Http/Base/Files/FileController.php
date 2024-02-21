@@ -2,21 +2,17 @@
 
 namespace DDD\Http\Base\Files;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Vendors
-use Spatie\QueryBuilder\QueryBuilder;
-
-// Models
-use DDD\Domain\Base\Organizations\Organization;
 use DDD\Domain\Base\Files\File;
-
-// Requests
+// Vendors
 use DDD\Domain\Base\Files\Requests\StoreFileRequest;
-
-// Resources
+// Models
 use DDD\Domain\Base\Files\Resources\FileResource;
+use DDD\Domain\Base\Organizations\Organization;
+// Requests
+use Illuminate\Http\Request;
+// Resources
+use Spatie\QueryBuilder\QueryBuilder;
 
 class FileController extends Controller
 {

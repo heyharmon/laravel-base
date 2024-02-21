@@ -2,28 +2,26 @@
 
 namespace DDD\Domain\Base\Organizations;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
+use DDD\App\Traits\HasComments;
+use DDD\App\Traits\HasSlug;
 // Domains
 use DDD\Domain\Base\Subscriptions\Plans\Plan;
-
 // Vendors
-use Laravel\Cashier\Billable;
-use Laravel\Cashier\Subscription;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 // use Spatie\MediaLibrary\HasMedia;
 // use Spatie\MediaLibrary\InteractsWithMedia;
 
 // Traits
-use DDD\App\Traits\HasComments;
-use DDD\App\Traits\HasSlug;
+use Laravel\Cashier\Billable;
+use Laravel\Cashier\Subscription;
 
 class Organization extends Model
 {
-    use HasFactory,
-        Billable,
-        // InteractsWithMedia,
+    use Billable,
         HasComments,
+        // InteractsWithMedia,
+        HasFactory,
         HasSlug;
 
     protected $guarded = ['id', 'slug'];

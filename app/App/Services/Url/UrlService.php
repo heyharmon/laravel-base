@@ -10,12 +10,12 @@ class UrlService
     public function getAll($url)
     {
         return $url_parts = [
-            'url'    => $url,
-            'clean'  => $this->getClean($url),
+            'url' => $url,
+            'clean' => $this->getClean($url),
             'scheme' => $this->getScheme($url),
-            'host'   => $this->getHost($url),
+            'host' => $this->getHost($url),
             'domain' => $this->getDomain($url),
-            'path'   => $this->getPath($url),
+            'path' => $this->getPath($url),
         ];
     }
 

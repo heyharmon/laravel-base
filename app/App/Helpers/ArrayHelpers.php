@@ -26,6 +26,7 @@ class ArrayHelpers
                 $output[] = $child;
             }
         }
+
         return $output;
     }
 }

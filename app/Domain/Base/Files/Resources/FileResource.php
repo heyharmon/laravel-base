@@ -5,7 +5,6 @@ namespace DDD\Domain\Base\Files\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 // Resources
-use DDD\Domain\Base\Tags\Resources\TagResource;
 
 class FileResource extends JsonResource
 {

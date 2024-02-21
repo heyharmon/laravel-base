@@ -18,7 +18,7 @@ class StatusResource extends JsonResource
             // 'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
-            'children' => StatusResource::collection($this->whenLoaded('children'))
+            'children' => StatusResource::collection($this->whenLoaded('children')),
         ];
     }
 }

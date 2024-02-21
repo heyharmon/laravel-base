@@ -2,8 +2,8 @@
 
 namespace DDD\Domain\Base\Media\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreMediaRequest extends FormRequest
@@ -25,14 +25,14 @@ class StoreMediaRequest extends FormRequest
      */
     public function rules()
     {
-        if (!$this->has('collection')) {
+        if (! $this->has('collection')) {
             $this->merge(['collection' => 'default']);
         }
 
         return [
             'file' => 'max:100000', // Max 100mb
             'collection' => 'nullable|string',
-            'tags' => 'nullable|string'
+            'tags' => 'nullable|string',
         ];
     }
 
@@ -45,7 +45,7 @@ class StoreMediaRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'message' => 'The given data was invalid.',
-            'errors' => $validator->errors()
+            'errors' => $validator->errors(),
         ], 422));
     }
 }

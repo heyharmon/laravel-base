@@ -2,18 +2,17 @@
 
 namespace DDD\App\Traits;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
-
-// Models
 use DDD\Domain\Base\Statuses\Status;
+use Illuminate\Database\Eloquent\Model;
+// Models
+use Illuminate\Support\Str;
 
 trait IsStatusable
 {
     protected static function bootIsStatusable(): void
     {
         static::creating(function (Model $model) {
-            if (!$model->status_id) {
+            if (! $model->status_id) {
                 $model->setStatus('needs-review');
             }
         });
@@ -32,8 +31,9 @@ trait IsStatusable
 
     public function setStatus($status)
     {
-        if (!$status) {
+        if (! $status) {
             $this->status()->dissociate();
+
             return;
         }
 

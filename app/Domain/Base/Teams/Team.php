@@ -2,18 +2,17 @@
 
 namespace DDD\Domain\Base\Teams;
 
+use DDD\App\Traits\BelongsToOrganization;
+use DDD\App\Traits\HasSlug;
+// Traits
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-// Traits
-use DDD\App\Traits\HasSlug;
-use DDD\App\Traits\BelongsToOrganization;
-
 class Team extends Model
 {
-    use HasFactory,
-        HasSlug,
-        BelongsToOrganization;
+    use BelongsToOrganization,
+        HasFactory,
+        HasSlug;
 
     protected $guarded = ['id', 'slug'];
 

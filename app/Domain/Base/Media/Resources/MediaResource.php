@@ -2,10 +2,9 @@
 
 namespace DDD\Domain\Base\Media\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
-
-// Resources
 use DDD\Domain\Base\Tags\Resources\TagResource;
+// Resources
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class MediaResource extends JsonResource
 {
@@ -26,7 +25,7 @@ class MediaResource extends JsonResource
             'size' => $this->size,
             'original_url' => $this->original_url,
             'extension' => $this->extension,
-            'tags' => TagResource::collection($this->whenLoaded('tags'))->pluck('slug')
+            'tags' => TagResource::collection($this->whenLoaded('tags'))->pluck('slug'),
         ];
     }
 }

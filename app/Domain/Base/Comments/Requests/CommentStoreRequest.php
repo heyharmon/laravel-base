@@ -2,8 +2,8 @@
 
 namespace DDD\Domain\Base\Comments\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CommentStoreRequest extends FormRequest
@@ -27,7 +27,7 @@ class CommentStoreRequest extends FormRequest
     {
         return [
             'body' => 'required|string|max:5000',
-            'group' => 'string'
+            'group' => 'string',
         ];
     }
 
@@ -40,7 +40,7 @@ class CommentStoreRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'message' => 'The given data was invalid.',
-            'errors' => $validator->errors()
+            'errors' => $validator->errors(),
         ], 422));
     }
 }

@@ -2,20 +2,18 @@
 
 namespace DDD\Domain\Base\Sites;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-// Casts
-use DDD\Domain\Base\Sites\Casts\LaunchInfo;
-
-// Traits
 use DDD\App\Traits\BelongsToOrganization;
+use DDD\Domain\Base\Sites\Casts\LaunchInfo;
+// Casts
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+// Traits
+use Illuminate\Database\Eloquent\Model;
 
 class Site extends Model
 {
-    use HasFactory,
+    use BelongsToOrganization,
         // SoftDeletes,
-        BelongsToOrganization;
+        HasFactory;
 
     protected $guarded = [
         'id',

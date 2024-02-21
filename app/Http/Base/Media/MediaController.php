@@ -2,21 +2,17 @@
 
 namespace DDD\Http\Base\Media;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Vendors
-use Spatie\QueryBuilder\QueryBuilder;
-
-// Models
-use DDD\Domain\Base\Organizations\Organization;
 use DDD\Domain\Base\Media\Media;
-
-// Requests
+// Vendors
 use DDD\Domain\Base\Media\Requests\StoreMediaRequest;
-
-// Resources
+// Models
 use DDD\Domain\Base\Media\Resources\MediaResource;
+use DDD\Domain\Base\Organizations\Organization;
+// Requests
+use Illuminate\Http\Request;
+// Resources
+use Spatie\QueryBuilder\QueryBuilder;
 
 class MediaController extends Controller
 {

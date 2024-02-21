@@ -2,15 +2,13 @@
 
 namespace DDD\Domain\Base\Invitations\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
-
-// Rules
-use Illuminate\Validation\Rules\Enum;
-
-// Enums
 use DDD\Domain\Base\Users\Enums\RoleEnum;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
+// Rules
+use Illuminate\Http\Exceptions\HttpResponseException;
+// Enums
+use Illuminate\Validation\Rules\Enum;
 
 class InvitationStoreRequest extends FormRequest
 {
@@ -58,7 +56,7 @@ class InvitationStoreRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'message' => 'The given data was invalid.',
-            'errors' => $validator->errors()
+            'errors' => $validator->errors(),
         ], 422));
     }
 }

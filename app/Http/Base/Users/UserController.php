@@ -2,15 +2,13 @@
 
 namespace DDD\Http\Base\Users;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Models
 use DDD\Domain\Base\Organizations\Organization;
-use DDD\Domain\Base\Users\User;
-
-// Resources
+// Models
 use DDD\Domain\Base\Users\Resources\UserResource;
+use DDD\Domain\Base\Users\User;
+// Resources
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {

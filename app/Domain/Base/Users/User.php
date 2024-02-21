@@ -2,27 +2,24 @@
 
 namespace DDD\Domain\Base\Users;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-
-// Enums
-use DDD\Domain\Base\Users\Enums\RoleEnum;
-
-// Traits
-use Laravel\Sanctum\HasApiTokens;
 use DDD\App\Traits\BelongsToOrganization;
+use DDD\Domain\Base\Users\Enums\RoleEnum;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+// Enums
+use Illuminate\Foundation\Auth\User as Authenticatable;
+// Traits
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 // Scopes
 // use DDD\App\Scopes\OrganizationScope;
 
 class User extends Authenticatable
 {
-    use HasFactory,
-        Notifiable,
+    use BelongsToOrganization,
         HasApiTokens,
-        BelongsToOrganization;
+        HasFactory,
+        Notifiable;
 
     /**
      * The attributes that are mass assignable.

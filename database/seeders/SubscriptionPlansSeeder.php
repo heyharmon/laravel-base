@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-
-// Models
 use DDD\Domain\Base\Subscriptions\Plans\Plan;
+// Models
+use Illuminate\Database\Seeder;
 
 class SubscriptionPlansSeeder extends Seeder
 {

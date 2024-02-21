@@ -3,8 +3,8 @@
 namespace DDD\App\Traits;
 
 use ArrayAccess;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use InvalidArgumentException;
 
@@ -62,14 +62,14 @@ trait IsSortable
                     ->get();
             }
         }
-        
+
         return static::query()
             ->where('organization_id', $this->organization->id)
             ->orderBy('order')
             ->get();
     }
 
-    public static function setNewOrder($ids, int $startOrder = 1, string $primaryKeyColumn = null): void
+    public static function setNewOrder($ids, int $startOrder = 1, ?string $primaryKeyColumn = null): void
     {
         if (! is_array($ids) && ! $ids instanceof ArrayAccess) {
             throw new InvalidArgumentException('You must pass an array or ArrayAccess object to setNewOrder');

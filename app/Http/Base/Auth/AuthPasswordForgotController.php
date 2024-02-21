@@ -2,19 +2,17 @@
 
 namespace DDD\Http\Base\Auth;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-use Illuminate\Support\Facades\Password;
-
-// Requests
 use DDD\Http\Base\Auth\Requests\AuthPasswordForgotRequest;
+// Requests
+use Illuminate\Support\Facades\Password;
 
 class AuthPasswordForgotController extends Controller
 {
     public function __invoke(AuthPasswordForgotRequest $request)
     {
         Password::sendResetLink([
-            'email' => $request->email
+            'email' => $request->email,
         ]);
 
         return response()->json([

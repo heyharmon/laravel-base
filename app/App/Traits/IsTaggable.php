@@ -2,16 +2,14 @@
 
 namespace DDD\App\Traits;
 
+use DDD\App\Scopes\TaggableScopes;
+use DDD\Domain\Base\Tags\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Illuminate\Support\Collection;
-
 // Models
-use DDD\Domain\Base\Tags\Tag;
-
+use Illuminate\Support\Collection;
 // Scopes
-use DDD\App\Scopes\TaggableScopes;
+use Illuminate\Support\Str;
 
 trait IsTaggable
 {
@@ -40,6 +38,7 @@ trait IsTaggable
     {
         if ($tags === null) {
             $this->removeAllTags();
+
             return;
         }
 
@@ -53,7 +52,8 @@ trait IsTaggable
         $this->tag($tags);
     }
 
-    private function addTags(Collection $tags) {
+    private function addTags(Collection $tags)
+    {
         $sync = $this->tags()->syncWithoutDetaching($tags->pluck('id')->toArray());
 
         // Increment tagged counts
@@ -110,7 +110,7 @@ trait IsTaggable
 
     private function getSluggifiedTagName(array $tags)
     {
-        return array_map(function($tag) {
+        return array_map(function ($tag) {
             return Str::slug($tag);
         }, $tags);
     }
@@ -118,7 +118,7 @@ trait IsTaggable
     private function filterTagsCollection(Collection $tags)
     {
         // Filter out tags that don't exist
-        return $tags->filter(function($tag) {
+        return $tags->filter(function ($tag) {
             return $tag instanceof Model;
         });
     }

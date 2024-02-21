@@ -2,18 +2,14 @@
 
 namespace DDD\Http\Base\Organizations;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
 // Requests
-use DDD\Domain\Base\Comments\Requests\CommentStoreRequest;
-
-// Resources
-use DDD\Domain\Base\Comments\Resources\CommentResource;
-
-// Models
-use DDD\Domain\Base\Organizations\Organization;
 use DDD\Domain\Base\Comments\Comment;
+// Resources
+use DDD\Domain\Base\Comments\Requests\CommentStoreRequest;
+// Models
+use DDD\Domain\Base\Comments\Resources\CommentResource;
+use DDD\Domain\Base\Organizations\Organization;
 
 class OrganizationCommentController extends Controller
 {
