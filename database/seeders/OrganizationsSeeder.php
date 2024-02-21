@@ -2,19 +2,16 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-
-// Models
 use DDD\Domain\Base\Organizations\Organization;
+// Models
+use Illuminate\Database\Seeder;
 
 class OrganizationsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $organizations = [
             ['title' => 'BloomCU'],

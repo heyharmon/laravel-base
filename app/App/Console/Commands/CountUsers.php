@@ -2,9 +2,8 @@
 
 namespace DDD\App\Console\Commands;
 
-use Illuminate\Console\Command;
-
 use DDD\Domain\Base\Users\User;
+use Illuminate\Console\Command;
 
 class CountUsers extends Command
 {
@@ -24,13 +23,11 @@ class CountUsers extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $count = User::count();
 
-        $this->info('Total users: ' . $count);
+        $this->info('Total users: '.$count);
     }
 }

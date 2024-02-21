@@ -35,6 +35,6 @@ return [
         'token' => env('APIFY_TOKEN'),
         'cheerioActor' => env('APIFY_CHEERIO_ACTOR'),
         'puppeteerActor' => env('APIFY_PUPPETEER_ACTOR'),
-    ]
+    ],
 
 ];

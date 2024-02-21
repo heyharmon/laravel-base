@@ -2,24 +2,20 @@
 
 namespace DDD\Http\Base\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use DDD\App\Controllers\Controller;
-
-// Models
 use DDD\Domain\Base\Organizations\Organization;
-use DDD\Domain\Base\Users\User;
-
-// Requests
-use DDD\Http\Base\Auth\Requests\AuthRegisterRequest;
-
-// Resources
 use DDD\Domain\Base\Organizations\Resources\OrganizationResource;
+// Models
+use DDD\Domain\Base\Users\User;
+use DDD\Http\Base\Auth\Requests\AuthRegisterRequest;
+// Requests
+use Illuminate\Http\JsonResponse;
+// Resources
+use Illuminate\Support\Facades\Hash;
 
 class AuthRegisterController extends Controller
 {
-    public function __invoke(AuthRegisterRequest $request)
+    public function __invoke(AuthRegisterRequest $request): JsonResponse
     {
         $organization = Organization::create([
             'title' => $request->organization_title,
@@ -42,8 +38,8 @@ class AuthRegisterController extends Controller
                 'name' => $user->name,
                 'email' => $user->email,
                 'role' => $user->role,
-                'organization' => new OrganizationResource($user->organization)
-            ]
+                'organization' => new OrganizationResource($user->organization),
+            ],
         ], 200);
     }
 }

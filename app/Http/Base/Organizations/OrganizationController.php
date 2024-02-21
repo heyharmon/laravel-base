@@ -2,14 +2,12 @@
 
 namespace DDD\Http\Base\Organizations;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Models
 use DDD\Domain\Base\Organizations\Organization;
-
-// Resources
+// Models
 use DDD\Domain\Base\Organizations\Resources\OrganizationResource;
+// Resources
+use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
 {

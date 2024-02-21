@@ -2,13 +2,11 @@
 
 namespace DDD\App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-
-// Vendors
-use Laravel\Cashier\Cashier;
-
-// Domains
 use DDD\Domain\Base\Organizations\Organization;
+// Vendors
+use Illuminate\Support\ServiceProvider;
+// Domains
+use Laravel\Cashier\Cashier;
 
 // Interfaces
 // use DDD\App\Services\CDN\CDNInterface;
@@ -20,20 +18,16 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // $this->app->bind(CDNInterface::class, DigitalOceanCDNService::class);
         Cashier::useCustomerModel(Organization::class);

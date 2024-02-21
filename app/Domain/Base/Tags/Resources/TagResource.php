@@ -2,17 +2,15 @@
 
 namespace DDD\Domain\Base\Tags\Resources;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TagResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
      */
-    public function toArray($request)
+    public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
@@ -20,7 +18,7 @@ class TagResource extends JsonResource
             'slug' => $this->slug,
             'tagged_count' => $this->tagged_count,
             'children_count' => $this->children()->count(),
-            'children' => TagResource::collection($this->whenLoaded('children'))
+            'children' => TagResource::collection($this->whenLoaded('children')),
         ];
     }
 }

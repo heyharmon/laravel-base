@@ -2,12 +2,11 @@
 
 namespace DDD\Http\Base\Teams;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Models
 use DDD\Domain\Base\Organizations\Organization;
+// Models
 use DDD\Domain\Base\Teams\Team;
+use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {

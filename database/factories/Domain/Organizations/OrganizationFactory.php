@@ -21,10 +21,10 @@ class OrganizationFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'title' => $this->faker->company
+            'title' => $this->faker->company(),
         ];
     }
 }
