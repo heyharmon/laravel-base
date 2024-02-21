@@ -2,9 +2,9 @@
 
 namespace DDD\Http\Base\Auth;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Http\Base\Auth\Requests\AuthPasswordResetRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 // Requests

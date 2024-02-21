@@ -2,12 +2,12 @@
 
 namespace DDD\Domain\Base\Teams;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\App\Traits\HasSlug;
-// Traits
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+// Traits
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Team extends Model
 {

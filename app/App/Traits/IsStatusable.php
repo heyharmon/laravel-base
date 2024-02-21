@@ -2,9 +2,9 @@
 
 namespace DDD\App\Traits;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use DDD\Domain\Base\Statuses\Status;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 // Models
 use Illuminate\Support\Str;
 

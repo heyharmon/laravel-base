@@ -2,11 +2,11 @@
 
 namespace DDD\Domain\Base\Users;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\Domain\Base\Users\Enums\RoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 // Enums
 use Illuminate\Foundation\Auth\User as Authenticatable;
 // Traits

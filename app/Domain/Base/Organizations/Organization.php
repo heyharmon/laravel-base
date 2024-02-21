@@ -2,15 +2,15 @@
 
 namespace DDD\Domain\Base\Organizations;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use DDD\App\Traits\HasComments;
 use DDD\App\Traits\HasSlug;
-// Domains
 use DDD\Domain\Base\Subscriptions\Plans\Plan;
-// Vendors
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+// Domains
 use Illuminate\Database\Eloquent\Model;
+// Vendors
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 // use Spatie\MediaLibrary\HasMedia;
 // use Spatie\MediaLibrary\InteractsWithMedia;
 

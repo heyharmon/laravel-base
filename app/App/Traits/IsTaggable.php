@@ -2,10 +2,10 @@
 
 namespace DDD\App\Traits;
 
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use DDD\App\Scopes\TaggableScopes;
 use DDD\Domain\Base\Tags\Tag;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Arr;
 // Models
 use Illuminate\Support\Collection;

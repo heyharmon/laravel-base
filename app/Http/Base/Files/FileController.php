@@ -2,14 +2,14 @@
 
 namespace DDD\Http\Base\Files;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Base\Files\File;
-// Vendors
 use DDD\Domain\Base\Files\Requests\StoreFileRequest;
-// Models
+// Vendors
 use DDD\Domain\Base\Files\Resources\FileResource;
+// Models
 use DDD\Domain\Base\Organizations\Organization;
+use Illuminate\Http\JsonResponse;
 // Requests
 use Illuminate\Http\Request;
 // Resources

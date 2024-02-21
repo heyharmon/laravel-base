@@ -2,8 +2,8 @@
 
 namespace DDD\Domain\Base\Organizations\Resources;
 
-use Illuminate\Http\Request;
 use DDD\Domain\Base\Subscriptions\Plans\Resources\PlanResource;
+use Illuminate\Http\Request;
 // Resources
 use Illuminate\Http\Resources\Json\JsonResource;
 

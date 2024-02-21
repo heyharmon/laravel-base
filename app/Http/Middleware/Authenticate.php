@@ -2,8 +2,8 @@
 
 namespace DDD\Http\Middleware;
 
-use Illuminate\Http\Request;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Http\Request;
 
 class Authenticate extends Middleware
 {

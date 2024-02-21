@@ -2,14 +2,14 @@
 
 namespace DDD\Http\Base\Media;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Base\Media\Media;
-// Vendors
 use DDD\Domain\Base\Media\Requests\StoreMediaRequest;
-// Models
+// Vendors
 use DDD\Domain\Base\Media\Resources\MediaResource;
+// Models
 use DDD\Domain\Base\Organizations\Organization;
+use Illuminate\Http\JsonResponse;
 // Requests
 use Illuminate\Http\Request;
 // Resources
