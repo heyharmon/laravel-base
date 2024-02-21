@@ -2,11 +2,10 @@
 
 namespace DDD\Domain\Base\Subscriptions\Plans;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-// Traits
 use DDD\App\Traits\HasSlug;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+// Traits
+use Illuminate\Database\Eloquent\Model;
 
 class Plan extends Model
 {
@@ -18,8 +17,8 @@ class Plan extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-         'limits' => 'json',
-     ];
+        'limits' => 'json',
+    ];
 
     public static function free()
     {

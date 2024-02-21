@@ -2,15 +2,12 @@
 
 namespace DDD\Http\Base\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use DDD\App\Controllers\Controller;
-
+use DDD\Domain\Base\Users\Resources\UserResource;
 // Models
-use DDD\Domain\Base\Users\User;
 
 // Resources
-use DDD\Domain\Base\Users\Resources\UserResource;
+use Illuminate\Http\Request;
 
 class AuthMeController extends Controller
 {

@@ -2,9 +2,7 @@
 
 namespace DDD\Http\Base\Files;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
 // Models
 use DDD\Domain\Base\Files\File;
 

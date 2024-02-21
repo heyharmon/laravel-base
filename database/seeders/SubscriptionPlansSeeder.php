@@ -2,19 +2,16 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-
-// Models
 use DDD\Domain\Base\Subscriptions\Plans\Plan;
+// Models
+use Illuminate\Database\Seeder;
 
 class SubscriptionPlansSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $plans = [
             [

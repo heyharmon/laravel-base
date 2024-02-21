@@ -2,21 +2,18 @@
 
 namespace DDD\Http\Base\Files;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
+use DDD\Domain\Base\Files\File;
+use DDD\Domain\Base\Files\Requests\StoreFileRequest;
 // Vendors
-use Spatie\QueryBuilder\QueryBuilder;
-
+use DDD\Domain\Base\Files\Resources\FileResource;
 // Models
 use DDD\Domain\Base\Organizations\Organization;
-use DDD\Domain\Base\Files\File;
-
+use Illuminate\Http\JsonResponse;
 // Requests
-use DDD\Domain\Base\Files\Requests\StoreFileRequest;
-
+use Illuminate\Http\Request;
 // Resources
-use DDD\Domain\Base\Files\Resources\FileResource;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class FileController extends Controller
 {
@@ -62,7 +59,7 @@ class FileController extends Controller
         return new FileResource($file);
     }
 
-    public function destroy(Organization $organization, File $file)
+    public function destroy(Organization $organization, File $file): JsonResponse
     {
         $file->delete();
 

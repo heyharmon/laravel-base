@@ -2,18 +2,17 @@
 
 namespace DDD\Domain\Base\Categories;
 
+use DDD\App\Traits\HasParents;
+use DDD\App\Traits\HasSlug;
+// Traits
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-// Traits
-use DDD\App\Traits\HasSlug;
-use DDD\App\Traits\HasParents;
 
 class Category extends Model
 {
     use HasFactory,
-        HasSlug,
-        HasParents;
+        HasParents,
+        HasSlug;
 
     protected $guarded = [
         'id',

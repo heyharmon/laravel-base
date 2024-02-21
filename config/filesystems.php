@@ -57,7 +57,6 @@ return [
             'throw' => false,
         ],
 
-        // Digital Ocean Spaces
         'digitalocean' => [
             'driver' => 's3',
             'key' => env('DO_ACCESS_KEY_ID'),

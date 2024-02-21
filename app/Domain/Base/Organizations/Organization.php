@@ -2,88 +2,76 @@
 
 namespace DDD\Domain\Base\Organizations;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-// Domains
+use DDD\App\Traits\HasComments;
+use DDD\App\Traits\HasSlug;
 use DDD\Domain\Base\Subscriptions\Plans\Plan;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+// Domains
+use Illuminate\Database\Eloquent\Model;
 // Vendors
-use Laravel\Cashier\Billable;
-use Laravel\Cashier\Subscription;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 // use Spatie\MediaLibrary\HasMedia;
 // use Spatie\MediaLibrary\InteractsWithMedia;
 
 // Traits
-use DDD\App\Traits\HasComments;
-use DDD\App\Traits\HasSlug;
+use Laravel\Cashier\Billable;
+use Laravel\Cashier\Subscription;
 
 class Organization extends Model
 {
-    use HasFactory,
-        Billable,
-        // InteractsWithMedia,
+    use Billable,
         HasComments,
+        // InteractsWithMedia,
+        HasFactory,
         HasSlug;
 
     protected $guarded = ['id', 'slug'];
 
     /**
      * Users associated with the organization.
-     *
-     * @return hasMany
      */
-    public function users()
+    public function users(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Base\Users\User');
+        return $this->hasMany(\DDD\Domain\Base\Users\User::class);
     }
 
     /**
      * Invitations associated with the organization.
-     *
-     * @return hasMany
      */
-    public function invitations()
+    public function invitations(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Base\Invitations\Invitation');
+        return $this->hasMany(\DDD\Domain\Base\Invitations\Invitation::class);
     }
 
     /**
      * Files associated with the organization.
-     *
-     * @return hasMany
      */
-    public function files()
+    public function files(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Base\Files\File');
+        return $this->hasMany(\DDD\Domain\Base\Files\File::class);
     }
 
     /**
      * Teams that belong to this team.
-     *
-     * @return hasMany
      */
-    public function teams()
+    public function teams(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Base\Teams\Team');
+        return $this->hasMany(\DDD\Domain\Base\Teams\Team::class);
     }
 
     /**
      * Sites associated with this organization.
-     *
-     * @return hasMany
      */
-    public function sites()
+    public function sites(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Base\Sites\Site');
+        return $this->hasMany(\DDD\Domain\Base\Sites\Site::class);
     }
 
     /**
      * Plan organization is subscribed to.
-     *
-     * @return hasOneThrough
      */
-    public function plan()
+    public function plan(): HasOneThrough
     {
         return $this->hasOneThrough(
             Plan::class, Subscription::class,

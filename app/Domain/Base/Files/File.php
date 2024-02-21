@@ -2,16 +2,15 @@
 
 namespace DDD\Domain\Base\Files;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use DDD\App\Traits\BelongsToOrganization;
 // use Illuminate\Support\Str;
 
 // Vendors
 // use Spatie\MediaLibrary\MediaCollections\Models\Media as BaseMedia;
 
 // Traits
-use DDD\App\Traits\BelongsToOrganization;
 use DDD\App\Traits\BelongsToUser;
+use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
@@ -20,7 +19,8 @@ class File extends Model
 
     protected $guarded = ['id'];
 
-    public function getStorageUrl() {
-        return config('cdn.cdn_url') . '/' . $this->path;
+    public function getStorageUrl()
+    {
+        return config('cdn.cdn_url').'/'.$this->path;
     }
 }

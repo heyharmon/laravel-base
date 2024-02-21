@@ -2,18 +2,18 @@
 
 namespace DDD\App\Traits;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
-
-// Models
 use DDD\Domain\Base\Categories\Category;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+// Models
+use Illuminate\Support\Str;
 
 trait IsCategorizable
 {
     protected static function bootIsCategorizable(): void
     {
         static::creating(function (Model $model) {
-            if (!$model->category_id) {
+            if (! $model->category_id) {
                 $model->setCategory('uncategorized');
             }
         });
@@ -25,15 +25,16 @@ trait IsCategorizable
         });
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
     public function setCategory($category)
     {
-        if (!$category) {
+        if (! $category) {
             $this->category()->dissociate();
+
             return;
         }
 

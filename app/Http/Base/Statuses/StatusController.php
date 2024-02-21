@@ -2,14 +2,12 @@
 
 namespace DDD\Http\Base\Statuses;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
+use DDD\Domain\Base\Statuses\Resources\StatusResource;
 // Models
 use DDD\Domain\Base\Statuses\Status;
-
 // Resources
-use DDD\Domain\Base\Statuses\Resources\StatusResource;
+use Illuminate\Http\Request;
 
 class StatusController extends Controller
 {
