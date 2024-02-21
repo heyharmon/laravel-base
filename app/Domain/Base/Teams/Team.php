@@ -19,8 +19,6 @@ class Team extends Model
 
     /**
      * Get the users who belong to this team.
-     *
-     * @return hasMany
      */
     public function users(): HasMany
     {

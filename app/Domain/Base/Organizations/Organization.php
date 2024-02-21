@@ -30,8 +30,6 @@ class Organization extends Model
 
     /**
      * Users associated with the organization.
-     *
-     * @return hasMany
      */
     public function users(): HasMany
     {
@@ -40,8 +38,6 @@ class Organization extends Model
 
     /**
      * Invitations associated with the organization.
-     *
-     * @return hasMany
      */
     public function invitations(): HasMany
     {
@@ -50,8 +46,6 @@ class Organization extends Model
 
     /**
      * Files associated with the organization.
-     *
-     * @return hasMany
      */
     public function files(): HasMany
     {
@@ -60,8 +54,6 @@ class Organization extends Model
 
     /**
      * Teams that belong to this team.
-     *
-     * @return hasMany
      */
     public function teams(): HasMany
     {
@@ -70,8 +62,6 @@ class Organization extends Model
 
     /**
      * Sites associated with this organization.
-     *
-     * @return hasMany
      */
     public function sites(): HasMany
     {
@@ -80,8 +70,6 @@ class Organization extends Model
 
     /**
      * Plan organization is subscribed to.
-     *
-     * @return hasOneThrough
      */
     public function plan(): HasOneThrough
     {

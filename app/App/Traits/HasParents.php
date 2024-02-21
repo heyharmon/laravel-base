@@ -12,8 +12,6 @@ trait HasParents
 
     /**
      * Get the nested children associated with this model.
-     *
-     * @return hasMany
      */
     public function children(): HasMany
     {
@@ -22,9 +20,6 @@ trait HasParents
 
     /**
      * Get only parents (top level models).
-     *
-     * @param  Builder  $query
-     * @return Builder
      */
     public function scopeParents(Builder $query): Builder
     {

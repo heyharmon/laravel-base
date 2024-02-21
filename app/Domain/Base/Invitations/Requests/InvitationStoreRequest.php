@@ -14,8 +14,6 @@ class InvitationStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
     public function authorize(): bool
     {
@@ -24,8 +22,6 @@ class InvitationStoreRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
     public function rules(): array
     {
@@ -37,8 +33,6 @@ class InvitationStoreRequest extends FormRequest
 
     /**
      * Get the error messages for the defined validation rules.
-     *
-     * @return array
      */
     public function messages(): array
     {
@@ -49,8 +43,6 @@ class InvitationStoreRequest extends FormRequest
 
     /**
      * Return exception as json
-     *
-     * @return Exception
      */
     protected function failedValidation(Validator $validator): Exception
     {

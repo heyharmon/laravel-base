@@ -18,8 +18,6 @@ trait BelongsToUser
 
     /**
      * User this model belongs to.
-     *
-     * @return belongsTo
      */
     public function user(): BelongsTo
     {

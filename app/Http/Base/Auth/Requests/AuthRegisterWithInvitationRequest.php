@@ -11,8 +11,6 @@ class AuthRegisterWithInvitationRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
     public function rules(): array
     {
@@ -35,8 +33,6 @@ class AuthRegisterWithInvitationRequest extends FormRequest
 
     /**
      * Return exception as json
-     *
-     * @return Exception
      */
     protected function failedValidation(Validator $validator): Exception
     {

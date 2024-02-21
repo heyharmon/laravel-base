@@ -10,9 +10,6 @@ trait BelongsToOrganization
 {
     /**
      * Scope a query to only include users in an organization.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return void
      */
     public function scopeOrganization(Builder $query, $organization_id): void
     {
@@ -31,8 +28,6 @@ trait BelongsToOrganization
 
     /**
      * Organization this model belongs to.
-     *
-     * @return belongsTo
      */
     public function organization(): BelongsTo
     {
