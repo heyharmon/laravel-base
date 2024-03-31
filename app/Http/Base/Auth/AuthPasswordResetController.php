@@ -2,13 +2,12 @@
 
 namespace DDD\Http\Base\Auth;
 
-use DDD\App\Controllers\Controller;
-use DDD\Http\Base\Auth\Requests\AuthPasswordResetRequest;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
-// Requests
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\JsonResponse;
+use DDD\Http\Base\Auth\Requests\AuthPasswordResetRequest;
+use DDD\App\Controllers\Controller;
 
 class AuthPasswordResetController extends Controller
 {

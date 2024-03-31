@@ -2,8 +2,8 @@
 
 namespace DDD\Domain\Base\Statuses\Resources;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Request;
 
 class StatusResource extends JsonResource
 {
@@ -13,7 +13,6 @@ class StatusResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            // 'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
             'children' => StatusResource::collection($this->whenLoaded('children')),

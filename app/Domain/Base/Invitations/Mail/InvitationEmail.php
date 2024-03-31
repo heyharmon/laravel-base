@@ -2,9 +2,9 @@
 
 namespace DDD\Domain\Base\Invitations\Mail;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailable;
+use Illuminate\Bus\Queueable;
 
 class InvitationEmail extends Mailable
 {

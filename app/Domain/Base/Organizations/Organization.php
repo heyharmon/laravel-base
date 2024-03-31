@@ -2,27 +2,20 @@
 
 namespace DDD\Domain\Base\Organizations;
 
-use DDD\App\Traits\HasComments;
-use DDD\App\Traits\HasSlug;
-use DDD\Domain\Base\Subscriptions\Plans\Plan;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-// Domains
-use Illuminate\Database\Eloquent\Model;
-// Vendors
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOneThrough;
-// use Spatie\MediaLibrary\HasMedia;
-// use Spatie\MediaLibrary\InteractsWithMedia;
-
-// Traits
-use Laravel\Cashier\Billable;
 use Laravel\Cashier\Subscription;
+use Laravel\Cashier\Billable;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use DDD\Domain\Base\Subscriptions\Plans\Plan;
+use DDD\App\Traits\HasSlug;
+use DDD\App\Traits\HasComments;
 
 class Organization extends Model
 {
     use Billable,
         HasComments,
-        // InteractsWithMedia,
         HasFactory,
         HasSlug;
 
@@ -72,14 +65,4 @@ class Organization extends Model
             ->whereNull('subscriptions.ends_at') // Not being cancelled
             ->withDefault(Plan::free()->toArray());
     }
-
-    // public function userCount()
-    // {
-    //     return $this->users->count();
-    // }
-
-    // public function canDowngradeToPlan(Plan $plan)
-    // {
-    //     return $this->userCount() <= $plan->limits['users'];
-    // }
 }

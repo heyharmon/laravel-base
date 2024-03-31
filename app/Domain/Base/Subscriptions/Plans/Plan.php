@@ -2,10 +2,9 @@
 
 namespace DDD\Domain\Base\Subscriptions\Plans;
 
-use DDD\App\Traits\HasSlug;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-// Traits
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use DDD\App\Traits\HasSlug;
 
 class Plan extends Model
 {

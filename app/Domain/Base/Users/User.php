@@ -2,19 +2,14 @@
 
 namespace DDD\Domain\Base\Users;
 
-use DDD\App\Traits\BelongsToOrganization;
-use DDD\Domain\Base\Users\Enums\RoleEnum;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-// Enums
-use Illuminate\Foundation\Auth\User as Authenticatable;
-// Traits
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
-// Scopes
-// use DDD\App\Scopes\OrganizationScope;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use DDD\Domain\Base\Users\Enums\RoleEnum;
+use DDD\App\Traits\BelongsToOrganization;
 
 class User extends Authenticatable
 {

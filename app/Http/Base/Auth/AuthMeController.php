@@ -2,17 +2,15 @@
 
 namespace DDD\Http\Base\Auth;
 
-use DDD\App\Controllers\Controller;
-use DDD\Domain\Base\Users\Resources\UserResource;
-// Models
-
-// Resources
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use DDD\Domain\Base\Users\Resources\UserResource;
+use DDD\App\Controllers\Controller;
 
 class AuthMeController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return new UserResource(auth()->user());
+        return new UserResource(Auth::user());
     }
 }

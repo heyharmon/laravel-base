@@ -2,8 +2,8 @@
 
 namespace DDD\Domain\Base\Users\Resources;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Request;
 
 class UserResource extends JsonResource
 {

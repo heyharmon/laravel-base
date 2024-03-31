@@ -2,11 +2,9 @@
 
 namespace DDD\Http\Base\Subscriptions\Plans;
 
-use DDD\App\Controllers\Controller;
-// Models
-use DDD\Domain\Base\Subscriptions\Plans\Plan;
-// Resources
 use DDD\Domain\Base\Subscriptions\Plans\Resources\PlanResource;
+use DDD\Domain\Base\Subscriptions\Plans\Plan;
+use DDD\App\Controllers\Controller;
 
 class PlanController extends Controller
 {

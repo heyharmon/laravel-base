@@ -2,15 +2,11 @@
 
 namespace DDD\Http\Base\Subscriptions\Subscriptions;
 
-use DDD\App\Controllers\Controller;
-// Domains
-use DDD\Domain\Base\Organizations\Organization;
-use DDD\Domain\Base\Subscriptions\Plans\Plan;
-// Requests
-use DDD\Domain\Base\Subscriptions\Subscriptions\Requests\SubscriptionStoreRequest;
 use DDD\Domain\Base\Subscriptions\Subscriptions\Requests\SubscriptionUpdateRequest;
-
-// Resources
+use DDD\Domain\Base\Subscriptions\Subscriptions\Requests\SubscriptionStoreRequest;
+use DDD\Domain\Base\Subscriptions\Plans\Plan;
+use DDD\Domain\Base\Organizations\Organization;
+use DDD\App\Controllers\Controller;
 
 class SubscriptionController extends Controller
 {

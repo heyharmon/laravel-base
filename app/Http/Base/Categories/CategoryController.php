@@ -2,12 +2,10 @@
 
 namespace DDD\Http\Base\Categories;
 
-use DDD\App\Controllers\Controller;
-use DDD\Domain\Base\Categories\Category;
-// Models
-use DDD\Domain\Base\Categories\Resources\CategoryResource;
-// Resources
 use Illuminate\Http\Request;
+use DDD\Domain\Base\Categories\Resources\CategoryResource;
+use DDD\Domain\Base\Categories\Category;
+use DDD\App\Controllers\Controller;
 
 class CategoryController extends Controller
 {

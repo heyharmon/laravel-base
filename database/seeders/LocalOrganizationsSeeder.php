@@ -6,7 +6,7 @@ use DDD\Domain\Base\Organizations\Organization;
 // Models
 use Illuminate\Database\Seeder;
 
-class OrganizationsSeeder extends Seeder
+class LocalOrganizationsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,7 @@ class OrganizationsSeeder extends Seeder
     public function run(): void
     {
         $organizations = [
-            ['title' => 'BloomCU'],
-            // ['title' => 'Lone Star'],
+            ['title' => 'MetriFi'],
         ];
 
         foreach ($organizations as $organization) {

@@ -2,11 +2,10 @@
 
 namespace DDD\Http\Base\Auth;
 
-use DDD\App\Controllers\Controller;
-use DDD\Http\Base\Auth\Requests\AuthPasswordForgotRequest;
-use Illuminate\Http\JsonResponse;
-// Requests
 use Illuminate\Support\Facades\Password;
+use Illuminate\Http\JsonResponse;
+use DDD\Http\Base\Auth\Requests\AuthPasswordForgotRequest;
+use DDD\App\Controllers\Controller;
 
 class AuthPasswordForgotController extends Controller
 {

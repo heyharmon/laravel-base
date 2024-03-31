@@ -2,15 +2,9 @@
 
 namespace DDD\Domain\Base\Files;
 
-use DDD\App\Traits\BelongsToOrganization;
-// use Illuminate\Support\Str;
-
-// Vendors
-// use Spatie\MediaLibrary\MediaCollections\Models\Media as BaseMedia;
-
-// Traits
-use DDD\App\Traits\BelongsToUser;
 use Illuminate\Database\Eloquent\Model;
+use DDD\App\Traits\BelongsToUser;
+use DDD\App\Traits\BelongsToOrganization;
 
 class File extends Model
 {

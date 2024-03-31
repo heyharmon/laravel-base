@@ -2,18 +2,14 @@
 
 namespace DDD\Http\Base\Files;
 
-use DDD\App\Controllers\Controller;
-use DDD\Domain\Base\Files\File;
-use DDD\Domain\Base\Files\Requests\StoreFileRequest;
-// Vendors
-use DDD\Domain\Base\Files\Resources\FileResource;
-// Models
-use DDD\Domain\Base\Organizations\Organization;
-use Illuminate\Http\JsonResponse;
-// Requests
-use Illuminate\Http\Request;
-// Resources
 use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use DDD\Domain\Base\Organizations\Organization;
+use DDD\Domain\Base\Files\Resources\FileResource;
+use DDD\Domain\Base\Files\Requests\StoreFileRequest;
+use DDD\Domain\Base\Files\File;
+use DDD\App\Controllers\Controller;
 
 class FileController extends Controller
 {
@@ -29,16 +25,6 @@ class FileController extends Controller
 
     public function store(Organization $organization, StoreFileRequest $request)
     {
-        // $path = $request->file('file')->store($organization->slug, 's3');
-
-        // $file = $organization->files()->create([
-        //     'path' => $path,
-        //     'name' => pathinfo($request->file->getClientOriginalName(), PATHINFO_FILENAME),
-        //     'filename' => basename($path),
-        //     'extension' => $request->file->extension(),
-        //     'mime' => $request->file->getMimeType(),
-        // ]);
-
         $disk = config('filesystems.default');
         $path = $request->file->store($organization->slug, $disk);
 

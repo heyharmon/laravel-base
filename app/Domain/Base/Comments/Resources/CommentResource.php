@@ -2,10 +2,9 @@
 
 namespace DDD\Domain\Base\Comments\Resources;
 
-use DDD\Domain\Base\Users\Resources\UserResource;
-use Illuminate\Http\Request;
-// Resources
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Request;
+use DDD\Domain\Base\Users\Resources\UserResource;
 
 class CommentResource extends JsonResource
 {

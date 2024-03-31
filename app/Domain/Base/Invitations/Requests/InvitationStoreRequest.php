@@ -2,13 +2,12 @@
 
 namespace DDD\Domain\Base\Invitations\Requests;
 
-use DDD\Domain\Base\Users\Enums\RoleEnum;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest;
-// Rules
-use Illuminate\Http\Exceptions\HttpResponseException;
-// Enums
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Exception;
+use DDD\Domain\Base\Users\Enums\RoleEnum;
 
 class InvitationStoreRequest extends FormRequest
 {

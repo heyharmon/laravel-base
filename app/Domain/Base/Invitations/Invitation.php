@@ -2,14 +2,12 @@
 
 namespace DDD\Domain\Base\Invitations;
 
-use DDD\App\Traits\BelongsToOrganization;
-use DDD\App\Traits\BelongsToUser;
-// Enums
-use DDD\App\Traits\HasUuid;
-// Traits
-use DDD\Domain\Base\Users\Enums\RoleEnum;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use DDD\Domain\Base\Users\Enums\RoleEnum;
+use DDD\App\Traits\HasUuid;
+use DDD\App\Traits\BelongsToUser;
+use DDD\App\Traits\BelongsToOrganization;
 
 class Invitation extends Model
 {

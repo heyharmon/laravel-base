@@ -2,7 +2,7 @@
 
 namespace DDD\App\Traits;
 
-// Vendors
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 

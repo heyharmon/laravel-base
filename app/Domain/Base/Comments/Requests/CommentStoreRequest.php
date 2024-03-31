@@ -2,9 +2,10 @@
 
 namespace DDD\Domain\Base\Comments\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Exception;
 
 class CommentStoreRequest extends FormRequest
 {

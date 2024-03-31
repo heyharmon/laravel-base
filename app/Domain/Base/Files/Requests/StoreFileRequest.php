@@ -2,9 +2,10 @@
 
 namespace DDD\Domain\Base\Files\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Exception;
 
 class StoreFileRequest extends FormRequest
 {
@@ -21,14 +22,8 @@ class StoreFileRequest extends FormRequest
      */
     public function rules(): array
     {
-        // if (!$this->has('collection')) {
-        //     $this->merge(['collection' => 'default']);
-        // }
-
         return [
             'file' => 'max:100000', // Max 100mb
-            // 'collection' => 'nullable|string',
-            // 'tags' => 'nullable|string'
         ];
     }
 
