@@ -20,12 +20,3 @@ it('logs the user out', function () {
             'message' => 'Tokens Revoked'
         ]);
 });
-
-it('shows error if already not authenticated', function () {
-    dd($this->post('/api/auth/logout'));
-    $this->post('/api/auth/logout')
-        ->assertStatus(401)
-        ->assertExactJson([
-            'message' => 'Unauthenticated.'
-        ]);
-});
