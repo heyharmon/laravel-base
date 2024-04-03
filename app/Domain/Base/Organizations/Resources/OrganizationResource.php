@@ -21,7 +21,7 @@ class OrganizationResource extends JsonResource
             'automation_msg' => $this->automation_msg,
             'subscribed' => $this->subscribed('default'),
             'ends_at' => optional(optional($this->subscription('default'))->ends_at)->toDateTimeString(),
-            'plan' => new PlanResource($this->plan),
+            // 'plan' => new PlanResource($this->plan),
         ];
     }
 }

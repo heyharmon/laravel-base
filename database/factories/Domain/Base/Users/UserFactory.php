@@ -1,10 +1,12 @@
 <?php
 
-namespace Database\Factories\Domain\Users;
+namespace Database\Factories\Domain\Base\Users;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use DDD\Domain\Base\Users\User;
+use DDD\Domain\Base\Organizations\Organization;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\DDD\Models\User>
@@ -16,7 +18,7 @@ class UserFactory extends Factory
      *
      * @var string
      */
-    protected $model = \DDD\Domain\Base\Users\User::class;
+    protected $model = User::class;
 
     /**
      * Define the model's default state.
@@ -31,7 +33,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
-            'organization_id' => factory(\DDD\Domain\Base\Organizations\Organization::class),
+            'organization_id' => Organization::factory(),
         ];
     }
 
