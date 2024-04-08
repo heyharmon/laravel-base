@@ -3,6 +3,7 @@
 namespace DDD\Http\Base\Files;
 
 use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use DDD\Domain\Base\Organizations\Organization;
@@ -25,9 +26,11 @@ class FileController extends Controller
 
     public function store(Organization $organization, StoreFileRequest $request)
     {
+        // Store file in storage
         $disk = config('filesystems.default');
         $path = $request->file->store($organization->slug, $disk);
 
+        // Store file in database
         $file = $organization->files()->create([
             'path' => $path,
             'name' => pathinfo($request->file->getClientOriginalName(), PATHINFO_FILENAME),
@@ -47,7 +50,11 @@ class FileController extends Controller
 
     public function destroy(Organization $organization, File $file): JsonResponse
     {
+        // Remove database record
         $file->delete();
+
+        // Remove file from storage
+        Storage::delete($file->path);
 
         return response()->json(['message' => 'File destroyed'], 200);
     }

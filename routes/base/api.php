@@ -40,12 +40,6 @@ Route::prefix('/organizations/{organization:slug}')->group(function () {
     Route::get('/comments', [OrganizationCommentController::class, 'index']);
 });
 
-// Public - Files
-Route::prefix('/{organization:slug}')->group(function () {
-    Route::get('/files', [FileController::class, 'index']);
-    Route::get('/files/{file}', [FileController::class, 'show']);
-});
-
 // Public - Files Download
 Route::get('/files/{file}', [FileDownloadController::class, 'download']);
 
@@ -83,7 +77,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // Files
         Route::prefix('files')->group(function () {
+            Route::get('/files', [FileController::class, 'index']);
             Route::post('/', [FileController::class, 'store']);
+            Route::get('/files/{file}', [FileController::class, 'show']);
             Route::delete('/{file}', [FileController::class, 'destroy']);
         });
 
