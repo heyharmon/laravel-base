@@ -66,13 +66,13 @@ class Organization extends Model
     /**
      * Plan organization is subscribed to.
      */
-    // public function plan(): HasOneThrough
-    // {
-    //     return $this->hasOneThrough(
-    //         Plan::class, Subscription::class,
-    //         'organization_id', 'stripe_price_id', 'id', 'stripe_price'
-    //     )
-    //         ->whereNull('subscriptions.ends_at') // Not being cancelled
-    //         ->withDefault(Plan::free()->toArray());
-    // }
+    public function plan(): HasOneThrough
+    {
+        return $this->hasOneThrough(
+            Plan::class, Subscription::class,
+            'organization_id', 'stripe_price_id', 'id', 'stripe_price'
+        )
+            ->whereNull('subscriptions.ends_at') // Not being cancelled
+            ->withDefault(Plan::free()->toArray());
+    }
 }
