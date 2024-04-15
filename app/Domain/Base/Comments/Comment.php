@@ -15,8 +15,8 @@ class Comment extends Model
     protected $guarded = [
         'id',
         'user_id',
-        'taggable_id',
-        'taggable_type',
+        'commentable_id',
+        'commentable_type',
     ];
 
     // TODO: Use the BelongsToUser Trait
