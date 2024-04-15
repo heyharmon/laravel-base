@@ -57,11 +57,6 @@ class User extends Authenticatable
         return $this->belongsTo(\DDD\Domain\Base\Organizations\Organization::class);
     }
 
-    public function comments(): HasMany
-    {
-        return $this->hasMany(\DDD\Domain\Base\Comments\Comment::class);
-    }
-
     public function files(): HasMany
     {
         return $this->hasMany(\DDD\Domain\Base\Files\File::class);

@@ -10,12 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use DDD\Domain\Base\Subscriptions\Plans\Plan;
 use DDD\App\Traits\HasSlug;
-use DDD\App\Traits\HasComments;
 
 class Organization extends Model
 {
     use Billable,
-        HasComments,
         HasFactory,
         HasSlug;
 

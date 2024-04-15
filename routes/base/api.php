@@ -11,7 +11,6 @@ use DDD\Http\Base\Categories\CategoryController;
 use DDD\Http\Base\Files\FileController;
 use DDD\Http\Base\Files\FileDownloadController;
 use DDD\Http\Base\Invitations\InvitationController;
-use DDD\Http\Base\Organizations\OrganizationCommentController;
 use DDD\Http\Base\Organizations\OrganizationController;
 use DDD\Http\Base\Subscriptions\Intent\IntentController;
 use DDD\Http\Base\Subscriptions\Plans\PlanController;
@@ -31,11 +30,6 @@ Route::post('auth/password/reset', AuthPasswordResetController::class);
 
 // Public - Invitations
 Route::get('{organization:slug}/invitations/{invitation:uuid}', [InvitationController::class, 'show']);
-
-// Public - Organization - Comments
-Route::prefix('/organizations/{organization:slug}')->group(function () {
-    Route::get('/comments', [OrganizationCommentController::class, 'index']);
-});
 
 // Public - Files Download
 Route::get('/files/{file}', [FileDownloadController::class, 'download']);
@@ -92,12 +86,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('organizations/{organization:slug}', [OrganizationController::class, 'show']);
     Route::put('organizations/{organization:slug}', [OrganizationController::class, 'update']);
     Route::delete('organizations/{organization:slug}', [OrganizationController::class, 'destroy']);
-
-    // Organization - Comments
-    Route::prefix('/organizations/{organization:slug}')->group(function () {
-        Route::post('/comments', [OrganizationCommentController::class, 'store']);
-        Route::delete('comments/{comment}', [OrganizationCommentController::class, 'destroy']);
-    });
 
     // Categories
     Route::prefix('categories')->group(function () {
