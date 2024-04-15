@@ -23,7 +23,7 @@ class StoreFileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'max:100000', // Max 100mb
+            'file' => 'required|max:100000', // Max 100mb
         ];
     }
 
