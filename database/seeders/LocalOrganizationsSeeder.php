@@ -14,7 +14,7 @@ class LocalOrganizationsSeeder extends Seeder
     public function run(): void
     {
         $organizations = [
-            ['title' => 'MetriFi'],
+            ['title' => 'Acme'],
         ];
 
         foreach ($organizations as $organization) {
