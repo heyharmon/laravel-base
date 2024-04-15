@@ -11,11 +11,8 @@ use DDD\Http\Base\Categories\CategoryController;
 use DDD\Http\Base\Files\FileController;
 use DDD\Http\Base\Files\FileDownloadController;
 use DDD\Http\Base\Invitations\InvitationController;
-use DDD\Http\Base\Media\MediaController;
-use DDD\Http\Base\Media\MediaDownloadController;
 use DDD\Http\Base\Organizations\OrganizationCommentController;
 use DDD\Http\Base\Organizations\OrganizationController;
-use DDD\Http\Base\Statuses\StatusController;
 use DDD\Http\Base\Subscriptions\Intent\IntentController;
 use DDD\Http\Base\Subscriptions\Plans\PlanController;
 use DDD\Http\Base\Subscriptions\Plans\PlanSwapAvailabilityController;
@@ -42,15 +39,6 @@ Route::prefix('/organizations/{organization:slug}')->group(function () {
 
 // Public - Files Download
 Route::get('/files/{file}', [FileDownloadController::class, 'download']);
-
-// Public - Media
-Route::prefix('/{organization:slug}')->group(function () {
-    Route::get('/media', [MediaController::class, 'index']);
-    Route::get('/media/{media}', [MediaController::class, 'show']);
-});
-
-// Public - Media Download
-Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
 
 Route::middleware('auth:sanctum')->group(function () {
     // Auth
@@ -81,12 +69,6 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::post('/', [FileController::class, 'store']);
             Route::get('/files/{file}', [FileController::class, 'show']);
             Route::delete('/{file}', [FileController::class, 'destroy']);
-        });
-
-        // Media
-        Route::prefix('media')->group(function () {
-            Route::post('/', [MediaController::class, 'store']);
-            Route::delete('/{media}', [MediaController::class, 'destroy']);
         });
 
         // Teams
@@ -124,15 +106,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{category:slug}', [CategoryController::class, 'show']);
         Route::put('/{category:slug}', [CategoryController::class, 'update']);
         Route::delete('/{category:slug}', [CategoryController::class, 'destroy']);
-    });
-
-    // Statuses
-    Route::prefix('statuses')->group(function () {
-        Route::get('/', [StatusController::class, 'index']);
-        Route::post('/', [StatusController::class, 'store']);
-        Route::get('/{status}', [StatusController::class, 'show']);
-        Route::put('/{status}', [StatusController::class, 'update']);
-        Route::delete('/{status}', [StatusController::class, 'destroy']);
     });
 
     // Tags
